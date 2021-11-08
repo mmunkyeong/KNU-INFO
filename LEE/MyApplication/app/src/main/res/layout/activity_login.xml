@@ -57,28 +57,25 @@
             android:layout_above="@+id/etPassword"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:drawableLeft="@drawable/ic_person1"
             android:background="@drawable/edittext"
+            android:drawableLeft="@drawable/ic_person1"
             android:hint=" ID"
             android:paddingLeft="20dp"
-            android:singleLine="true"
-            />
+            android:singleLine="true" />
 
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:inputType="textPassword"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
             android:layout_marginBottom="20dp"
-            android:drawableLeft="@drawable/ic_lock1"
             android:background="@drawable/edittext"
+            android:drawableLeft="@drawable/ic_lock1"
             android:hint=" Password"
+            android:inputType="textPassword"
             android:paddingLeft="20dp"
-            android:singleLine="true"
-            />
+            android:singleLine="true" />
 
 
         <Button
@@ -93,14 +90,17 @@
             android:text="로그인"
             android:textAlignment="center" />
 
-        <TextView
-            android:id="@+id/tvregister"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btnJoin"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnLogin"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="회원가입" />
+            android:layout_marginTop="10dp"
+            android:height="50dp"
+            android:background="@drawable/button"
+            android:text="회원가입"
+            android:textAlignment="center" />
 
     </RelativeLayout>
 
