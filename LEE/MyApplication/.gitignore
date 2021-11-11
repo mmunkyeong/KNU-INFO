@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+# Version control
+vcs.xml
