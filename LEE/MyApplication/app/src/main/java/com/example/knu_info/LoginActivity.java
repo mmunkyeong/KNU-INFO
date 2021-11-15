@@ -37,7 +37,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v){
                 String id = etID.getText().toString().trim();
                 String pass = etPassword.getText().toString().trim();
-                LoginUser(id,pass);
+                //메인화면 이동 하드코딩
+                Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(i);
+            //LoginUser(id,pass);
             }
         });
         //회원가입 버튼 눌렀을 때

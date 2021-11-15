@@ -17,13 +17,6 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-72dp">
 
-        <ImageView
-            android:layout_marginTop="-70dp"
-            android:layout_marginLeft="-50dp"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/circle"
-            ></ImageView>
 
         <TextView
             android:id="@+id/tvjointitle"
@@ -35,9 +28,10 @@
             android:text="KNU INFO"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#000069"
             android:textSize="40sp" />
 
+        <!-- 이름 입력 editText -->
         <EditText
             android:id="@+id/etjoinName"
             android:layout_width="300dp"
@@ -52,6 +46,7 @@
             android:singleLine="true"
             />
 
+        <!-- 회원가입 아이디 입력 editText -->
         <EditText
             android:id="@+id/etJid"
             android:layout_width="300dp"
@@ -65,7 +60,7 @@
             android:singleLine="true"
             />
 
-
+        <!-- 비밀번호 입력 editText -->
         <EditText
             android:id="@+id/etJpass"
             android:layout_width="300dp"
@@ -75,14 +70,15 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginBottom="20dp"
-            android:drawableRight="@drawable/ic_lock1"
+            android:drawableRight="@drawable/ic_lock"
             android:background="@drawable/edittext"
             android:hint=" 비밀번호"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingRight="10dp"
             android:singleLine="true"
             />
 
+        <!-- 비밀번호 입력 확인 editText -->
         <EditText
             android:id="@+id/etjoinPasswordCheck"
             android:layout_width="300dp"
@@ -92,33 +88,20 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginBottom="20dp"
-            android:drawableRight="@drawable/ic_lock1"
+            android:drawableRight="@drawable/ic_lock"
             android:background="@drawable/edittext"
             android:hint=" 비밀번호 확인"
-            android:paddingLeft="10dp"
+            android:paddingLeft="20dp"
             android:paddingRight="10dp"
             android:singleLine="true"
             />
 
-        <EditText
-            android:id="@+id/etjoinPhonenum"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/etjoinPasswordCheck"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edittext"
-            android:hint=" 전화번호"
-            android:paddingLeft="20dp"
-            android:singleLine="true"
-            />
-
+        <!-- 이메일 입력 editText -->
         <EditText
             android:id="@+id/etjoinEmail"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/etjoinPhonenum"
+            android:layout_below="@+id/etjoinPasswordCheck"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginBottom="20dp"
@@ -127,16 +110,19 @@
             android:paddingLeft="20dp"
             android:singleLine="true"
             />
+
+        <!-- 가입하기 버튼 -->
         <Button
             android:id="@+id/btnJjoin"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/etjoinEmail"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="50dp"
             android:height="50dp"
             android:background="@drawable/button"
             android:text="가입하기"
+            android:textColor="#FFFFFF"
             android:textAlignment="center" />
 
 

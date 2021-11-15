@@ -8,55 +8,86 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
+
+        <!-- 제목 -->
         <TextView
-            android:id="@+id/tvHello"
+            android:id="@+id/mtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/etID"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
             android:text="KNU INFO"
             android:textAlignment="center"
-            android:textSize="30sp"
-            android:layout_centerHorizontal="true"
-            />
-        <EditText
-            android:id="@+id/etID"
-            android:layout_width="200dp"
+            android:textColor="#000069"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <!-- 내용 -->
+        <TextView
+            android:id="@+id/mcontent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/etPassword"
-
-            android:hint="ID"
+            android:layout_below="@+id/mtitle"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="학사일정 등 학교정보가 궁금하다면? 챗봇에게 물어보기 "
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-            />
-
-
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-
-            android:hint="Password"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            />
-
+        <!-- 챗봇 채팅 버튼 -->
         <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="182dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/etPassword"
+            android:id="@+id/btnchat"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="0dp"
-            android:text="로그인"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/chatbot"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/txtchat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnchat"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="챗봇과 채팅하기"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <!-- 시간표 추가 버튼 -->
+        <Button
+            android:id="@+id/btnsc"
+            android:layout_width="150dp"
+            android:layout_below="@+id/btnchat"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/sche"
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/txtsc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/btnsc"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="시간표 추가"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            />
 
-            android:text="TextView" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
