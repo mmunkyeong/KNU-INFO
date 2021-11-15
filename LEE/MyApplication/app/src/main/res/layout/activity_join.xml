@@ -114,7 +114,7 @@
         <!-- 가입하기 버튼 -->
         <Button
             android:id="@+id/btnJjoin"
-            android:layout_width="150dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/etjoinEmail"
             android:layout_centerHorizontal="true"

@@ -10,15 +10,16 @@
     tools:context=".LoginActivity">
 
     <RelativeLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
         tools:layout_editor_absoluteX="110dp"
         tools:layout_editor_absoluteY="16dp">
+
         <!-- 이미지 추가 -->
+
         <ImageView
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="80dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/chat"
@@ -31,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="160dp"
+            android:layout_marginTop="190dp"
             android:layout_marginBottom="10dp"
             android:text="KNU INFO"
             android:textAlignment="center"
@@ -94,6 +95,8 @@
             android:text="회원가입"
             android:textColor="#787878"
             android:textAlignment="center" />
+
+
 
     </RelativeLayout>
 
