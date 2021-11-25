@@ -8,12 +8,13 @@
     tools:context=".MainActivity">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Finish"
         android:id="@+id/btnFinish"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/button"
         />
     <!-- recyclerView -->
     <androidx.recyclerview.widget.RecyclerView
@@ -23,26 +24,29 @@
         app:layout_constraintBottom_toTopOf="@+id/btnSend"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
         android:id="@+id/recyclerView"
         />
     <!-- 보내기버튼 -->
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/btnSend"
-        android:text="send"/>
+        android:text="send"
+        android:background="@drawable/button"
+        />
 
     <!-- 입력 창 -->
 
     <EditText
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnSend"
-        android:id="@+id/etText"/>
+        android:id="@+id/etText"
+        android:background="@drawable/edittext"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
