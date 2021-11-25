@@ -19,6 +19,6 @@
         />
     <size
         android:width="30dp"
-        android:height="20dp"
+        android:height="10dp"
         />
 </shape>
