@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class JoinActivity extends AppCompatActivity {
     String TAG="JoinActivity";
-    EditText etJid;
+    EditText etjoinEmail;
     EditText etJpass;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -41,7 +41,7 @@ public class JoinActivity extends AppCompatActivity {
 
             }
         };
-        etJid = (EditText)findViewById(R.id.etJid);
+        etjoinEmail = (EditText)findViewById(R.id.etjoinEmail);
         etJpass=(EditText)findViewById(R.id.etJpass);
         Button btnJjoin=(Button)findViewById(R.id.btnJjoin);
 
@@ -49,7 +49,7 @@ public class JoinActivity extends AppCompatActivity {
 
         btnJjoin.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                String stId = etJid.getText().toString();
+                String stId = etjoinEmail.getText().toString();
                 String stPass=etJpass.getText().toString();
                 joinUser(stId,stPass);
             }
