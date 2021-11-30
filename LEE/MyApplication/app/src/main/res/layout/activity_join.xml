@@ -41,7 +41,7 @@
 
         <!-- 이름 입력 editText -->
         <EditText
-            android:id="@+id/etjoinName"
+            android:id="@+id/etJName"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_below="@+id/tvjointitle"
@@ -54,65 +54,85 @@
             android:singleLine="true"
             />
 
-        <!-- 이메일 입력 editText -->
+        <!-- 회원가입 아이디 입력 editText -->
         <EditText
-            android:id="@+id/etjoinEmail"
+            android:id="@+id/etJid"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/etjoinName"
+            android:layout_below="@+id/etJName"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:layout_marginBottom="20dp"
             android:background="@drawable/edittext"
-            android:hint=" 이메일"
+            android:hint=" 아이디"
             android:paddingLeft="20dp"
-            android:singleLine="true"
-            />
+            android:singleLine="true" />
 
         <!-- 비밀번호 입력 editText -->
         <EditText
             android:id="@+id/etJpass"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/etjoinEmail"
-            android:inputType="textPassword"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_below="@+id/etJid"
+            android:layout_centerInParent="true"
             android:layout_marginBottom="20dp"
-            android:drawableRight="@drawable/ic_lock"
             android:background="@drawable/edittext"
+            android:drawableRight="@drawable/ic_lockopen"
             android:hint=" 비밀번호"
+            android:inputType="textPassword"
             android:paddingLeft="20dp"
             android:paddingRight="10dp"
-            android:singleLine="true"
-            />
+            android:singleLine="true" />
 
         <!-- 비밀번호 입력 확인 editText -->
         <EditText
-            android:id="@+id/etjoinPasswordCheck"
+            android:id="@+id/etJPasswordCheck"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_below="@+id/etJpass"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edittext"
+            android:drawableRight="@drawable/ic_lock"
+            android:hint=" 비밀번호 확인"
             android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:singleLine="true" />
+
+        <!-- 전화번호 입력 editText -->
+        <EditText
+            android:id="@+id/etJPhone"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/etJPasswordCheck"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginBottom="20dp"
-            android:drawableRight="@drawable/ic_lock"
             android:background="@drawable/edittext"
-            android:hint=" 비밀번호 확인"
+            android:hint=" 전화번호"
             android:paddingLeft="20dp"
-            android:paddingRight="10dp"
             android:singleLine="true"
             />
 
-
+        <!-- 이메일 입력 editText -->
+        <EditText
+            android:id="@+id/etJEmail"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/etJPhone"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edittext"
+            android:hint=" 이메일"
+            android:paddingLeft="20dp"
+            android:singleLine="true" />
 
         <!-- 가입하기 버튼 -->
         <Button
             android:id="@+id/btnJjoin"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/etjoinPasswordCheck"
+            android:layout_below="@+id/etJEmail"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:height="50dp"
