@@ -6,11 +6,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
-    private ArrayList<Chat> mDataset;
-    String stMyEmail="";
+    private String[] mDataset;
+
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
@@ -29,21 +27,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
             return textView;
         }
     }
-    public int getItemViewType(int position){
-        if(mDataset.get(position).email.equals(stMyEmail)){
-            return 1;
-        }
-        else{
-            return 2;
-        }
-    }
+
     /**
      * Initialize the dataset of the Adapter.
+     *
+     * @param dataSet String[] containing the data to populate views to be used
+     * by RecyclerView.
      */
-
-    public MyAdapter(ArrayList<Chat> dataSet,String stEmail) {
+    public MyAdapter(String[] dataSet) {
         mDataset= dataSet;
-        this.stMyEmail=stEmail;
     }
 
     // Create new views (invoked by the layout manager)
@@ -52,10 +44,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_recyclerview, viewGroup, false);
-        if(viewType ==1){
-            view=LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.right_item_recyclerview, viewGroup, false);
-        }
+
         return new ViewHolder(view);
     }
 
@@ -65,13 +54,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getTextView().setText(mDataset.get(position).getText());
+        viewHolder.getTextView().setText(mDataset[position]);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return mDataset.length;
     }
 
 

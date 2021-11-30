@@ -15,7 +15,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -38,7 +37,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v){
                 String id = etID.getText().toString().trim();
                 String pass = etPassword.getText().toString().trim();
-                LoginUser(id,pass);
+                //메인화면 이동 하드코딩
+                Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(i);
+            //LoginUser(id,pass);
             }
         });
         //회원가입 버튼 눌렀을 때
@@ -54,16 +56,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 Log.d(TAG,"signInWithEmail:onComplete"+task.isSuccessful());
                 if(task.isSuccessful()){
-                    Log.d(TAG,"signInWithEmail:success");
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    String stUserEmail=user.getEmail();
-                    String stUserName=user.getDisplayName();
-                    Log.d(TAG,"stUserEmail: "+stUserEmail+", stUserName: "+stUserName);
                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                    intent.putExtra("email",id);
-
                     startActivity(intent);
-
                 }
                 else{
                     Log.w(TAG,"signInWithEmail",task.getException());
