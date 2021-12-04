@@ -3,8 +3,8 @@
     <sodlid
         android:color="#ffffff"/>
     <stroke
-        android:width="0.5dp"
-        android:color="#000000"
+        android:width="0.7dp"
+        android:color="#FFCF4A"
         />
     <corners
         android:radius="15dp"
