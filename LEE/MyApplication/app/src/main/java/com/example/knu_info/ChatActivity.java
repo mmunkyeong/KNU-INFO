@@ -33,7 +33,7 @@ public class ChatActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     EditText etText;
     Button btnFinish,btnSend;
-    String stEmail;
+    String stId;
     FirebaseDatabase database;
     ArrayList<Chat> chatArrayList;
     @Override
@@ -46,7 +46,7 @@ public class ChatActivity extends AppCompatActivity {
         btnSend = (Button)findViewById(R.id.btnSend);
         etText = (EditText)findViewById(R.id.etText);
         Intent i=getIntent();
-        stEmail=i.getStringExtra("email");
+        stId=i.getStringExtra("id");
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         chatArrayList= new ArrayList<>();
         database=FirebaseDatabase.getInstance();
@@ -60,7 +60,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
 
-        mAdapter= new MyAdapter(chatArrayList,stEmail);
+        mAdapter= new MyAdapter(chatArrayList,stId);
         recyclerView.setAdapter(mAdapter);
         ChildEventListener childEventListener = new ChildEventListener() {
             @Override
@@ -70,7 +70,7 @@ public class ChatActivity extends AppCompatActivity {
                 // A new comment has been added, add it to the displayed list
                 Chat chat = dataSnapshot.getValue(Chat.class);
                 String commentKey = dataSnapshot.getKey();
-                String stEmail=chat.getEmail();
+                String stId=chat.getId();
                 String stText=chat.getText();
 
                 chatArrayList.add(chat);
@@ -135,10 +135,11 @@ public class ChatActivity extends AppCompatActivity {
                 DatabaseReference myRef = database.getReference("message").child(datetime);
                 //myRef.setValue(stText);
                 Hashtable<String, String> numbers = new Hashtable<>();
-                numbers.put("email",stEmail);
+                numbers.put("id",stId);
                 numbers.put("text",stText);
                 myRef.setValue(numbers);
 
+                etText.setText("");
 
             }
         });

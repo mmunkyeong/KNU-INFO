@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     private ArrayList<Chat> mDataset;
-    String stMyEmail="";
+    String stMyId="";
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
@@ -30,7 +30,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         }
     }
     public int getItemViewType(int position){
-        if(mDataset.get(position).email.equals(stMyEmail)){
+        if(mDataset.get(position).Id.equals(stMyId)){
             return 1;
         }
         else{
@@ -41,9 +41,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
      * Initialize the dataset of the Adapter.
      */
 
-    public MyAdapter(ArrayList<Chat> dataSet,String stEmail) {
+    public MyAdapter(ArrayList<Chat> dataSet,String stId) {
         mDataset= dataSet;
-        this.stMyEmail=stEmail;
+        this.stMyId=stId;
     }
 
     // Create new views (invoked by the layout manager)

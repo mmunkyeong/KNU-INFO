@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                                 for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                                     if (document.getData().get("Password").equals(pass)) {
                                         Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                                        i.putExtra("email",id);
+                                        i.putExtra("id",id);
                                         startActivity(i);
                                     } else {
                                         Log.e(TAG, "onSuccess: 비밀번호가 일치하지 않음");

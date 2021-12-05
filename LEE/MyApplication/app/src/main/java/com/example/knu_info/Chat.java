@@ -2,11 +2,22 @@ package com.example.knu_info;
 
 public class Chat {
     String text;
+    String Id;
     String email;
 
     public Chat(){
 
     }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
+    }
+
+
     public String getEmail() {
         return email;
     }

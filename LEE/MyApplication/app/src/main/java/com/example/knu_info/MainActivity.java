@@ -17,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
             btnchat=(Button)findViewById(R.id.btnchat);
             //btntime=(Button)findViewById(R.id.btntime);
-            String stEmail=getIntent().getStringExtra("email");
+            String stId=getIntent().getStringExtra("id");
 
             btnchat.setOnClickListener((view)->{
                 Intent in = new Intent(MainActivity.this,ChatActivity.class) ;
-                in.putExtra("email",stEmail);
+                in.putExtra("id",stId);
 
                 startActivity(in);
             });
