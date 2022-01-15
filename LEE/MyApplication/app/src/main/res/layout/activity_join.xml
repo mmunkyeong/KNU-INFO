@@ -51,21 +51,33 @@
             android:background="@drawable/edittext"
             android:hint=" 이름"
             android:paddingLeft="20dp"
-            android:singleLine="true"
-            />
+            android:singleLine="true" />
 
         <!-- 회원가입 아이디 입력 editText -->
         <EditText
             android:id="@+id/etJid"
-            android:layout_width="300dp"
+            android:layout_width="220dp"
             android:layout_height="50dp"
             android:layout_below="@+id/etJName"
-            android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
+            android:layout_marginStart="60dp"
             android:background="@drawable/edittext"
             android:hint=" 아이디"
-            android:paddingLeft="20dp"
             android:singleLine="true" />
+
+        <Button
+            android:id="@+id/btnID"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/etJid"
+            android:layout_alignBottom="@+id/etJid"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
+            android:text="중복 확인"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textAlignment="center" />
 
         <!-- 비밀번호 입력 editText -->
         <EditText
