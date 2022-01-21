@@ -53,7 +53,6 @@ public class JoinActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +71,7 @@ public class JoinActivity extends AppCompatActivity {
             }
 
         };
+        // 버튼 클릭시 아이디 중복검사
         Button btnIDcheck = (Button) findViewById(R.id.btnID);
         btnIDcheck.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
