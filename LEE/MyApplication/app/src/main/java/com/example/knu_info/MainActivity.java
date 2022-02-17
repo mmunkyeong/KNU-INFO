@@ -16,8 +16,13 @@ public class MainActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
             btnchat=(Button)findViewById(R.id.btnchat);
-            //btntime=(Button)findViewById(R.id.btntime);
+            Button btntime = (Button) findViewById(R.id.btntime);
             String stId=getIntent().getStringExtra("id");
+            btntime.setOnClickListener((view) ->
+            {
+                Intent in = new Intent(MainActivity.this, TimetableActivity.class);
+                startActivity(in);
+            });
 
             btnchat.setOnClickListener((view)->{
                 Intent in = new Intent(MainActivity.this,ChatActivity.class) ;
