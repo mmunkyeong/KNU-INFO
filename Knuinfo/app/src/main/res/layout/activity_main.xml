@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="16dp"
+        >
+        <!-- 이미지 추가 -->
+        <ImageView
+            android:layout_marginTop="-70dp"
+            android:layout_marginLeft="-50dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/circle"
+            ></ImageView>
+
+        <!-- 제목 -->
+        <TextView
+            android:id="@+id/mtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="95dp"
+            android:text="KNU INFO"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="35sp" />
+
+        <!-- 내용 -->
+        <TextView
+            android:id="@+id/mcontent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mtitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="학사일정 등 학교정보가 궁금하다면? 챗봇에게 물어보기 "
+            android:textAlignment="center"
+            android:textColor="#9A9A9A"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- 챗봇 채팅 버튼 -->
+        <Button
+            android:id="@+id/btnchat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mcontent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:height="50dp"
+            android:background="@drawable/buttonmain"
+            android:text="채팅하기"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textAlignment="center" />
+
+        <!-- 시간표 추가 버튼 -->
+        <Button
+            android:id="@+id/btntime"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnchat"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:height="50dp"
+            android:background="@drawable/buttonmain"
+            android:text="시간표 추가"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textAlignment="center" />
+
+        <!-- 내정보 버튼 -->
+        <Button
+            android:id="@+id/btnmymenu"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btntime"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:height="50dp"
+            android:background="@drawable/buttonmain"
+            android:text="마이메뉴"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textAlignment="center" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
