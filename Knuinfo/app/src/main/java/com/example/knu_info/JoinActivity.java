@@ -92,6 +92,7 @@ public class JoinActivity extends AppCompatActivity {
                                 }
                             }
                             //End Write and Read data with URL
+
                         }
                     });
                 }

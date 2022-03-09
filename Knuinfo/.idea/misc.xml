@@ -13,6 +13,11 @@
         <entry key="..\:/Users/a/AndroidStudioProjects/Knuinfo/app/src/main/res/layout/item_recyclerview.xml" value="0.28442028985507245" />
         <entry key="..\:/Users/a/AndroidStudioProjects/Knuinfo/app/src/main/res/layout/right_item_recyclerview.xml" value="0.28442028985507245" />
         <entry key="..\:/Users/a/AndroidStudioProjects/Knuinfo/app/src/main/res/xml/network_security_config.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/nanna/Desktop/github/KNU-INFO/Knuinfo/app/src/main/res/drawable/bg_chat_receive.xml" value="0.253125" />
+        <entry key="..\:/Users/nanna/Desktop/github/KNU-INFO/Knuinfo/app/src/main/res/drawable/bg_chat_send.xml" value="0.253125" />
+        <entry key="..\:/Users/nanna/Desktop/github/KNU-INFO/Knuinfo/app/src/main/res/drawable/border_outline.xml" value="0.253125" />
+        <entry key="..\:/Users/nanna/Desktop/github/KNU-INFO/Knuinfo/app/src/main/res/drawable/button.xml" value="0.253125" />
+        <entry key="..\:/Users/nanna/Desktop/github/KNU-INFO/Knuinfo/app/src/main/res/layout/activity_chat.xml" value="0.2341485507246377" />
       </map>
     </option>
   </component>
