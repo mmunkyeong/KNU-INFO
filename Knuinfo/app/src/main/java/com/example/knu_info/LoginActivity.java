@@ -3,6 +3,7 @@ package com.example.knu_info;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,8 +43,10 @@ public class LoginActivity extends AppCompatActivity {
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
         etID =  findViewById(R.id.etLid);
         etPassword =  findViewById(R.id.etLPass);
+        etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
-        //회원가입 버튼 눌렀을 때
+
+                //회원가입 버튼 눌렀을 때
         btnJoin.setOnClickListener((view) ->
 
         {
@@ -77,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                             data[0] = username;
                             data[1] = password;
 
-                            PutData putData = new PutData("http://59.24.142.175/LoginRegister/login.php", "POST", field, data);
+                            PutData putData = new PutData("http://59.24.142.172/LoginRegister/login.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
