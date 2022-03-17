@@ -118,7 +118,7 @@ public class JoinActivity extends AppCompatActivity {
                             data[1] = username;
                             data[2] = password;
                             data[3] = email;
-                            PutData putData = new PutData("http://59.24.142.172/LoginRegister/signup.php", "POST", field, data);
+                            PutData putData = new PutData("http://59.151.245.72/LoginRegister/signup.php", "POST", field, data);
                             if (putData.startPut()) {
                                 Log.i(TAG, "run: put Start");
                                 if (putData.onComplete()) {
