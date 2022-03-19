@@ -33,6 +33,7 @@ android {
         implementation.exclude module:'proto-google-common-protos'
         implementation.exclude module:'protolite-well-known-types'
         implementation.exclude module:'protobuf-lite'
+
     }
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
@@ -62,4 +63,6 @@ dependencies {
     implementation 'io.grpc:grpc-okhttp:1.30.0'
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.github.VishnuSivadasVS:Advanced-HttpURLConnection:1.2'
+
+
 }

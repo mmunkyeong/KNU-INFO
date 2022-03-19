@@ -2,6 +2,8 @@ package com.example.knu_info;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -40,46 +42,51 @@ public class JoinActivity extends AppCompatActivity {
         etJEmail = findViewById(R.id.email);
 
         Button btnJjoin = (Button) findViewById(R.id.btnJjoin);
-        Button btnID=(Button)findViewById(R.id.btnID);
+
 
         etJpass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         etJpass_check.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
-        /*btnID.setOnClickListener(new View.OnClickListener() {
+        Button btnID=(Button)findViewById(R.id.btnID);
 
+        //id중복체크
+        btnID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String UserEmail = etJid.getText().toString();
-                if (validate) {
-                    return; //검증 완료
+                String userID=etJid.getText().toString();
+                if(validate)
+                {
+                    return;
                 }
-
-                if (UserEmail.equals("")) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(JoinActivity.this);
-                    dialog = builder.setMessage("아이디를 입력하세요.").setPositiveButton("확인", null).create();
+                if(userID.equals("")){
+                    AlertDialog.Builder builder=new AlertDialog.Builder( JoinActivity.this );
+                    dialog=builder.setMessage("아이디는 빈 칸일 수 없습니다")
+                            .setPositiveButton("확인",null)
+                            .create();
                     dialog.show();
                     return;
                 }
-
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                Response.Listener<String> responseListener=new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-
-                            JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
-
-                            if (success) {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(JoinActivity.this);
-                                dialog = builder.setMessage("사용할 수 있는 아이디입니다.").setPositiveButton("확인", null).create();
+                            JSONObject jsonResponse=new JSONObject(response);
+                            boolean success=jsonResponse.getBoolean("success");
+                            if(success){
+                                AlertDialog.Builder builder=new AlertDialog.Builder( JoinActivity.this );
+                                dialog=builder.setMessage("사용할 수 있는 아이디입니다.")
+                                        .setPositiveButton("확인",null)
+                                        .create();
                                 dialog.show();
-                                etJid.setEnabled(false); //아이디값 고정
-                                validate = true; //검증 완료
-                               //btnID.setBackgroundColor(getResources().getColor(R.color.colorGray));
+                                etJid.setEnabled(false);
+                                validate=true;
+                                btnID.setText("확인");
                             }
-                            else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(JoinActivity.this);
-                                dialog = builder.setMessage("이미 존재하는 아이디입니다.").setNegativeButton("확인", null).create();
+                            else{
+                                AlertDialog.Builder builder=new AlertDialog.Builder( JoinActivity.this );
+                                dialog=builder.setMessage("사용할 수 없는 아이디입니다.")
+                                        .setNegativeButton("확인",null)
+                                        .create();
                                 dialog.show();
                             }
                         } catch (JSONException e) {
@@ -87,15 +94,20 @@ public class JoinActivity extends AppCompatActivity {
                         }
                     }
                 };
-                ValidateRequest validateRequest = new ValidateRequest(UserEmail, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(JoinActivity.this);
+                ValidateRequest validateRequest=new ValidateRequest(userID,responseListener);
+                RequestQueue queue= Volley.newRequestQueue(JoinActivity.this);
                 queue.add(validateRequest);
             }
-        });*/
+        });
+
         //가입하기 버튼
         btnJjoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!validate){
+                    Toast.makeText(getApplicationContext(),"아이디 중복 확인 해주세요.",Toast.LENGTH_LONG).show();
+                    return;
+                }
                 String fullname,username,password,email;
                 fullname = String.valueOf(etJName.getText());
                 username = String.valueOf(etJid.getText());
@@ -118,7 +130,7 @@ public class JoinActivity extends AppCompatActivity {
                             data[1] = username;
                             data[2] = password;
                             data[3] = email;
-                            PutData putData = new PutData("http://59.151.245.72/LoginRegister/signup.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.0.9/LoginRegister/signup.php", "POST", field, data);
                             if (putData.startPut()) {
                                 Log.i(TAG, "run: put Start");
                                 if (putData.onComplete()) {
@@ -127,6 +139,13 @@ public class JoinActivity extends AppCompatActivity {
                                     String result = putData.getResult();
                                     if(result.equals("Sign Up Success")){
                                         Log.i(TAG, "run: put Success");
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(getApplicationContext(),"회원가입 완료!",Toast.LENGTH_LONG).show();
+                                            }
+                                        });
+
 
                                         Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                                         startActivity(intent);
@@ -134,8 +153,12 @@ public class JoinActivity extends AppCompatActivity {
                                     }
                                     else{
                                         Log.i(TAG, "run: put fail");
-
-                                        Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                                     }
 
                                 } else {

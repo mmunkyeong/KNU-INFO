@@ -6,6 +6,94 @@
     android:layout_height="match_parent"
     tools:context=".ChatActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#EDEDED"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/constraintLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:stackFromEnd="true"
+        tools:itemCount="2"
+        tools:listitem="@layout/adapter_message_one" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="70dp"
+        >
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chatbutton"
+            android:text="학사일정"
+            android:layout_toLeftOf="@+id/btn2"
+           />
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chatbutton"
+            android:text="수강신청"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="20dp"
+             />
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chatbutton"
+            android:text="생활관"
+            android:layout_toRightOf="@+id/btn2"
+           />
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chatbutton"
+            android:text="휴/복학"
+            android:layout_below="@+id/btn1"
+            android:layout_toLeftOf="@+id/btn5"
+            android:layout_marginTop="15dp"
+
+            />
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chatbutton"
+            android:text="등록금"
+            android:layout_below="@+id/btn2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="15dp"
+            />
+
+        <Button
+            android:id="@+id/btn6"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chatbutton"
+            android:text="장학금"
+            android:layout_below="@+id/btn3"
+            android:layout_toRightOf="@+id/btn5"
+            android:layout_marginTop="15dp"
+            />
+
+
+    </RelativeLayout>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,12 +103,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/border_outline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chatView"
@@ -33,6 +122,8 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:padding="10dp"
+            android:textColor="#000000"
+            android:background="@null"
             android:hint="메세지를 입력하세요. "
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnSend"
@@ -49,32 +140,20 @@
             android:text="전 송"
             tools:ignore="MissingConstraints"></Button>
 -->
-         <ImageButton
+        <ImageButton
             android:id="@+id/btnSend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_chat"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_media_play"
-            app:tint="#FFEBCD" />
+
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/chatView"
-        android:background="#E4E4E4"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="vertical"
-        tools:listitem="@layout/adapter_message_one"
-        app:stackFromEnd="true"
-        tools:itemCount="2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/constraintLayout"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="1dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

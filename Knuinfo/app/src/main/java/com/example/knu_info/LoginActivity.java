@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                             data[0] = username;
                             data[1] = password;
 
-                            PutData putData = new PutData("http://59.151.245.72/LoginRegister/login.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.0.9/LoginRegister/login.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();

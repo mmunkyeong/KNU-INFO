@@ -70,7 +70,7 @@ public class ChatActivity extends AppCompatActivity implements BotReply {
             }
         });
 
-        setUpBot();
+        //setUpBot();
     }
 
     private void setUpBot() {
