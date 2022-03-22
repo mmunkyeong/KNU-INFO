@@ -41,7 +41,7 @@ public class ChatActivity extends AppCompatActivity implements BotReply {
     private SessionsClient sessionsClient;
     private SessionName sessionName;
     private String uuid = UUID.randomUUID().toString();
-    private String TAG = "ChatActivity";
+    private String TAG = "chatactivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,7 @@ public class ChatActivity extends AppCompatActivity implements BotReply {
             }
         });
 
-        //setUpBot();
+        setUpBot();
     }
 
     private void setUpBot() {
