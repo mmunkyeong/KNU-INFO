@@ -36,6 +36,7 @@ public class ChatActivity extends AppCompatActivity implements BotReply {
     List<Message> messageList = new ArrayList<>();
     EditText editMessage;
     ImageButton btnSend;
+    Button btn1,btn2,btn3,btn4,btn5,btn6;
 
     //dialogFlow
     private SessionsClient sessionsClient;
@@ -50,7 +51,12 @@ public class ChatActivity extends AppCompatActivity implements BotReply {
         chatView = findViewById(R.id.chatView);
         editMessage = findViewById(R.id.editMessage);
         btnSend = findViewById(R.id.btnSend);
-
+        btn1 = findViewById(R.id.btn1);
+        btn2 = findViewById(R.id.btn2);
+        btn3 = findViewById(R.id.btn3);
+        btn4 = findViewById(R.id.btn4);
+        btn5 = findViewById(R.id.btn5);
+        btn6 = findViewById(R.id.btn6);
         chatAdapter = new ChatAdapter(messageList, this);
         chatView.setAdapter(chatAdapter);
 
@@ -69,8 +75,99 @@ public class ChatActivity extends AppCompatActivity implements BotReply {
                 }
             }
         });
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                String message = btn1.getText().toString();
+                if (!message.isEmpty()) {
+                    messageList.add(new Message(message, false));
+                    editMessage.setText("");
+                    sendMessageToBot(message);
+                    Objects.requireNonNull(chatView.getAdapter()).notifyDataSetChanged();
+                    Objects.requireNonNull(chatView.getLayoutManager())
+                            .scrollToPosition(messageList.size() - 1);
+                } else {
+                    Toast.makeText(ChatActivity.this, "button empty!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                String message = btn2.getText().toString();
+                if (!message.isEmpty()) {
+                    messageList.add(new Message(message, false));
+                    editMessage.setText("");
+                    sendMessageToBot(message);
+                    Objects.requireNonNull(chatView.getAdapter()).notifyDataSetChanged();
+                    Objects.requireNonNull(chatView.getLayoutManager())
+                            .scrollToPosition(messageList.size() - 1);
+                } else {
+                    Toast.makeText(ChatActivity.this, "button empty!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                String message = btn3.getText().toString();
+                if (!message.isEmpty()) {
+                    messageList.add(new Message(message, false));
+                    editMessage.setText("");
+                    sendMessageToBot(message);
+                    Objects.requireNonNull(chatView.getAdapter()).notifyDataSetChanged();
+                    Objects.requireNonNull(chatView.getLayoutManager())
+                            .scrollToPosition(messageList.size() - 1);
+                } else {
+                    Toast.makeText(ChatActivity.this, "button empty!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                String message = btn4.getText().toString();
+                if (!message.isEmpty()) {
+                    messageList.add(new Message(message, false));
+                    editMessage.setText("");
+                    sendMessageToBot(message);
+                    Objects.requireNonNull(chatView.getAdapter()).notifyDataSetChanged();
+                    Objects.requireNonNull(chatView.getLayoutManager())
+                            .scrollToPosition(messageList.size() - 1);
+                } else {
+                    Toast.makeText(ChatActivity.this, "button empty!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                String message = btn5.getText().toString();
+                if (!message.isEmpty()) {
+                    messageList.add(new Message(message, false));
+                    editMessage.setText("");
+                    sendMessageToBot(message);
+                    Objects.requireNonNull(chatView.getAdapter()).notifyDataSetChanged();
+                    Objects.requireNonNull(chatView.getLayoutManager())
+                            .scrollToPosition(messageList.size() - 1);
+                } else {
+                    Toast.makeText(ChatActivity.this, "button empty!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                String message = btn6.getText().toString();
+                if (!message.isEmpty()) {
+                    messageList.add(new Message(message, false));
+                    editMessage.setText("");
+                    sendMessageToBot(message);
+                    Objects.requireNonNull(chatView.getAdapter()).notifyDataSetChanged();
+                    Objects.requireNonNull(chatView.getLayoutManager())
+                            .scrollToPosition(messageList.size() - 1);
+                } else {
+                    Toast.makeText(ChatActivity.this, "button empty!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         setUpBot();
+
     }
 
     private void setUpBot() {
