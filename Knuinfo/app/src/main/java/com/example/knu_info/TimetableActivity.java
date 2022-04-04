@@ -1,50 +1,60 @@
 package com.example.knu_info;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.knu_info.dialog.TimeTableAddDialog;
+
+import org.w3c.dom.Text;
 
 public class TimetableActivity extends AppCompatActivity {
     //private FirebaseAuth mAuth;
     //private FirebaseAuth.AuthStateListener mAuthListener;
     //EditText etID, etPassword;
     //String TAG = "TimetableActivity";
-   Dialog dilaog01;
+    TimeTableAddDialog activity_timetableadd;
+    private ArrayAdapter yearAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timetable);
 
-        dilaog01 = new Dialog(TimetableActivity.this);
-        dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dilaog01.setContentView(R.layout.activity_timetableadd);
+        activity_timetableadd = new TimeTableAddDialog(TimetableActivity.this);
 
-      //  Button btnTimeadd = (Button) findViewById(R.id.btnTimeadd);
-        //btnTimeadd.setOnClickListener(new View.OnClickListener() {
-          findViewById(R.id.btnTimeadd).setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.btnTimeadd).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                showDialog01();
-                    }
-                });
+                showactivity_timetableadd();
             }
-     public void showDialog01(){
-        dilaog01.show();
-         Button noBtn = dilaog01.findViewById(R.id.noBtn);
-         noBtn.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 // 원하는 기능 구현
-                 dilaog01.dismiss(); // 다이얼로그 닫기
-             }
-         });
+        });
+    }
 
+    public void showactivity_timetableadd() {
+        activity_timetableadd.show();
+        Button noBtn = activity_timetableadd.findViewById(R.id.noBtn);
+        noBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                activity_timetableadd.dismiss();
+            }
+        });
 
-     }
-
-
+    activity_timetableadd.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener(){
+        public void onClick(View view){
+            finish();
+        }
+    });
+    }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="divison">
+    <item> 교양/교직/군사학</item>
+    <item>대학(대구캠)</item>
+        <item>대학(상주캠)</item>
+
+    </string-array>
+</resources>

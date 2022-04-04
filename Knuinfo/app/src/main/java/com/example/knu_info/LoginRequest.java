@@ -6,7 +6,7 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 public class LoginRequest extends StringRequest{
-    final static private String URL = "http://192.168.0.9/LoginRegister/login.php";
+    final static private String URL = "http://192.168.0.9/knuinfo/login.php";
     private Map<String, String> map;
 
 
