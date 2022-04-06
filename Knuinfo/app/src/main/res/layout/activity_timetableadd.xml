@@ -19,19 +19,21 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
-        android:id="@+id/gradeSpinner"/>
+        android:id="@+id/SC1Spinner"/>
     <Spinner
-        android:layout_width="80dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
-        android:id="@+id/divisionSpinner"/>
+        android:visibility="invisible"
+        android:id="@+id/SC2Spinner"/>
     <Spinner
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:visibility="invisible"
         android:layout_marginLeft="10dp"
-        android:id="@+id/departmentSpinner"/>
+        android:id="@+id/SC3Spinner"/>
 </LinearLayout>
 
 <LinearLayout

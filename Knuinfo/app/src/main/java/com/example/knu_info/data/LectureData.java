@@ -15,9 +15,64 @@ public class LectureData {
     String lecTime;
     String actTime;
     String room;
+    String roomNumber;
     String personnel;
     String applicants;
+    String packageCount;
     String lecmethod;
+    String classDivison;
+    String SC1;
+    String SC2;
+    String SC3;
+
+    public String getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+    public String getPackageCount() {
+        return packageCount;
+    }
+
+    public void setPackageCount(String packageCount) {
+        this.packageCount = packageCount;
+    }
+
+    public String getClassDivison() {
+        return classDivison;
+    }
+
+    public void setClassDivison(String classDivison) {
+        this.classDivison = classDivison;
+    }
+
+    public String getSC1() {
+        return SC1;
+    }
+
+    public void setSC1(String SC1) {
+        this.SC1 = SC1;
+    }
+
+    public String getSC2() {
+        return SC2;
+    }
+
+    public void setSC2(String SC2) {
+        this.SC2 = SC2;
+    }
+
+    public String getSC3() {
+        return SC3;
+    }
+
+    public void setSC3(String SC3) {
+        this.SC3 = SC3;
+    }
+
     public String getYear() {
         return year;
     }
