@@ -136,12 +136,14 @@ public class TimeTableAddDialog extends Dialog {
         String[] SC3Item = Arrays.stream(SC3Items).distinct().toArray(String[]::new);
 
 
-        ArrayAdapter<String> mGradeAdapter = new ArrayAdapter<String>(mContext,R.layout.support_simple_spinner_dropdown_item,SC1Item);
-        ArrayAdapter<String> mDivisionAdapter = new ArrayAdapter<String>(mContext,R.layout.support_simple_spinner_dropdown_item,SC2Item);
-        ArrayAdapter<String> mDepartmentAdapter = new ArrayAdapter<String>(mContext,R.layout.support_simple_spinner_dropdown_item,SC3Item);
-        SC1.setAdapter(mGradeAdapter);
-        SC2.setAdapter(mDivisionAdapter);
-        SC3.setAdapter(mDepartmentAdapter);
+        ArrayAdapter<String> mSC1 = new ArrayAdapter<String>(mContext,R.layout.support_simple_spinner_dropdown_item,SC1Item);
+        ArrayAdapter<String> mSC2 = new ArrayAdapter<String>(mContext,R.layout.support_simple_spinner_dropdown_item,SC2Item);
+        ArrayAdapter<String> mSC3 = new ArrayAdapter<String>(mContext,R.layout.support_simple_spinner_dropdown_item,SC3Item);
+
+        SC1.setAdapter(mSC1);
+        SC2.setAdapter(mSC2);
+        SC3.setAdapter(mSC3);
+
 
         setSpinnerListener();
 
@@ -155,6 +157,7 @@ public class TimeTableAddDialog extends Dialog {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i(TAG, "onItemSelected: "+i);
+
                 if(i!=0){
                     SC2.setVisibility(View.VISIBLE);
                 } else if(i==0){
