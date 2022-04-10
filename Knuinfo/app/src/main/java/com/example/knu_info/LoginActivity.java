@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                             //Creating array for data
                             String[] data = new String[2];
 
-                            data[0] = username;
+                           data[0] = username;
                             data[1] = password;
 
                             PutData putData = new PutData("http://192.168.0.9/knuinfo/login.php", "POST", field, data);

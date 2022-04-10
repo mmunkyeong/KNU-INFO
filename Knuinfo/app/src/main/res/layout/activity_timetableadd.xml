@@ -44,12 +44,14 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:padding="10dp">
-    <Spinner
+    <EditText
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
+        android:hint="강의제목을 입력하세요"
         android:id="@+id/majorSpinner"/>
+
     <Button
         android:layout_width="80dp"
         android:layout_height="40dp"
@@ -61,7 +63,7 @@
         android:layout_gravity="center"
         android:id="@+id/searchbtn"
         android:layout_marginLeft="10dp"
-        ></Button>
+        />
 
 
 </LinearLayout>
@@ -73,7 +75,7 @@
         android:background="#ffffff">
 
         <ListView
-            android:id="@+id/courseListView"
+            android:id="@+id/LectureListView"
             android:layout_width="match_parent"
             android:layout_height="318dp"
             android:divider="#ffffff"
