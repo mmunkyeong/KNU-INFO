@@ -87,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                                     if(result.equals("Login Success")){
                                         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                                         startActivity(intent);
+                                        Toast.makeText(getApplicationContext(),"로그인 되었습니다.",Toast.LENGTH_LONG).show();
                                         finish();
                                     }
                                     else{

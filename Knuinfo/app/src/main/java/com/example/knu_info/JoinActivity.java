@@ -142,7 +142,7 @@ public class JoinActivity extends AppCompatActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Toast.makeText(getApplicationContext(),"회원가입 완료!",Toast.LENGTH_LONG).show();
+                                                Toast.makeText(getApplicationContext(),"회원가입 완료",Toast.LENGTH_LONG).show();
                                             }
                                         });
 

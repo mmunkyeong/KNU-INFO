@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -27,32 +28,36 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class TimeTableAddDialog extends Dialog {
-
+    private Spinner Year;
     private Spinner SC1;
     private Spinner SC2;
     private Spinner SC3;
     private String TAG = "TimeTableAddDialog";
+    ArrayList<String> YearItems;
     ArrayList<String> SC1Items;
     ArrayList<String> SC2Items;
     ArrayList<String> SC3Items;
+    String[] YearItem;
     String[] SC1Item;
     String[] SC2Item;
     String[] SC3Item;
+    ArrayAdapter<String> mYear;
     ArrayAdapter<String> mSC1;
     ArrayAdapter<String> mSC2;
     ArrayAdapter<String> mSC3;
+    private int prevYearPostion = 0;
     private int prevSC1Postion = 0;
     private int prevSC2Postion = 0;
     private int prevSC3Postion = 0;
+    Button addbtn = (Button) findViewById(R.id.addbtn);
     ArrayList<LectureListItemData> lectureListItemDatas;
-
-
     private HashMap<Integer, LectureData> lectureArray;
 
     public TimeTableAddDialog(@NonNull Context context) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_timetableadd);
+        Year = findViewById(R.id.YearSpinner);
         SC1 = findViewById(R.id.SC1Spinner);
         SC2 = findViewById(R.id.SC2Spinner);
         SC3 = findViewById(R.id.SC3Spinner);
@@ -103,7 +108,7 @@ public class TimeTableAddDialog extends Dialog {
                                 lectureData.setPackageCount(lecture[18]);
                                 lectureData.setLecmethod(lecture[19]);
                                 lectureData.setClassDivison(lecture[20]);
-                                lectureData.setSC1(lecture[21]);
+                                lectureData.setSC1(lecture[21].trim());
                                 lectureData.setSC2(lecture[22]);
                                 lectureData.setSC3(lecture[23]);
 
@@ -111,7 +116,7 @@ public class TimeTableAddDialog extends Dialog {
 
                             }
                             Log.d(TAG, "run: add complete");
-                            init(mContext, "", "", "");
+                            init(mContext, "", "", "", "");
 
                         } catch (UnsupportedEncodingException e) {
                             e.printStackTrace();
@@ -133,8 +138,11 @@ public class TimeTableAddDialog extends Dialog {
         });
     }
 
-    public void init(Context mContext, String f1, String f2, String f3) {
+    public void init(Context mContext, String f0, String f1, String f2, String f3) {
         Log.i(TAG, "init: call init");
+        if (YearItems != null) {
+            YearItems.clear();
+        }
         if (SC1Items != null) {
             SC1Items.clear();
         }
@@ -145,55 +153,68 @@ public class TimeTableAddDialog extends Dialog {
             SC3Items.clear();
         }
 
+        YearItems = new ArrayList<String>();
         SC1Items = new ArrayList<String>();
         SC2Items = new ArrayList<String>();
         SC3Items = new ArrayList<String>();
+
+        YearItems.add("선택");
         SC1Items.add("선택");
         SC2Items.add("선택");
         SC3Items.add("선택");
 
-        if (f1.equals("") && f2.equals("") && f3.equals("")) {
+        if (f0.equals("") && f1.equals("") && f2.equals("") && f3.equals("")) {
             if (!lectureArray.isEmpty()) {
                 for (int i = 1; i <= lectureArray.size(); i++) {
-                    SC1Items.add(lectureArray.get(i - 1).getSC1().trim());
+                    YearItems.add(lectureArray.get(i - 1).getYear());
+                    SC1Items.add(lectureArray.get(i - 1).getSC1());
                     SC2Items.add(lectureArray.get(i - 1).getSC2());
                     SC3Items.add(lectureArray.get(i - 1).getSC3());
                 }
             }
-        } else if (f1.equals("교양") && f2.equals("") && f3.equals("")) {
+        } else if (f0.equals("2022") && f1.equals("") && f2.equals("") && f3.equals("")) {
             if (!lectureArray.isEmpty()) {
                 for (int i = 1; i <= lectureArray.size(); i++) {
-                    SC1Items.add(lectureArray.get(i - 1).getSC1().trim());
-                    if (lectureArray.get(i - 1).getSC1().trim().contains(f1)) {
+                    YearItems.add(lectureArray.get(i - 1).getYear());
+                    if (lectureArray.get(i - 1).getYear().contains(f0)) {
+                        SC1Items.add(lectureArray.get(i - 1).getSC1());
                         SC2Items.add(lectureArray.get(i - 1).getSC2());
                         SC3Items.add(lectureArray.get(i - 1).getSC3());
                     }
                 }
             }
-        } else if(f1.equals("전공")&&f2.equals("")&&f3.equals("")) {
+        } else if (!f0.equals("") && !f1.equals("") && f2.equals("") && f3.equals("")) {
             if (!lectureArray.isEmpty()) {
                 for (int i = 1; i <= lectureArray.size(); i++) {
-                    SC1Items.add(lectureArray.get(i - 1).getSC1().trim());
-                    if(lectureArray.get(i-1).getSC1().trim().contains("전공")) {
-                        SC2Items.add(lectureArray.get(i - 1).getSC2());
-                        SC3Items.add(lectureArray.get(i - 1).getSC3());
-                    }
-                }
-            }
-        } else if (!f1.equals("") && !f2.equals("") && f3.equals("")) {
-            if (!lectureArray.isEmpty()) {
-                for (int i = 1; i <= lectureArray.size(); i++) {
-                    SC1Items.add(lectureArray.get(i - 1).getSC1().trim());
-                    if (lectureArray.get(i - 1).getSC1().trim().contains(f1)) {
-                        SC2Items.add(lectureArray.get(i - 1).getSC2());
-                        if(lectureArray.get(i-1).getSC2().trim().contains(f2))
+                    YearItems.add(lectureArray.get(i - 1).getYear());
+                    if (lectureArray.get(i - 1).getYear().contains(f0)) {
+                        SC1Items.add(lectureArray.get(i - 1).getSC1());
+                        if (lectureArray.get(i - 1).getSC1().trim().contains(f1)) {
+                            SC2Items.add(lectureArray.get(i - 1).getSC2());
                             SC3Items.add(lectureArray.get(i - 1).getSC3());
+                        }
+                    }
+                }
+            }
+        } else if (!f0.equals("") && !f1.equals("") && !f2.equals("") && f3.equals("")) {
+            if (!lectureArray.isEmpty()) {
+                for (int i = 1; i <= lectureArray.size(); i++) {
+                    YearItems.add(lectureArray.get(i - 1).getYear());
+                    SC1Items.add(lectureArray.get(i - 1).getSC1());
+                    if (lectureArray.get(i - 1).getSC1().trim().contains(f1)) {
+                        SC2Items.add(lectureArray.get(i - 1).getSC2());
+                        if (lectureArray.get(i - 1).getSC2().trim().contains(f2)) {
+                            Log.i(TAG, "init: "+lectureArray.get(i-1).getSC3());
+                            SC3Items.add(lectureArray.get(i - 1).getSC3());
+                        }
                     }
                 }
             }
         }
 
-
+        if (YearItem != null) {
+            YearItem = null;
+        }
         if (SC1Item != null) {
             SC1Item = null;
         }
@@ -203,6 +224,14 @@ public class TimeTableAddDialog extends Dialog {
         if (SC3Item != null) {
             SC3Item = null;
         }
+
+        ArrayList<String> YearresultList = new ArrayList<String>();
+        for (int i = 0; i < YearItems.size(); i++) {
+            if (!YearresultList.contains(YearItems.get(i))) {
+                YearresultList.add(YearItems.get(i));
+            }
+        }
+
         ArrayList<String> SC1resultList = new ArrayList<String>();
         for (int i = 0; i < SC1Items.size(); i++) {
             if (!SC1resultList.contains(SC1Items.get(i))) {
@@ -226,6 +255,9 @@ public class TimeTableAddDialog extends Dialog {
 //        SC1Item = Arrays.stream(SC1Items).distinct().toArray(String[]::new);
 //        SC2Item = Arrays.stream(SC2Items).distinct().toArray(String[]::new);
 //        SC3Item = Arrays.stream(SC3Items).distinct().toArray(String[]::new);
+        if (mYear != null) {
+            mYear = null;
+        }
         if (mSC1 != null) {
             mSC1 = null;
         }
@@ -236,10 +268,13 @@ public class TimeTableAddDialog extends Dialog {
             mSC3 = null;
         }
 
-
+        mYear = new ArrayAdapter<String>(mContext, R.layout.support_simple_spinner_dropdown_item, YearresultList);
         mSC1 = new ArrayAdapter<String>(mContext, R.layout.support_simple_spinner_dropdown_item, SC1resultList);
         mSC2 = new ArrayAdapter<String>(mContext, R.layout.support_simple_spinner_dropdown_item, SC2resultList);
         mSC3 = new ArrayAdapter<String>(mContext, R.layout.support_simple_spinner_dropdown_item, SC3resultList);
+        if (Year.getAdapter() != null) {
+            Year.setAdapter(null);
+        }
         if (SC1.getAdapter() != null) {
             SC1.setAdapter(null);
         }
@@ -250,13 +285,16 @@ public class TimeTableAddDialog extends Dialog {
             SC3.setAdapter(null);
         }
 
+        Year.setAdapter(mYear);
         SC1.setAdapter(mSC1);
         SC2.setAdapter(mSC2);
         SC3.setAdapter(mSC3);
 
-        if (f1.equals("") && f2.equals("") && f3.equals(""))
+        if (f0.equals("") && f1.equals("") && f2.equals("") && f3.equals(""))
             setSpinnerListener();
-
+        if (prevYearPostion != 0) {
+            Year.setSelection(prevYearPostion);
+        }
         if (prevSC1Postion != 0) {
             SC1.setSelection(prevSC1Postion);
         }
@@ -268,6 +306,33 @@ public class TimeTableAddDialog extends Dialog {
 
 
     private void setSpinnerListener() {
+        Year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                boolean sameSelected = i == prevYearPostion;
+                prevYearPostion = i;
+                if (!sameSelected) {
+                    if (i != 0) {
+                        if (i == 1) {
+                            init(getContext(), "2022", "", "", "");
+                        }
+                        SC1.setVisibility(View.VISIBLE);
+                    } else if (i == 0) {
+                        SC1.setSelection(0);
+                        SC2.setSelection(0);
+                        SC3.setSelection(0);
+                        SC1.setVisibility(View.INVISIBLE);
+                        SC2.setVisibility(View.INVISIBLE);
+                        SC3.setVisibility(View.INVISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         SC1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -276,12 +341,12 @@ public class TimeTableAddDialog extends Dialog {
                 if (!sameSelected) {
                     if (i != 0) {
                         if (i == 1) {
-                            init(getContext(), "교양", "", "");
+                            init(getContext(), "2022", "교양", "", "");
                         } else if (i == 2) {
-                            init(getContext(), "전공", "", "");
+                            init(getContext(), "2022", "전공", "", "");
                         }
+                        SC2.setSelection(0);
                         SC2.setVisibility(View.VISIBLE);
-
                     } else if (i == 0) {
                         SC2.setSelection(0);
                         SC3.setSelection(0);
@@ -309,15 +374,15 @@ public class TimeTableAddDialog extends Dialog {
                             switch (i) {
                                 case 1:
                                     //첨성인 기초
-                                    init(getContext(), "교양", "첨성인기초", "");
+                                    init(getContext(), "2022", "교양", "첨성인기초", "");
                                     break;
                                 case 2:
                                     //첨성인 핵심
-                                    init(getContext(), "교양", "첨성인핵심", "");
+                                    init(getContext(), "2022", "교양", "첨성인핵심", "");
                                     break;
                                 case 3:
                                     //첨성인 소양
-                                    init(getContext(), "교양", "첨성인소양", "");
+                                    init(getContext(), "2022", "교양", "첨성인소양", "");
                                     break;
                             }
                         } else if (prevSC1Postion == 2) {
@@ -325,21 +390,21 @@ public class TimeTableAddDialog extends Dialog {
                             switch (i) {
                                 case 1:
                                     //생환대
-                                    init(getContext(), "전공", "생태환경대학", "");
+                                    init(getContext(), "2022", "전공", "생태환경대학", "");
                                     break;
                                 case 2:
                                     //과기대
-                                    init(getContext(), "전공", "과학기술대학", "");
+                                    init(getContext(), "2022", "전공", "과학기술대학", "");
 
                                     break;
                             }
                         }
+                        SC3.setSelection(0);
                         SC3.setVisibility(View.VISIBLE);
 
                     } else if (i == 0) {
-                        SC2.setSelection(0);
+
                         SC3.setSelection(0);
-                        SC2.setVisibility(View.INVISIBLE);
                         SC3.setVisibility(View.INVISIBLE);
                     }
                 }
@@ -356,27 +421,31 @@ public class TimeTableAddDialog extends Dialog {
                 boolean sameSelected = pos == prevSC3Postion;
                 prevSC3Postion = pos;
                 if (!sameSelected) {
-                    if(pos!=0){
-                        Log.i(TAG, "onItemSelected: "+SC3.getSelectedItem().toString());
-                        for(int i=0;i<lectureArray.size();i++){
-                            if(lectureArray.get(i).getSC3().equals(SC3.getSelectedItem().toString())) {
-                                lectureListItemDatas = new ArrayList<>();
+                    if (pos != 0) {
+                        lectureListItemDatas = new ArrayList<>();
+                        for (int i = 0; i < lectureArray.size(); i++) {
+                            if (lectureArray.get(i).getSC3().equals(SC3.getSelectedItem().toString())) {
+                                Log.i(TAG, "onItemSelected: " + i);
                                 lectureListItemDatas.add(new LectureListItemData(lectureArray.get(i).getGrade(), lectureArray.get(i).getLecName(),
                                         lectureArray.get(i).getProfessor(), lectureArray.get(i).getLecGrade(),
                                         lectureArray.get(i).getPersonnel(), lectureArray.get(i).getLecTime()));
+                                // Log.i(TAG, "onItemSelected: !!"+ lectureArray.get(i).getProfessor());
 
+                                Log.i(TAG, "onItemSelected: " + lectureListItemDatas.size());
                             }
                         }
-                        ListView LectureListView = (ListView)findViewById(R.id.LectureListView);
-                        LectureListAdapter lectureListAdapter = new LectureListAdapter(getContext(),lectureListItemDatas);
+                        ListView LectureListView = (ListView) findViewById(R.id.LectureListView);
+                        LectureListAdapter lectureListAdapter = new LectureListAdapter(getContext(), lectureListItemDatas);
                         LectureListView.setAdapter(lectureListAdapter);
+
                         LectureListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                Toast.makeText(getContext(),lectureListItemDatas.get(i).getClassName()+"강의가 추가되었습니다.",Toast.LENGTH_LONG).show();
+
+
                             }
                         });
-                    } else if(pos==0){
+                    } else if (pos == 0) {
 
                     }
                 }

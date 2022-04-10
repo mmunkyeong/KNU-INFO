@@ -51,10 +51,6 @@ public class TimetableActivity extends AppCompatActivity {
             }
         });
 
-    activity_timetableadd.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener(){
-        public void onClick(View view){
-            finish();
-        }
-    });
+
     }
 }

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="400dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".TimetableActivity">
@@ -13,44 +13,46 @@
     android:layout_marginTop="10dp"
     android:layout_gravity="center"
     android:gravity="center"
-    android:paddingRight="10dp">
+    android:paddingRight="5dp">
     <Spinner
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="6dp"
+        android:id="@+id/YearSpinner"/>
+    <Spinner
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="6dp"
+        android:visibility="invisible"
         android:id="@+id/SC1Spinner"/>
     <Spinner
-        android:layout_width="100dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="6dp"
         android:visibility="invisible"
         android:id="@+id/SC2Spinner"/>
-    <Spinner
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="invisible"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/SC3Spinner"/>
+
 </LinearLayout>
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="15dp"
     android:layout_gravity="center"
     android:gravity="center"
     android:padding="10dp">
-    <EditText
-        android:layout_width="230dp"
+
+    <Spinner
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
-        android:hint="강의제목을 입력하세요"
-        android:id="@+id/majorSpinner"/>
+        android:visibility="invisible"
+        android:layout_marginLeft="8dp"
+        android:id="@+id/SC3Spinner"/>
 
     <Button
         android:layout_width="80dp"
@@ -67,6 +69,10 @@
 
 
 </LinearLayout>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -79,8 +85,11 @@
             android:layout_width="match_parent"
             android:layout_height="318dp"
             android:divider="#ffffff"
-            android:dividerHeight="10dp" />
+            android:dividerHeight="10dp"
+            android:fillViewport="true"
+            />
     </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,12 +102,7 @@
             android:layout_weight="1"
             android:text="취소" />
 
-        <Button
-            android:id="@+id/yesBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="추가" />
+
     </LinearLayout>
 
 
