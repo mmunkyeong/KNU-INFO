@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -57,6 +58,7 @@ public class TimeTableAddDialog extends Dialog {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_timetableadd);
+        findViewById(R.id.noBtn).setForegroundGravity(Gravity.CENTER);
         Year = findViewById(R.id.YearSpinner);
         SC1 = findViewById(R.id.SC1Spinner);
         SC2 = findViewById(R.id.SC2Spinner);
@@ -76,7 +78,7 @@ public class TimeTableAddDialog extends Dialog {
                 field[0] = "";
                 String[] data = new String[1];
                 data[0] = "";
-                PutData putData = new PutData("http://125.141.92.186/knuinfo/timetable.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.0.9/knuinfo/timetable.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();

@@ -53,11 +53,11 @@ public class LectureListAdapter extends BaseAdapter {
         TextView personnel = (TextView) view.findViewById(R.id.personnel);
         TextView lecTime = (TextView) view.findViewById(R.id.lecTime);
 
-        grade.setText(lecureData.get(position).getGrade());
+        grade.setText(lecureData.get(position).getGrade()+"학년");
         className.setText(lecureData.get(position).getClassName());
-        professor.setText(lecureData.get(position).getProfessor());
-        lecGrade.setText(lecureData.get(position).getLecGrade());
-        personnel.setText(lecureData.get(position).getPersonnel());
+        professor.setText(lecureData.get(position).getProfessor()+" 교수님");
+        lecGrade.setText(lecureData.get(position).getLecGrade()+"학점");
+        personnel.setText("제한 인원: "+lecureData.get(position).getPersonnel()+"명");
         lecTime.setText(lecureData.get(position).getLecTime());
         Button addBtn = (Button) view.findViewById(R.id.addbtn);
         addBtn.setOnClickListener(new View.OnClickListener() {
