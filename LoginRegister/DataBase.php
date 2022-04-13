@@ -1,4 +1,5 @@
-<?php
+<?php 
+header("Content-Type:text/html;charset=utf-8");
 require "DataBaseConfig.php";
 
 class DataBase
@@ -66,6 +67,21 @@ class DataBase
         } else return false;
     }
 
+ function timetable($table)
+    {
+        $this->sql = "select * from " . $table . "";
+        $result = mysqli_query($this->connect, $this->sql);
+
+	while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+        		foreach ($row as $r) {
+	            echo $r;
+         	   echo "|";
+	        }
+		echo "$";
+    }
+        
+        return false;
+    }
 }
 
 ?>

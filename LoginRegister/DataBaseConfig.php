@@ -13,7 +13,7 @@ class DataBaseConfig
         $this->servername = 'localhost';
         $this->username = 'root';
         $this->password = '';
-        $this->databasename = 'loginregister';
+        $this->databasename = 'knuinfo';
 
     }
 }
