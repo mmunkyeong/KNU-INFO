@@ -2,8 +2,6 @@ package com.example.knu_info;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -13,10 +11,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.Response;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 

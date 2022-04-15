@@ -1,14 +1,16 @@
 package com.example.knu_info.helpers;
+
+import static android.content.ContentValues.TAG;
+
 import android.os.AsyncTask;
 import android.util.Log;
+
 import com.example.knu_info.interfaces.BotReply;
 import com.google.cloud.dialogflow.v2.DetectIntentRequest;
 import com.google.cloud.dialogflow.v2.DetectIntentResponse;
 import com.google.cloud.dialogflow.v2.QueryInput;
 import com.google.cloud.dialogflow.v2.SessionName;
 import com.google.cloud.dialogflow.v2.SessionsClient;
-
-import static android.content.ContentValues.TAG;
 public class RequestJavaV2Task extends AsyncTask<Void, Void, DetectIntentResponse> {
 
     private BotReply mInterface;

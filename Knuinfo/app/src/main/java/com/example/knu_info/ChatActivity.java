@@ -7,8 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.knu_info.adapters.ChatAdapter;
 import com.example.knu_info.helpers.SendMessageInBg;
 import com.example.knu_info.interfaces.BotReply;
@@ -23,6 +25,7 @@ import com.google.cloud.dialogflow.v2.SessionsClient;
 import com.google.cloud.dialogflow.v2.SessionsSettings;
 import com.google.cloud.dialogflow.v2.TextInput;
 import com.google.common.collect.Lists;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;

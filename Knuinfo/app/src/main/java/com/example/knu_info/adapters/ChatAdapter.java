@@ -1,13 +1,17 @@
 package com.example.knu_info.adapters;
+
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.knu_info.R;
 import com.example.knu_info.models.Message;
+
 import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {

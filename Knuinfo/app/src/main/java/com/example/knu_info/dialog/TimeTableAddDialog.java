@@ -12,12 +12,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.knu_info.R;
-
 import com.example.knu_info.adapters.LectureListAdapter;
 import com.example.knu_info.data.LectureData;
 import com.example.knu_info.data.LectureListItemData;
@@ -25,7 +23,6 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class TimeTableAddDialog extends Dialog {

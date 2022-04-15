@@ -1,6 +1,8 @@
 package com.example.knu_info.helpers;
+
 import android.os.AsyncTask;
 import android.util.Log;
+
 import com.example.knu_info.interfaces.BotReply;
 import com.google.cloud.dialogflow.v2.DetectIntentRequest;
 import com.google.cloud.dialogflow.v2.DetectIntentResponse;

@@ -1,29 +1,13 @@
 package com.example.knu_info;
 
-import static android.content.ContentValues.TAG;
-
-import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.PowerManager;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.knu_info.dialog.TimeTableAddDialog;
-
-import org.w3c.dom.Text;
 
 public class TimetableActivity extends AppCompatActivity {
     //private FirebaseAuth mAuth;
