@@ -67,20 +67,34 @@ class DataBase
         } else return false;
     }
 
- function timetable($table)
+    function timetable($table)
     {
         $this->sql = "select * from " . $table . "";
         $result = mysqli_query($this->connect, $this->sql);
 
-	while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-        		foreach ($row as $r) {
+	    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+        	foreach ($row as $r) {
 	            echo $r;
-         	   echo "|";
+         	    echo "|";
 	        }
-		echo "$";
-    }
-        
+		    echo "$";
+        }   
         return false;
+    }
+    
+    function addtimetable($table, $classid, $studentid, $classname, $classtime, $classlocation)
+    {
+        $classid = $this->prepareData($classid);
+        $studentid = $this->prepareData($studentid);
+        $classname = $this->prepareData($classname);
+        $classtime = $this->prepareData($classtime);
+        $classlocation = $this->prepareData($classlocation);
+
+        $this->sql =
+            "INSERT INTO " . $table . " (classid, studentid, classname, classtime, classlocation) VALUES ('" . $classid . "','" . $studentid . "','" . $classname . "','" . $classtime . "','" . $classlocation . "')";
+        if (mysqli_query($this->connect, $this->sql)) {
+            return true;
+        } else return false;
     }
 }
 
