@@ -2,15 +2,18 @@ package com.example.knu_info.data;
 
 public class LectureListItemData {
 
-
+    String lecId;
+    String lecLocation;
     String grade;
     String className;
     String professor;
     String lecGrade;
     String personnel;
     String lecTime;
-    public LectureListItemData(String grade, String className, String professor,
+    public LectureListItemData(String lecId,String lecLocation,String grade, String className, String professor,
                                String lecGrade, String personnel, String lecTime){
+        this.lecId=lecId;
+        this.lecLocation=lecLocation;
         this.grade = grade;
         this.className = className;
         this.professor = professor;
@@ -18,6 +21,21 @@ public class LectureListItemData {
         this.personnel = personnel;
         this.lecTime = lecTime;
 
+    }
+    public String getLecId() {
+        return lecId;
+    }
+
+    public void setLecId(String lecId) {
+        this.lecId = lecId;
+    }
+
+    public String getLecLocation() {
+        return lecLocation;
+    }
+
+    public void setLecLocation(String lecLocation) {
+        this.lecLocation = lecLocation;
     }
     public String getGrade() {
         return grade;

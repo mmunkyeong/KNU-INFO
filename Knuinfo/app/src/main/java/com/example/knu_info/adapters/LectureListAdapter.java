@@ -1,6 +1,7 @@
 package com.example.knu_info.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.knu_info.LoginActivity;
 import com.example.knu_info.R;
 import com.example.knu_info.data.LectureListItemData;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.util.ArrayList;
 
@@ -19,17 +22,19 @@ public class LectureListAdapter extends BaseAdapter {
 
     Context mContext = null;
     LayoutInflater mLayoutInflater = null;
-    ArrayList<LectureListItemData> lecureData;
+    ArrayList<LectureListItemData> lectureData;
+
+    private String TAG = "LectureListAdapter";
 
     public LectureListAdapter(Context context, ArrayList<LectureListItemData> data) {
         mContext = context;
-        lecureData = data;
+        lectureData = data;
         mLayoutInflater = LayoutInflater.from(mContext);
     }
 
     @Override
     public int getCount() {
-        return lecureData.size();
+        return lectureData.size();
     }
 
     @Override
@@ -39,7 +44,7 @@ public class LectureListAdapter extends BaseAdapter {
 
     @Override
     public LectureListItemData getItem(int position) {
-        return lecureData.get(position);
+        return lectureData.get(position);
     }
 
     @Override
@@ -53,21 +58,72 @@ public class LectureListAdapter extends BaseAdapter {
         TextView personnel = (TextView) view.findViewById(R.id.personnel);
         TextView lecTime = (TextView) view.findViewById(R.id.lecTime);
 
-        grade.setText(lecureData.get(position).getGrade()+"학년");
-        className.setText(lecureData.get(position).getClassName());
-        professor.setText(lecureData.get(position).getProfessor()+" 교수님");
-        lecGrade.setText(lecureData.get(position).getLecGrade()+"학점");
-        personnel.setText("제한 인원: "+lecureData.get(position).getPersonnel()+"명");
-        lecTime.setText(lecureData.get(position).getLecTime());
+        grade.setText(lectureData.get(position).getGrade()+"학년");
+        className.setText(lectureData.get(position).getClassName());
+        professor.setText(lectureData.get(position).getProfessor()+" 교수님");
+        lecGrade.setText(lectureData.get(position).getLecGrade()+"학점");
+        personnel.setText("제한 인원: "+lectureData.get(position).getPersonnel()+"명");
+        lecTime.setText(lectureData.get(position).getLecTime());
         Button addBtn = (Button) view.findViewById(R.id.addbtn);
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                requestAdd(lectureData.get(position));
+
+
                 Log.i("TESTTEST", "onClick: "+className.getText().toString());
                 Toast.makeText(mContext,className.getText().toString()+" 강의가 추가되었습니다.",Toast.LENGTH_LONG).show();
             }
         });
         return view;
+    }
+
+    private void requestAdd(LectureListItemData lectureListItemData) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //Starting Write and Read data with URL
+                //Creating array for parameters
+//                classid	studentid	classname	classtime	classlocation
+
+                String[] field =  new String[5];
+                field[0]="classid";
+                field[1]="studentid";
+                field[2]="classname";
+                field[3]="classtime";
+                field[4]="classlocation";
+                //Creating array for data
+                String[] data = new String[5];
+                data[0] = lectureListItemData.getLecId();
+                // TODO: 2022-04-16 학생 id 삽입 필요 ;
+                data[1] = "m1";
+                data[2] = lectureListItemData.getClassName();
+                data[3] = lectureListItemData.getLecTime();
+                data[4] = lectureListItemData.getLecLocation();
+
+                PutData putData = new PutData("http://192.168.0.9/knuinfo/addtimetable.php", "POST", field, data);
+                if (putData.startPut()) {
+                    Log.i(TAG, "run: put Start");
+                    if (putData.onComplete()) {
+                        Log.i(TAG, "run: put onComplete");
+
+                        String result = putData.getResult();
+                        if(result.equals("add timetable Success")){
+
+                            Log.i(TAG, "run: timetable put Success");
+
+                        }
+                        else{
+                            Log.i(TAG, "run: timetable put fail");
+
+                        }
+
+                    } else {
+                        Log.i(TAG, "run: Time out?");
+                    }
+                }
+            }
+        }).start();
     }
 
 }

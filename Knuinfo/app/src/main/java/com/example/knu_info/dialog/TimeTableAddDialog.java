@@ -425,7 +425,9 @@ public class TimeTableAddDialog extends Dialog {
                         for (int i = 0; i < lectureArray.size(); i++) {
                             if (lectureArray.get(i).getSC3().equals(SC3.getSelectedItem().toString())) {
                                 Log.i(TAG, "onItemSelected: " + i);
-                                lectureListItemDatas.add(new LectureListItemData(lectureArray.get(i).getGrade(), lectureArray.get(i).getLecName(),
+                                lectureListItemDatas.add(new LectureListItemData(lectureArray.get(i).getLecNum(),
+                                        lectureArray.get(i).getRoom()+" "+lectureArray.get(i).getRoomNumber(),
+                                        lectureArray.get(i).getGrade(), lectureArray.get(i).getLecName(),
                                         lectureArray.get(i).getProfessor(), lectureArray.get(i).getLecGrade(),
                                         lectureArray.get(i).getPersonnel(), lectureArray.get(i).getLecTime()));
                                 // Log.i(TAG, "onItemSelected: !!"+ lectureArray.get(i).getProfessor());
