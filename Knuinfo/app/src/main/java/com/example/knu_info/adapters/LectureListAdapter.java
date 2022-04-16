@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.knu_info.LoginActivity;
 import com.example.knu_info.R;
 import com.example.knu_info.data.LectureListItemData;
+import com.example.knu_info.utils.SharedPrefUtil;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.util.ArrayList;
@@ -95,8 +96,7 @@ public class LectureListAdapter extends BaseAdapter {
                 //Creating array for data
                 String[] data = new String[5];
                 data[0] = lectureListItemData.getLecId();
-                // TODO: 2022-04-16 학생 id 삽입 필요 ;
-                data[1] = "m1";
+                data[1] = SharedPrefUtil.PreferenceManager.getString(mContext,"userID");
                 data[2] = lectureListItemData.getClassName();
                 data[3] = lectureListItemData.getLecTime();
                 data[4] = lectureListItemData.getLecLocation();

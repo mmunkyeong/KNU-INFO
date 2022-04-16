@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.knu_info.utils.SharedPrefUtil;
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
@@ -25,6 +26,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        String saveUserID = SharedPrefUtil.PreferenceManager.getString(this,"userID");
+        if(!saveUserID.isEmpty()){
+            Login(saveUserID);
+            return;
+        }
 
         Button btnJoin = (Button) findViewById(R.id.btnJoin);
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
@@ -72,10 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
                                     if(result.equals("Login Success")){
-                                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                                        startActivity(intent);
-                                        Toast.makeText(getApplicationContext(),"로그인 되었습니다.",Toast.LENGTH_LONG).show();
-                                        finish();
+                                        Login(username);
                                     }
                                     else{
                                         Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
@@ -94,5 +97,13 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
+    }
+    private void Login(String username){
+        //53.25kb
+        SharedPrefUtil.PreferenceManager.setString(LoginActivity.this,"userID",username);
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(intent);
+        Toast.makeText(getApplicationContext(),"로그인 되었습니다.",Toast.LENGTH_SHORT).show();
+        finish();
     }
 }
