@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
         String saveUserID = SharedPrefUtil.PreferenceManager.getString(this,"userID");
         if(!saveUserID.isEmpty()){
+            // TODO: 2022-04-19 회원 정보 일치한지 유효성 체크 필요
             Login(saveUserID);
             return;
         }
@@ -99,7 +100,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void Login(String username){
-        //53.25kb
         SharedPrefUtil.PreferenceManager.setString(LoginActivity.this,"userID",username);
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         startActivity(intent);
