@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="time1">#D5A0A0</color>
+    <color name="time2">#73DFA4</color>
+    <color name="time3">#7572D6</color>
+    <color name="time4">#FFEB3B</color>
+    <color name="time5">#4CAF50</color>
+    <color name="time6">#9B9CA5</color>
+    <color name="time7">#F44336</color>
+    <color name="time8">#CDDC39</color>
+    <color name="time9">#F8CECE</color>
+    <color name="time10">#D757ED</color>
 </resources>

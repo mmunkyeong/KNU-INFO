@@ -87,19 +87,21 @@ public class LectureListAdapter extends BaseAdapter {
                 //Creating array for parameters
 //                classid	studentid	classname	classtime	classlocation
 
-                String[] field =  new String[5];
+                String[] field =  new String[6];
                 field[0]="classid";
                 field[1]="studentid";
                 field[2]="classname";
                 field[3]="classtime";
                 field[4]="classlocation";
+                field[5]="professor";
                 //Creating array for data
-                String[] data = new String[5];
+                String[] data = new String[6];
                 data[0] = lectureListItemData.getLecId();
                 data[1] = SharedPrefUtil.PreferenceManager.getString(mContext,"userID");
                 data[2] = lectureListItemData.getClassName();
                 data[3] = lectureListItemData.getLecTime();
                 data[4] = lectureListItemData.getLecLocation();
+                data[5] = lectureListItemData.getProfessor();
 
                 PutData putData = new PutData("http://192.168.0.9/knuinfo/addtimetable.php", "POST", field, data);
                 if (putData.startPut()) {
@@ -114,7 +116,7 @@ public class LectureListAdapter extends BaseAdapter {
 
                         }
                         else{
-                            Log.i(TAG, "run: timetable put fail");
+                            Log.i(TAG, "run: timetable put fail"+result);
 
                         }
 

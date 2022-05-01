@@ -439,13 +439,6 @@ public class TimeTableAddDialog extends Dialog {
                         LectureListAdapter lectureListAdapter = new LectureListAdapter(getContext(), lectureListItemDatas);
                         LectureListView.setAdapter(lectureListAdapter);
 
-                        LectureListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-                            }
-                        });
                     } else if (pos == 0) {
 
                     }

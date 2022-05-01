@@ -6,6 +6,7 @@ public class TimetableData {
     String classname;
     String classtime;
     String classlocation;
+    String professor;
 
     public String getClassid() {
         return classid;
@@ -47,5 +48,12 @@ public class TimetableData {
         this.classlocation = classlocation;
     }
 
+    public String getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(String professor) {
+        this.professor = professor;
+    }
 
 }
