@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.example.knu_info.server.KnuInfoServer;
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
@@ -127,7 +128,7 @@ public class JoinActivity extends AppCompatActivity {
                             data[1] = username;
                             data[2] = password;
                             data[3] = email;
-                            PutData putData = new PutData("http://192.168.0.9/knuinfo/signup.php", "POST", field, data);
+                            PutData putData = new PutData(KnuInfoServer.server+"/knuinfo/signup.php", "POST", field, data);
                             if (putData.startPut()) {
                                 Log.i(TAG, "run: put Start");
                                 if (putData.onComplete()) {

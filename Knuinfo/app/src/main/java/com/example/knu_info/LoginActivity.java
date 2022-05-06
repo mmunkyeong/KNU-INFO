@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.knu_info.server.KnuInfoServer;
 import com.example.knu_info.utils.SharedPrefUtil;
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         String saveUserID = SharedPrefUtil.PreferenceManager.getString(this,"userID");
         if(!saveUserID.isEmpty()){
             // TODO: 2022-04-19 회원 정보 일치한지 유효성 체크 필요
+            // TODO: 2022-05-06  서버 통신 에러인 경우 예외 처리 필요 
             Login(saveUserID);
             return;
         }
@@ -74,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                            data[0] = username;
                             data[1] = password;
 
-                            PutData putData = new PutData("http://192.168.0.9/knuinfo/login.php", "POST", field, data);
+                            PutData putData = new PutData(KnuInfoServer.server+"/knuinfo/login.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.knu_info.LoginActivity;
 import com.example.knu_info.R;
 import com.example.knu_info.data.LectureListItemData;
+import com.example.knu_info.server.KnuInfoServer;
 import com.example.knu_info.utils.SharedPrefUtil;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
@@ -87,23 +88,25 @@ public class LectureListAdapter extends BaseAdapter {
                 //Creating array for parameters
 //                classid	studentid	classname	classtime	classlocation
 
-                String[] field =  new String[6];
+                String[] field =  new String[7];
                 field[0]="classid";
                 field[1]="studentid";
                 field[2]="classname";
                 field[3]="classtime";
                 field[4]="classlocation";
                 field[5]="professor";
+                field[6]="actTime";
                 //Creating array for data
-                String[] data = new String[6];
+                String[] data = new String[7];
                 data[0] = lectureListItemData.getLecId();
                 data[1] = SharedPrefUtil.PreferenceManager.getString(mContext,"userID");
                 data[2] = lectureListItemData.getClassName();
                 data[3] = lectureListItemData.getLecTime();
                 data[4] = lectureListItemData.getLecLocation();
                 data[5] = lectureListItemData.getProfessor();
+                data[6] = lectureListItemData.getActTime();
 
-                PutData putData = new PutData("http://192.168.0.9/knuinfo/addtimetable.php", "POST", field, data);
+                PutData putData = new PutData(KnuInfoServer.server+"/knuinfo/addtimetable.php", "POST", field, data);
                 if (putData.startPut()) {
                     Log.i(TAG, "run: put Start");
                     if (putData.onComplete()) {

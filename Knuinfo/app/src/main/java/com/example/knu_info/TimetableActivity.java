@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.knu_info.data.TimetableData;
 import com.example.knu_info.dialog.TimeTableAddDialog;
+import com.example.knu_info.server.KnuInfoServer;
 import com.example.knu_info.utils.SharedPrefUtil;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
@@ -166,7 +167,7 @@ public class TimetableActivity extends AppCompatActivity {
                 field[0] = "studentid";
                 String[] data = new String[1];
                 data[0] = SharedPrefUtil.PreferenceManager.getString(getApplicationContext(), "userID");
-                PutData putData = new PutData("http://192.168.0.9/knuinfo/gettimetable.php", "POST", field, data);
+                PutData putData = new PutData(KnuInfoServer.server+"/knuinfo/gettimetable.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();

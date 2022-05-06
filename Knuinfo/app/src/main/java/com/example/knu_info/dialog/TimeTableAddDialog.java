@@ -19,6 +19,7 @@ import com.example.knu_info.R;
 import com.example.knu_info.adapters.LectureListAdapter;
 import com.example.knu_info.data.LectureData;
 import com.example.knu_info.data.LectureListItemData;
+import com.example.knu_info.server.KnuInfoServer;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.io.UnsupportedEncodingException;
@@ -75,7 +76,7 @@ public class TimeTableAddDialog extends Dialog {
                 field[0] = "";
                 String[] data = new String[1];
                 data[0] = "";
-                PutData putData = new PutData("http://192.168.0.9/knuinfo/timetable.php", "POST", field, data);
+                PutData putData = new PutData(KnuInfoServer.server+"/knuinfo/timetable.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();
@@ -429,7 +430,7 @@ public class TimeTableAddDialog extends Dialog {
                                         lectureArray.get(i).getRoom()+" "+lectureArray.get(i).getRoomNumber(),
                                         lectureArray.get(i).getGrade(), lectureArray.get(i).getLecName(),
                                         lectureArray.get(i).getProfessor(), lectureArray.get(i).getLecGrade(),
-                                        lectureArray.get(i).getPersonnel(), lectureArray.get(i).getLecTime()));
+                                        lectureArray.get(i).getPersonnel(), lectureArray.get(i).getLecTime(), lectureArray.get(i).getActTime() ));
                                 // Log.i(TAG, "onItemSelected: !!"+ lectureArray.get(i).getProfessor());
 
                                 Log.i(TAG, "onItemSelected: " + lectureListItemDatas.size());

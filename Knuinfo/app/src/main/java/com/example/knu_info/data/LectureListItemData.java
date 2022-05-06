@@ -10,8 +10,9 @@ public class LectureListItemData {
     String lecGrade;
     String personnel;
     String lecTime;
+    String actTime;
     public LectureListItemData(String lecId,String lecLocation,String grade, String className, String professor,
-                               String lecGrade, String personnel, String lecTime){
+                               String lecGrade, String personnel, String lecTime, String actTime){
         this.lecId=lecId;
         this.lecLocation=lecLocation;
         this.grade = grade;
@@ -20,6 +21,7 @@ public class LectureListItemData {
         this.lecGrade = lecGrade;
         this.personnel = personnel;
         this.lecTime = lecTime;
+        this.actTime=actTime;
 
     }
     public String getLecId() {
@@ -83,5 +85,13 @@ public class LectureListItemData {
 
     public void setLecTime(String lecTime) {
         this.lecTime = lecTime;
+    }
+
+    public String getActTime() {
+        return actTime;
+    }
+
+    public void setActTime(String actTime) {
+        this.actTime = actTime;
     }
 }
