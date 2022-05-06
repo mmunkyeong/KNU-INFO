@@ -83,7 +83,7 @@
     <Button
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:gravity="center"
+
         android:textStyle="bold"
         android:text="추가"
         android:id="@+id/addbtn"

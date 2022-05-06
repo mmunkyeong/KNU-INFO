@@ -12,7 +12,7 @@
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="379dp"
-        android:layout_height="548dp"
+        android:layout_height="543dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
@@ -27,16 +27,17 @@
 
         <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="28dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
+
                 android:padding="3dp"
                 android:textColor="#000000"
                 android:textSize="15sp" />
@@ -45,10 +46,11 @@
                 android:layout_width="20dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
+
                 android:padding="3dp"
                 android:text="월"
                 android:textColor="#000000"
@@ -59,10 +61,11 @@
                 android:layout_width="20dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
+
                 android:text="화"
                 android:textColor="#000000"
                 android:textSize="15sp" />
@@ -71,10 +74,11 @@
                 android:layout_width="20dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
+
                 android:text="수"
                 android:textColor="#000000"
                 android:textSize="15sp" />
@@ -83,10 +87,11 @@
                 android:layout_width="20dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
+
                 android:text="목"
                 android:textColor="#000000"
                 android:textSize="15sp" />
@@ -95,11 +100,12 @@
                 android:layout_width="20dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginTop="1dp"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
+
                 android:text="금"
                 android:textColor="#000000"
                 android:textSize="15sp" />
@@ -112,6 +118,7 @@
                 android:layout_width="10dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:background="#FFFFFF"
                 android:text="09"
                 android:textColor="#000000"
@@ -122,10 +129,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
-                android:background="#FFFFFF"
                 android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+                android:background="#FFFFFF"
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
 
             <TextView
@@ -133,44 +144,61 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
-
-                android:background="#FFFFFF"
                 android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+                android:background="#FFFFFF"
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
-
-                android:background="#FFFFFF"
                 android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+                android:background="#FFFFFF"
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                />
 
             <TextView
                 android:id="@+id/time_thu1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+            android:ellipsize="end"
+            android:singleLine="true"
+ />
 
             <TextView
                 android:id="@+id/time_fri1"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+            android:ellipsize="end"
+            android:singleLine="true"
+               />
         </TableRow>
 
         <TableRow>
@@ -179,6 +207,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
 
@@ -190,56 +219,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue2"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed2"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu2"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri2"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow>
@@ -248,6 +297,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
                 android:text="10"
@@ -259,56 +309,75 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
-
-                android:background="#FFFFFF"
                 android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+                android:background="#FFFFFF"
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue3"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed3"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu3"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri3"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow>
@@ -317,6 +386,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
 
@@ -328,56 +398,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue4"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed4"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu4"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri4"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow>
@@ -386,6 +476,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
                 android:text="11"
@@ -397,56 +488,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue5"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed5"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu5"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri5"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow>
@@ -455,6 +566,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
 
@@ -466,56 +578,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue6"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed6"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu6"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri6"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow>
@@ -524,6 +656,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
                 android:text="12"
@@ -535,56 +668,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue7"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed7"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu7"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri7"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow
@@ -595,6 +748,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
                 android:textColor="#000000"
@@ -605,56 +759,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue8"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed8"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu8"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri8"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow>
@@ -663,6 +837,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
                 android:text="13"
@@ -674,56 +849,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue9"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed9"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu9"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri9"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
         <TableRow>
 
@@ -731,6 +926,7 @@
                 android:layout_width="10dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
                 android:textColor="#000000"
@@ -741,9 +937,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:textColor="#000000" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true"  />
 
 
             <TextView
@@ -751,45 +953,61 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed10"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu10"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri10"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow>
@@ -798,6 +1016,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
                 android:text="14"
@@ -809,56 +1028,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue11"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed11"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu11"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri11"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow>
@@ -867,6 +1106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
 
@@ -878,56 +1118,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue12"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed12"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu12"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri12"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow>
@@ -936,6 +1196,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
                 android:text="15"
@@ -947,56 +1208,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue13"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed13"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu13"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri13"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow>
@@ -1005,6 +1286,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
                 android:textColor="#000000"
@@ -1015,56 +1297,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue14"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed14"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu14"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri14"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow>
@@ -1073,6 +1375,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
                 android:text="16"
@@ -1084,51 +1387,71 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
-                android:background="#FFFFFF"
                 android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+                android:background="#FFFFFF"
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue15"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
-                android:background="#FFFFFF"
                 android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+                android:background="#FFFFFF"
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed15"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
-                android:background="#FFFFFF"
                 android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+                android:background="#FFFFFF"
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu15"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
-                android:background="#FFFFFF"
                 android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+                android:background="#FFFFFF"
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri15"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow>
@@ -1137,6 +1460,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
 
@@ -1148,56 +1472,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue16"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed16"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu16"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri16"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow
@@ -1208,6 +1552,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
                 android:text="17"
@@ -1219,55 +1564,75 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
-                android:background="#FFFFFF"
                 android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+                android:background="#FFFFFF"
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue17"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_wed17"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu17"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri17"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
 
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow>
@@ -1276,6 +1641,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
                 android:textColor="#000000"
@@ -1286,56 +1652,76 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_tue18"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true"/>
 
             <TextView
                 android:id="@+id/time_wed18"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_thu18"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/time_fri18"
                 android:layout_width="match_parent"
                 android:layout_height="28dp"
                 android:layout_marginLeft="1dp"
+                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:background="#FFFFFF"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
         </TableRow>
 
 
