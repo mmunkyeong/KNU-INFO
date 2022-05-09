@@ -68,6 +68,7 @@ public class JoinActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
+                            Log.i(TAG, "onResponse validation : "+response);
                             JSONObject jsonResponse=new JSONObject(response);
                             boolean success=jsonResponse.getBoolean("success");
                             if(success){

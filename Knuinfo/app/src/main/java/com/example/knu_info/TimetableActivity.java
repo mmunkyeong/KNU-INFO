@@ -41,7 +41,7 @@ public class TimetableActivity extends AppCompatActivity {
     private TextView thu1, thu2, thu3, thu4, thu5, thu6, thu7, thu8, thu9, thu10, thu11, thu12, thu13, thu14, thu15, thu16, thu17, thu18;
     private TextView fri1, fri2, fri3, fri4, fri5, fri6, fri7, fri8, fri9, fri10, fri11, fri12, fri13, fri14, fri15, fri16, fri17, fri18;
 
-
+    private String[] timeTimeInfos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,7 +141,6 @@ public class TimetableActivity extends AppCompatActivity {
                 showactivity_timetableadd();
             }
         });
-        getTimetable();
 
     }
 
@@ -152,6 +151,7 @@ public class TimetableActivity extends AppCompatActivity {
         noBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 activity_timetableadd.dismiss();
+                getTimetable();
             }
         });
     }
@@ -174,7 +174,10 @@ public class TimetableActivity extends AppCompatActivity {
                         try {
                             String res = new String(result.getBytes("ISO-8859-1"), "UTF-8");
                             Log.i(TAG, "run: " + res);
-                            String[] timeTimeInfos = res.split("\\$");
+                            if(timeTimeInfos!=null){
+                                timeTimeInfos = null;
+                            }
+                            timeTimeInfos = res.split("\\$");
                             timetablemap = new HashMap<>();
                             Log.i(TAG, "run: " + timeTimeInfos.length);
                             if (!timeTimeInfos[0].isEmpty()) {

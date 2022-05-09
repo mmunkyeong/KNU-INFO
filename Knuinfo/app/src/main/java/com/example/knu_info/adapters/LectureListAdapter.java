@@ -2,6 +2,8 @@ package com.example.knu_info.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,11 +62,11 @@ public class LectureListAdapter extends BaseAdapter {
         TextView personnel = (TextView) view.findViewById(R.id.personnel);
         TextView lecTime = (TextView) view.findViewById(R.id.lecTime);
 
-        grade.setText(lectureData.get(position).getGrade()+"학년");
+        grade.setText(lectureData.get(position).getGrade() + "학년");
         className.setText(lectureData.get(position).getClassName());
-        professor.setText(lectureData.get(position).getProfessor()+" 교수님");
-        lecGrade.setText(lectureData.get(position).getLecGrade()+"학점");
-        personnel.setText("제한 인원: "+lectureData.get(position).getPersonnel()+"명");
+        professor.setText(lectureData.get(position).getProfessor() + " 교수님");
+        lecGrade.setText(lectureData.get(position).getLecGrade() + "학점");
+        personnel.setText("제한 인원: " + lectureData.get(position).getPersonnel() + "명");
         lecTime.setText(lectureData.get(position).getLecTime());
         Button addBtn = (Button) view.findViewById(R.id.addbtn);
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -72,9 +74,6 @@ public class LectureListAdapter extends BaseAdapter {
             public void onClick(View view) {
                 requestAdd(lectureData.get(position));
 
-
-                Log.i("TESTTEST", "onClick: "+className.getText().toString());
-                Toast.makeText(mContext,className.getText().toString()+" 강의가 추가되었습니다.",Toast.LENGTH_LONG).show();
             }
         });
         return view;
@@ -88,38 +87,61 @@ public class LectureListAdapter extends BaseAdapter {
                 //Creating array for parameters
 //                classid	studentid	classname	classtime	classlocation
 
-                String[] field =  new String[7];
-                field[0]="classid";
-                field[1]="studentid";
-                field[2]="classname";
-                field[3]="classtime";
-                field[4]="classlocation";
-                field[5]="professor";
-                field[6]="actTime";
+                String[] field = new String[8];
+                field[0] = "classid";
+                field[1] = "studentid";
+                field[2] = "classname";
+                field[3] = "classtime";
+                field[4] = "classlocation";
+                field[5] = "professor";
+                field[6] = "actTime";
+                field[7] = "diffCheck";
                 //Creating array for data
-                String[] data = new String[7];
+                String[] data = new String[8];
                 data[0] = lectureListItemData.getLecId();
-                data[1] = SharedPrefUtil.PreferenceManager.getString(mContext,"userID");
+                data[1] = SharedPrefUtil.PreferenceManager.getString(mContext, "userID");
                 data[2] = lectureListItemData.getClassName();
                 data[3] = lectureListItemData.getLecTime();
                 data[4] = lectureListItemData.getLecLocation();
                 data[5] = lectureListItemData.getProfessor();
                 data[6] = lectureListItemData.getActTime();
+                String actTime = lectureListItemData.getActTime();
+                actTime = actTime.replaceAll(" ", "");
+                actTime = actTime.replaceAll("월", "\n10#");
+                actTime = actTime.replaceAll("화", "\n20#");
+                actTime = actTime.replaceAll("수", "\n30#");
+                actTime = actTime.replaceAll("목", "\n40#");
+                actTime = actTime.replaceAll("금", "\n50#");
+                actTime = actTime.replaceAll(":", "");
+                actTime = actTime.replaceAll("~", "|");
+                data[7] = actTime.trim();
 
-                PutData putData = new PutData(KnuInfoServer.server+"/knuinfo/addtimetable.php", "POST", field, data);
+                PutData putData = new PutData(KnuInfoServer.server + "/knuinfo/addtimetable.php", "POST", field, data);
                 if (putData.startPut()) {
                     Log.i(TAG, "run: put Start");
                     if (putData.onComplete()) {
                         Log.i(TAG, "run: put onComplete");
 
                         String result = putData.getResult();
-                        if(result.equals("add timetable Success")){
 
+                        if (result.equals("add timetable Success")) {
+                            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(mContext, "강의가 추가되었습니다.", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                             Log.i(TAG, "run: timetable put Success");
 
-                        }
-                        else{
-                            Log.i(TAG, "run: timetable put fail"+result);
+                        } else if (result.equals("add timetable Failed_duplicate")) {
+                            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(mContext, "이미 추가된 강의와 시간이 겹칩니다.", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        } else {
+                            Log.i(TAG, "run: timetable put fail" + result);
 
                         }
 
