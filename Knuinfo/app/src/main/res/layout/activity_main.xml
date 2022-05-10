@@ -93,6 +93,21 @@
             android:textStyle="bold"
             android:textColor="#000000"
             android:textAlignment="center" />
+        <!-- 로그아웃 버튼 -->
+        <Button
+            android:id="@+id/btnlogout"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/btntime"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:height="50dp"
+
+            android:background="@drawable/buttonmain"
+            android:text="로그아웃"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textAlignment="center" />
 
     </RelativeLayout>
 
