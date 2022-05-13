@@ -1,6 +1,7 @@
 package com.example.knu_info;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,6 +44,7 @@ public class TimetableActivity extends AppCompatActivity {
     private TextView fri1, fri2, fri3, fri4, fri5, fri6, fri7, fri8, fri9, fri10, fri11, fri12, fri13, fri14, fri15, fri16, fri17, fri18;
 
     private String[] timeTimeInfos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,6 +139,7 @@ public class TimetableActivity extends AppCompatActivity {
         fri16 = findViewById(R.id.time_fri16);
         fri17 = findViewById(R.id.time_fri17);
         fri18 = findViewById(R.id.time_fri18);
+        getTimetable();
         findViewById(R.id.btnTimeadd).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 showactivity_timetableadd();
@@ -157,6 +161,7 @@ public class TimetableActivity extends AppCompatActivity {
     }
 
     private void getTimetable() {
+        clearTimeTable();
         Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
@@ -167,14 +172,14 @@ public class TimetableActivity extends AppCompatActivity {
                 field[0] = "studentid";
                 String[] data = new String[1];
                 data[0] = SharedPrefUtil.PreferenceManager.getString(getApplicationContext(), "userID");
-                PutData putData = new PutData(KnuInfoServer.server+"/knuinfo/gettimetable.php", "POST", field, data);
+                PutData putData = new PutData(KnuInfoServer.server + "/knuinfo/gettimetable.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();
                         try {
                             String res = new String(result.getBytes("ISO-8859-1"), "UTF-8");
                             Log.i(TAG, "run: " + res);
-                            if(timeTimeInfos!=null){
+                            if (timeTimeInfos != null) {
                                 timeTimeInfos = null;
                             }
                             timeTimeInfos = res.split("\\$");
@@ -380,8 +385,101 @@ public class TimetableActivity extends AppCompatActivity {
 
         return (cellSize / 60f) + 9;
     }
+    public void clearTimeTable(){
+        mon1.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon2.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon3.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon4.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon5.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon6.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon7.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon8.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon9.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon10.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon11.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon12.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon14.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon15.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon16.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon17.setBackgroundColor(getResources().getColor(R.color.white2));
+        mon18.setBackgroundColor(getResources().getColor(R.color.white2));
+
+        tue1.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue2.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue3.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue4.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue5.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue6.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue7.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue8.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue9.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue10.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue11.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue12.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue14.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue15.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue16.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue17.setBackgroundColor(getResources().getColor(R.color.white2));
+        tue18.setBackgroundColor(getResources().getColor(R.color.white2));
+
+        wed1.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed2.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed3.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed4.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed5.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed6.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed7.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed8.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed9.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed10.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed11.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed12.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed14.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed15.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed16.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed17.setBackgroundColor(getResources().getColor(R.color.white2));
+        wed18.setBackgroundColor(getResources().getColor(R.color.white2));
+
+       thu1.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu2.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu3.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu4.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu5.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu6.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu7.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu8.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu9.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu10.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu11.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu12.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu14.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu15.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu16.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu17.setBackgroundColor(getResources().getColor(R.color.white2));
+       thu18.setBackgroundColor(getResources().getColor(R.color.white2));
+
+
+       fri1.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri2.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri3.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri4.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri5.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri6.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri7.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri8.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri9.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri10.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri11.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri12.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri14.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri15.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri16.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri17.setBackgroundColor(getResources().getColor(R.color.white2));
+       fri18.setBackgroundColor(getResources().getColor(R.color.white2));
+    }
 
     public void paintTimeTable(TimetableData timetableData, String classTimeInfo, double lastTime, double cellCount, int color) {
+
         if (classTimeInfo.contains("월")) {
             if (lastTime == 9) {
             } else if (lastTime == 9.5) {
@@ -389,68 +487,83 @@ public class TimetableActivity extends AppCompatActivity {
                     mon1.setBackgroundColor(color);
                 }
                 mon1.setText(timetableData.getClassname());
+                mon1.setTag(timetableData.getClassid());
             } else if (lastTime == 10.0) {
                 if (cellCount == 0.5) {
                     mon2.setBackgroundColor(color);
                     mon2.setText(timetableData.getClassname());
+                    mon2.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon1.setBackgroundColor(color);
                     mon2.setBackgroundColor(color);
                     mon1.setText(timetableData.getClassname());
+                    mon1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 10.5) {
                 if (cellCount == 0.5) {
                     mon3.setBackgroundColor(color);
                     mon3.setText(timetableData.getClassname());
+                    mon3.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon2.setBackgroundColor(color);
                     mon3.setBackgroundColor(color);
                     mon2.setText(timetableData.getClassname());
+                    mon2.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon1.setBackgroundColor(color);
                     mon2.setBackgroundColor(color);
                     mon3.setBackgroundColor(color);
                     mon1.setText(timetableData.getClassname());
+                    // TODO: 2022-05-13 test
+                    mon1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 11.0) {
                 if (cellCount == 0.5) {
                     mon4.setBackgroundColor(color);
                     mon4.setText(timetableData.getClassname());
+                    mon4.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon3.setBackgroundColor(color);
                     mon4.setBackgroundColor(color);
                     mon3.setText(timetableData.getClassname());
+                    mon3.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon2.setBackgroundColor(color);
                     mon3.setBackgroundColor(color);
                     mon4.setBackgroundColor(color);
                     mon2.setText(timetableData.getClassname());
+                    mon2.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon1.setBackgroundColor(color);
                     mon2.setBackgroundColor(color);
                     mon3.setBackgroundColor(color);
                     mon4.setBackgroundColor(color);
                     mon1.setText(timetableData.getClassname());
+                    mon1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 11.5) {
                 if (cellCount == 0.5) {
                     mon5.setBackgroundColor(color);
                     mon5.setText(timetableData.getClassname());
+                    mon5.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon4.setBackgroundColor(color);
                     mon5.setBackgroundColor(color);
                     mon4.setText(timetableData.getClassname());
+                    mon4.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon3.setBackgroundColor(color);
                     mon4.setBackgroundColor(color);
                     mon5.setBackgroundColor(color);
                     mon3.setText(timetableData.getClassname());
+                    mon3.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon2.setBackgroundColor(color);
                     mon3.setBackgroundColor(color);
                     mon4.setBackgroundColor(color);
                     mon5.setBackgroundColor(color);
                     mon2.setText(timetableData.getClassname());
+                    mon2.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon1.setBackgroundColor(color);
                     mon2.setBackgroundColor(color);
@@ -458,26 +571,31 @@ public class TimetableActivity extends AppCompatActivity {
                     mon4.setBackgroundColor(color);
                     mon5.setBackgroundColor(color);
                     mon1.setText(timetableData.getClassname());
+                    mon1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 12.0) {
                 if (cellCount == 0.5) {
                     mon6.setBackgroundColor(color);
                     mon6.setText(timetableData.getClassname());
+                    mon6.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon5.setBackgroundColor(color);
                     mon6.setBackgroundColor(color);
                     mon5.setText(timetableData.getClassname());
+                    mon5.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon4.setBackgroundColor(color);
                     mon5.setBackgroundColor(color);
                     mon6.setBackgroundColor(color);
                     mon4.setText(timetableData.getClassname());
+                    mon4.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon3.setBackgroundColor(color);
                     mon4.setBackgroundColor(color);
                     mon5.setBackgroundColor(color);
                     mon6.setBackgroundColor(color);
                     mon3.setText(timetableData.getClassname());
+                    mon3.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon2.setBackgroundColor(color);
                     mon3.setBackgroundColor(color);
@@ -485,6 +603,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon5.setBackgroundColor(color);
                     mon6.setBackgroundColor(color);
                     mon2.setText(timetableData.getClassname());
+                    mon2.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     mon1.setBackgroundColor(color);
                     mon2.setBackgroundColor(color);
@@ -493,26 +612,31 @@ public class TimetableActivity extends AppCompatActivity {
                     mon5.setBackgroundColor(color);
                     mon6.setBackgroundColor(color);
                     mon1.setText(timetableData.getClassname());
+                    mon1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 12.5) {
                 if (cellCount == 0.5) {
                     mon7.setBackgroundColor(color);
                     mon7.setText(timetableData.getClassname());
+                    mon7.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon6.setBackgroundColor(color);
                     mon7.setBackgroundColor(color);
                     mon6.setText(timetableData.getClassname());
+                    mon6.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon5.setBackgroundColor(color);
                     mon6.setBackgroundColor(color);
                     mon7.setBackgroundColor(color);
                     mon5.setText(timetableData.getClassname());
+                    mon5.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon4.setBackgroundColor(color);
                     mon5.setBackgroundColor(color);
                     mon6.setBackgroundColor(color);
                     mon7.setBackgroundColor(color);
                     mon4.setText(timetableData.getClassname());
+                    mon4.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon3.setBackgroundColor(color);
                     mon4.setBackgroundColor(color);
@@ -520,6 +644,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon6.setBackgroundColor(color);
                     mon7.setBackgroundColor(color);
                     mon3.setText(timetableData.getClassname());
+                    mon3.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     mon2.setBackgroundColor(color);
                     mon3.setBackgroundColor(color);
@@ -528,6 +653,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon6.setBackgroundColor(color);
                     mon7.setBackgroundColor(color);
                     mon2.setText(timetableData.getClassname());
+                    mon2.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     mon1.setBackgroundColor(color);
                     mon2.setBackgroundColor(color);
@@ -537,26 +663,31 @@ public class TimetableActivity extends AppCompatActivity {
                     mon6.setBackgroundColor(color);
                     mon7.setBackgroundColor(color);
                     mon1.setText(timetableData.getClassname());
+                    mon1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 13.0) {
                 if (cellCount == 0.5) {
                     mon8.setBackgroundColor(color);
                     mon8.setText(timetableData.getClassname());
+                    mon8.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
                     mon7.setText(timetableData.getClassname());
+                    mon7.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon6.setBackgroundColor(color);
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
                     mon6.setText(timetableData.getClassname());
+                    mon6.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon5.setBackgroundColor(color);
                     mon6.setBackgroundColor(color);
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
                     mon5.setText(timetableData.getClassname());
+                    mon5.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon4.setBackgroundColor(color);
                     mon5.setBackgroundColor(color);
@@ -564,6 +695,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
                     mon4.setText(timetableData.getClassname());
+                    mon4.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     mon3.setBackgroundColor(color);
                     mon4.setBackgroundColor(color);
@@ -572,6 +704,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
                     mon3.setText(timetableData.getClassname());
+                    mon3.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     mon2.setBackgroundColor(color);
                     mon3.setBackgroundColor(color);
@@ -581,6 +714,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
                     mon2.setText(timetableData.getClassname());
+                    mon2.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     mon1.setBackgroundColor(color);
                     mon2.setBackgroundColor(color);
@@ -591,26 +725,31 @@ public class TimetableActivity extends AppCompatActivity {
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
                     mon1.setText(timetableData.getClassname());
+                    mon1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 13.5) {
                 if (cellCount == 0.5) {
                     mon9.setBackgroundColor(color);
                     mon9.setText(timetableData.getClassname());
+                    mon9.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
                     mon8.setText(timetableData.getClassname());
+                    mon8.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
                     mon7.setText(timetableData.getClassname());
+                    mon7.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon6.setBackgroundColor(color);
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
                     mon6.setText(timetableData.getClassname());
+                    mon6.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon5.setBackgroundColor(color);
                     mon6.setBackgroundColor(color);
@@ -618,6 +757,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
                     mon5.setText(timetableData.getClassname());
+                    mon5.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     mon4.setBackgroundColor(color);
                     mon5.setBackgroundColor(color);
@@ -626,6 +766,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
                     mon4.setText(timetableData.getClassname());
+                    mon4.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     mon3.setBackgroundColor(color);
                     mon4.setBackgroundColor(color);
@@ -635,6 +776,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
                     mon3.setText(timetableData.getClassname());
+                    mon3.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     mon2.setBackgroundColor(color);
                     mon3.setBackgroundColor(color);
@@ -645,26 +787,31 @@ public class TimetableActivity extends AppCompatActivity {
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
                     mon2.setText(timetableData.getClassname());
+                    mon2.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 14.0) {
                 if (cellCount == 0.5) {
                     mon10.setBackgroundColor(color);
                     mon10.setText(timetableData.getClassname());
+                    mon10.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
                     mon9.setText(timetableData.getClassname());
+                    mon9.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
                     mon8.setText(timetableData.getClassname());
+                    mon8.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
                     mon7.setText(timetableData.getClassname());
+                    mon7.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon6.setBackgroundColor(color);
                     mon7.setBackgroundColor(color);
@@ -672,6 +819,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
                     mon6.setText(timetableData.getClassname());
+                    mon6.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     mon5.setBackgroundColor(color);
                     mon6.setBackgroundColor(color);
@@ -680,6 +828,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
                     mon5.setText(timetableData.getClassname());
+                    mon5.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     mon4.setBackgroundColor(color);
                     mon5.setBackgroundColor(color);
@@ -689,6 +838,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
                     mon4.setText(timetableData.getClassname());
+                    mon4.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     mon3.setBackgroundColor(color);
                     mon4.setBackgroundColor(color);
@@ -699,26 +849,31 @@ public class TimetableActivity extends AppCompatActivity {
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
                     mon3.setText(timetableData.getClassname());
+                    mon3.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 14.5) {
                 if (cellCount == 0.5) {
                     mon11.setBackgroundColor(color);
                     mon11.setText(timetableData.getClassname());
+                    mon11.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
                     mon10.setText(timetableData.getClassname());
+                    mon10.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
                     mon9.setText(timetableData.getClassname());
+                    mon9.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
                     mon8.setText(timetableData.getClassname());
+                    mon8.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
@@ -726,6 +881,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
                     mon7.setText(timetableData.getClassname());
+                    mon7.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     mon6.setBackgroundColor(color);
                     mon7.setBackgroundColor(color);
@@ -734,6 +890,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
                     mon6.setText(timetableData.getClassname());
+                    mon6.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     mon5.setBackgroundColor(color);
                     mon6.setBackgroundColor(color);
@@ -743,6 +900,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
                     mon5.setText(timetableData.getClassname());
+                    mon5.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     mon4.setBackgroundColor(color);
                     mon5.setBackgroundColor(color);
@@ -753,26 +911,31 @@ public class TimetableActivity extends AppCompatActivity {
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
                     mon4.setText(timetableData.getClassname());
+                    mon4.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 15.0) {
                 if (cellCount == 0.5) {
                     mon12.setBackgroundColor(color);
                     mon12.setText(timetableData.getClassname());
+                    mon12.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
                     mon11.setText(timetableData.getClassname());
+                    mon11.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
                     mon10.setText(timetableData.getClassname());
+                    mon10.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
                     mon9.setText(timetableData.getClassname());
+                    mon9.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
@@ -780,6 +943,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
                     mon8.setText(timetableData.getClassname());
+                    mon8.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
@@ -788,6 +952,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
                     mon7.setText(timetableData.getClassname());
+                    mon7.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     mon6.setBackgroundColor(color);
                     mon7.setBackgroundColor(color);
@@ -797,6 +962,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
                     mon6.setText(timetableData.getClassname());
+                    mon6.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     mon5.setBackgroundColor(color);
                     mon6.setBackgroundColor(color);
@@ -807,26 +973,31 @@ public class TimetableActivity extends AppCompatActivity {
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
                     mon5.setText(timetableData.getClassname());
+                    mon5.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 15.5) {
                 if (cellCount == 0.5) {
                     mon13.setBackgroundColor(color);
                     mon13.setText(timetableData.getClassname());
+                    mon13.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon12.setBackgroundColor(color);
                     mon13.setBackgroundColor(color);
                     mon12.setText(timetableData.getClassname());
+                    mon12.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
                     mon13.setBackgroundColor(color);
                     mon11.setText(timetableData.getClassname());
+                    mon11.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
                     mon13.setBackgroundColor(color);
                     mon10.setText(timetableData.getClassname());
+                    mon10.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
@@ -834,6 +1005,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon12.setBackgroundColor(color);
                     mon13.setBackgroundColor(color);
                     mon9.setText(timetableData.getClassname());
+                    mon9.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
@@ -842,6 +1014,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon12.setBackgroundColor(color);
                     mon13.setBackgroundColor(color);
                     mon8.setText(timetableData.getClassname());
+                    mon8.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
@@ -851,6 +1024,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon12.setBackgroundColor(color);
                     mon13.setBackgroundColor(color);
                     mon7.setText(timetableData.getClassname());
+                    mon7.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     mon6.setBackgroundColor(color);
                     mon7.setBackgroundColor(color);
@@ -861,26 +1035,31 @@ public class TimetableActivity extends AppCompatActivity {
                     mon12.setBackgroundColor(color);
                     mon13.setBackgroundColor(color);
                     mon6.setText(timetableData.getClassname());
+                    mon6.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 16.0) {
                 if (cellCount == 0.5) {
                     mon14.setBackgroundColor(color);
                     mon14.setText(timetableData.getClassname());
+                    mon14.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon13.setBackgroundColor(color);
                     mon14.setBackgroundColor(color);
                     mon13.setText(timetableData.getClassname());
+                    mon13.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon12.setBackgroundColor(color);
                     mon13.setBackgroundColor(color);
                     mon14.setBackgroundColor(color);
                     mon12.setText(timetableData.getClassname());
+                    mon12.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
                     mon13.setBackgroundColor(color);
                     mon14.setBackgroundColor(color);
                     mon11.setText(timetableData.getClassname());
+                    mon11.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
@@ -888,6 +1067,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon13.setBackgroundColor(color);
                     mon14.setBackgroundColor(color);
                     mon10.setText(timetableData.getClassname());
+                    mon10.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
@@ -896,6 +1076,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon13.setBackgroundColor(color);
                     mon14.setBackgroundColor(color);
                     mon9.setText(timetableData.getClassname());
+                    mon9.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
@@ -905,6 +1086,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon13.setBackgroundColor(color);
                     mon14.setBackgroundColor(color);
                     mon8.setText(timetableData.getClassname());
+                    mon8.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     mon7.setBackgroundColor(color);
                     mon8.setBackgroundColor(color);
@@ -915,26 +1097,33 @@ public class TimetableActivity extends AppCompatActivity {
                     mon13.setBackgroundColor(color);
                     mon14.setBackgroundColor(color);
                     mon7.setText(timetableData.getClassname());
+                    mon7.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 16.5) {
                 if (cellCount == 0.5) {
                     mon15.setBackgroundColor(color);
                     mon15.setText(timetableData.getClassname());
+                    mon15.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon14.setBackgroundColor(color);
                     mon15.setBackgroundColor(color);
                     mon14.setText(timetableData.getClassname());
+                    mon14.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon13.setBackgroundColor(color);
                     mon14.setBackgroundColor(color);
                     mon15.setBackgroundColor(color);
                     mon13.setText(timetableData.getClassname());
+                    mon13.setTag(timetableData.getClassid());
+                    mon14.setTag(timetableData.getClassid());
+                    mon15.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon12.setBackgroundColor(color);
                     mon13.setBackgroundColor(color);
                     mon14.setBackgroundColor(color);
                     mon15.setBackgroundColor(color);
                     mon12.setText(timetableData.getClassname());
+                    mon12.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
@@ -942,6 +1131,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon14.setBackgroundColor(color);
                     mon15.setBackgroundColor(color);
                     mon11.setText(timetableData.getClassname());
+                    mon11.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
@@ -950,6 +1140,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon14.setBackgroundColor(color);
                     mon15.setBackgroundColor(color);
                     mon10.setText(timetableData.getClassname());
+                    mon10.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
@@ -959,6 +1150,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon14.setBackgroundColor(color);
                     mon15.setBackgroundColor(color);
                     mon9.setText(timetableData.getClassname());
+                    mon9.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     mon8.setBackgroundColor(color);
                     mon9.setBackgroundColor(color);
@@ -969,26 +1161,31 @@ public class TimetableActivity extends AppCompatActivity {
                     mon14.setBackgroundColor(color);
                     mon15.setBackgroundColor(color);
                     mon8.setText(timetableData.getClassname());
+                    mon8.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 17.0) {
                 if (cellCount == 0.5) {
                     mon16.setBackgroundColor(color);
                     mon16.setText(timetableData.getClassname());
+                    mon16.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon15.setBackgroundColor(color);
                     mon16.setBackgroundColor(color);
                     mon15.setText(timetableData.getClassname());
+                    mon15.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon14.setBackgroundColor(color);
                     mon15.setBackgroundColor(color);
                     mon16.setBackgroundColor(color);
                     mon14.setText(timetableData.getClassname());
+                    mon14.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon13.setBackgroundColor(color);
                     mon14.setBackgroundColor(color);
                     mon15.setBackgroundColor(color);
                     mon16.setBackgroundColor(color);
                     mon13.setText(timetableData.getClassname());
+                    mon13.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon12.setBackgroundColor(color);
                     mon13.setBackgroundColor(color);
@@ -996,6 +1193,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon15.setBackgroundColor(color);
                     mon16.setBackgroundColor(color);
                     mon12.setText(timetableData.getClassname());
+                    mon12.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
@@ -1004,6 +1202,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon15.setBackgroundColor(color);
                     mon16.setBackgroundColor(color);
                     mon11.setText(timetableData.getClassname());
+                    mon11.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
@@ -1013,6 +1212,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon15.setBackgroundColor(color);
                     mon16.setBackgroundColor(color);
                     mon10.setText(timetableData.getClassname());
+                    mon10.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     mon9.setBackgroundColor(color);
                     mon10.setBackgroundColor(color);
@@ -1023,26 +1223,31 @@ public class TimetableActivity extends AppCompatActivity {
                     mon15.setBackgroundColor(color);
                     mon16.setBackgroundColor(color);
                     mon9.setText(timetableData.getClassname());
+                    mon9.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 17.5) {
                 if (cellCount == 0.5) {
                     mon17.setBackgroundColor(color);
                     mon17.setText(timetableData.getClassname());
+                    mon17.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon16.setBackgroundColor(color);
                     mon17.setBackgroundColor(color);
                     mon16.setText(timetableData.getClassname());
+                    mon16.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon15.setBackgroundColor(color);
                     mon16.setBackgroundColor(color);
                     mon17.setBackgroundColor(color);
                     mon15.setText(timetableData.getClassname());
+                    mon15.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon14.setBackgroundColor(color);
                     mon15.setBackgroundColor(color);
                     mon16.setBackgroundColor(color);
                     mon17.setBackgroundColor(color);
                     mon14.setText(timetableData.getClassname());
+                    mon14.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon13.setBackgroundColor(color);
                     mon14.setBackgroundColor(color);
@@ -1050,6 +1255,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon16.setBackgroundColor(color);
                     mon17.setBackgroundColor(color);
                     mon13.setText(timetableData.getClassname());
+                    mon13.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     mon12.setBackgroundColor(color);
                     mon13.setBackgroundColor(color);
@@ -1058,6 +1264,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon16.setBackgroundColor(color);
                     mon17.setBackgroundColor(color);
                     mon12.setText(timetableData.getClassname());
+                    mon12.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
@@ -1067,6 +1274,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon16.setBackgroundColor(color);
                     mon17.setBackgroundColor(color);
                     mon11.setText(timetableData.getClassname());
+                    mon11.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     mon10.setBackgroundColor(color);
                     mon11.setBackgroundColor(color);
@@ -1077,26 +1285,31 @@ public class TimetableActivity extends AppCompatActivity {
                     mon16.setBackgroundColor(color);
                     mon17.setBackgroundColor(color);
                     mon10.setText(timetableData.getClassname());
+                    mon10.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 18.0) {
                 if (cellCount == 0.5) {
                     mon18.setBackgroundColor(color);
                     mon18.setText(timetableData.getClassname());
+                    mon18.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     mon17.setBackgroundColor(color);
                     mon18.setBackgroundColor(color);
                     mon17.setText(timetableData.getClassname());
+                    mon17.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     mon16.setBackgroundColor(color);
                     mon17.setBackgroundColor(color);
                     mon18.setBackgroundColor(color);
                     mon16.setText(timetableData.getClassname());
+                    mon16.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     mon15.setBackgroundColor(color);
                     mon16.setBackgroundColor(color);
                     mon17.setBackgroundColor(color);
                     mon18.setBackgroundColor(color);
                     mon15.setText(timetableData.getClassname());
+                    mon15.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     mon14.setBackgroundColor(color);
                     mon15.setBackgroundColor(color);
@@ -1104,6 +1317,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon17.setBackgroundColor(color);
                     mon18.setBackgroundColor(color);
                     mon14.setText(timetableData.getClassname());
+                    mon14.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     mon13.setBackgroundColor(color);
                     mon14.setBackgroundColor(color);
@@ -1112,6 +1326,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon17.setBackgroundColor(color);
                     mon18.setBackgroundColor(color);
                     mon13.setText(timetableData.getClassname());
+                    mon13.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     mon12.setBackgroundColor(color);
                     mon13.setBackgroundColor(color);
@@ -1121,6 +1336,7 @@ public class TimetableActivity extends AppCompatActivity {
                     mon17.setBackgroundColor(color);
                     mon18.setBackgroundColor(color);
                     mon12.setText(timetableData.getClassname());
+                    mon12.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     mon11.setBackgroundColor(color);
                     mon12.setBackgroundColor(color);
@@ -1131,19 +1347,33 @@ public class TimetableActivity extends AppCompatActivity {
                     mon17.setBackgroundColor(color);
                     mon18.setBackgroundColor(color);
                     mon11.setText(timetableData.getClassname());
+                    mon11.setTag(timetableData.getClassid());
                 }
             }
             if (((ColorDrawable) mon1.getBackground()).getColor() != -1) {
                 mon1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon1.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1151,13 +1381,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon2.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1165,13 +1408,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon3.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1179,13 +1435,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon4.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon4.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1193,13 +1462,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon5.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon5.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1207,13 +1489,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon6.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon6.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1221,13 +1516,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon7.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon7.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1235,13 +1543,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon8.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon8.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1249,13 +1570,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon9.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon9.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1263,13 +1597,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon10.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon10.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1277,13 +1624,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon11.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon11.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1291,13 +1651,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon12.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon12.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1305,13 +1678,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon13.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon13.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1319,13 +1705,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon14.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon14.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1333,13 +1732,29 @@ public class TimetableActivity extends AppCompatActivity {
                 mon15.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+
+                            String classID = timetablemap.get(i).getClassid();
+                            Log.i(TAG, "onClick: "+classID);
+                            Log.i(TAG, "onClick: "+mon15.getTag());
+                            if(classID==mon15.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1347,13 +1762,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon16.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon16.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1361,13 +1789,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon17.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon17.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1375,13 +1816,26 @@ public class TimetableActivity extends AppCompatActivity {
                 mon18.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog alertDialog;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
-                        builder.setNegativeButton("닫기", null);
-                        alertDialog = builder.create();
-                        alertDialog.show();
+                        for (int i = 0; i < timetablemap.size(); i++) {
+                            String classID = timetablemap.get(i).getClassid();
+                            if(classID==mon18.getTag()){
+                                AlertDialog alertDialog;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
+                                builder.setTitle(timetablemap.get(i).getClassname() + " (" + timetablemap.get(i).getProfessor() + ")")
+                                        .setMessage(timetablemap.get(i).getClasstime() + "\n" + timetablemap.get(i).getClasslocation());
+                                builder.setNegativeButton("닫기", null);
+                                builder.setNeutralButton("삭제", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        removeClass(classID);
+                                    }
+
+                                });
+                                builder.setNegativeButton("닫기", null);
+                                alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }
                     }
                 });
             }
@@ -1392,68 +1846,82 @@ public class TimetableActivity extends AppCompatActivity {
                     tue1.setBackgroundColor(color);
                 }
                 tue1.setText(timetableData.getClassname());
+                tue1.setTag(timetableData.getClassid());
             } else if (lastTime == 10.0) {
                 if (cellCount == 0.5) {
                     tue2.setBackgroundColor(color);
                     tue2.setText(timetableData.getClassname());
+                    tue2.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue1.setBackgroundColor(color);
                     tue2.setBackgroundColor(color);
                     tue1.setText(timetableData.getClassname());
+                    tue1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 10.5) {
                 if (cellCount == 0.5) {
                     tue3.setBackgroundColor(color);
                     tue3.setText(timetableData.getClassname());
+                    tue3.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue2.setBackgroundColor(color);
                     tue3.setBackgroundColor(color);
                     tue2.setText(timetableData.getClassname());
+                    tue2.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue1.setBackgroundColor(color);
                     tue2.setBackgroundColor(color);
                     tue3.setBackgroundColor(color);
                     tue1.setText(timetableData.getClassname());
+                    tue1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 11.0) {
                 if (cellCount == 0.5) {
                     tue4.setBackgroundColor(color);
                     tue4.setText(timetableData.getClassname());
+                    tue4.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue3.setBackgroundColor(color);
                     tue4.setBackgroundColor(color);
                     tue3.setText(timetableData.getClassname());
+                    tue3.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue2.setBackgroundColor(color);
                     tue3.setBackgroundColor(color);
                     tue4.setBackgroundColor(color);
                     tue2.setText(timetableData.getClassname());
+                    tue2.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue1.setBackgroundColor(color);
                     tue2.setBackgroundColor(color);
                     tue3.setBackgroundColor(color);
                     tue4.setBackgroundColor(color);
                     tue1.setText(timetableData.getClassname());
+                    tue1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 11.5) {
                 if (cellCount == 0.5) {
                     tue5.setBackgroundColor(color);
                     tue5.setText(timetableData.getClassname());
+                    tue5.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue4.setBackgroundColor(color);
                     tue5.setBackgroundColor(color);
                     tue4.setText(timetableData.getClassname());
+                    tue4.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue3.setBackgroundColor(color);
                     tue4.setBackgroundColor(color);
                     tue5.setBackgroundColor(color);
                     tue3.setText(timetableData.getClassname());
+                    tue3.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue2.setBackgroundColor(color);
                     tue3.setBackgroundColor(color);
                     tue4.setBackgroundColor(color);
                     tue5.setBackgroundColor(color);
                     tue2.setText(timetableData.getClassname());
+                    tue2.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue1.setBackgroundColor(color);
                     tue2.setBackgroundColor(color);
@@ -1461,26 +1929,31 @@ public class TimetableActivity extends AppCompatActivity {
                     tue4.setBackgroundColor(color);
                     tue5.setBackgroundColor(color);
                     tue1.setText(timetableData.getClassname());
+                    tue1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 12.0) {
                 if (cellCount == 0.5) {
                     tue6.setBackgroundColor(color);
                     tue6.setText(timetableData.getClassname());
+                    tue6.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue5.setBackgroundColor(color);
                     tue6.setBackgroundColor(color);
                     tue5.setText(timetableData.getClassname());
+                    tue5.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue4.setBackgroundColor(color);
                     tue5.setBackgroundColor(color);
                     tue6.setBackgroundColor(color);
                     tue4.setText(timetableData.getClassname());
+                    tue4.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue3.setBackgroundColor(color);
                     tue4.setBackgroundColor(color);
                     tue5.setBackgroundColor(color);
                     tue6.setBackgroundColor(color);
                     tue3.setText(timetableData.getClassname());
+                    tue3.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue2.setBackgroundColor(color);
                     tue3.setBackgroundColor(color);
@@ -1488,6 +1961,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue5.setBackgroundColor(color);
                     tue6.setBackgroundColor(color);
                     tue2.setText(timetableData.getClassname());
+                    tue2.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     tue1.setBackgroundColor(color);
                     tue2.setBackgroundColor(color);
@@ -1496,26 +1970,31 @@ public class TimetableActivity extends AppCompatActivity {
                     tue5.setBackgroundColor(color);
                     tue6.setBackgroundColor(color);
                     tue1.setText(timetableData.getClassname());
+                    tue1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 12.5) {
                 if (cellCount == 0.5) {
                     tue7.setBackgroundColor(color);
                     tue7.setText(timetableData.getClassname());
+                    tue7.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue6.setBackgroundColor(color);
                     tue7.setBackgroundColor(color);
                     tue6.setText(timetableData.getClassname());
+                    tue6.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue5.setBackgroundColor(color);
                     tue6.setBackgroundColor(color);
                     tue7.setBackgroundColor(color);
                     tue5.setText(timetableData.getClassname());
+                    tue5.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue4.setBackgroundColor(color);
                     tue5.setBackgroundColor(color);
                     tue6.setBackgroundColor(color);
                     tue7.setBackgroundColor(color);
                     tue4.setText(timetableData.getClassname());
+                    tue4.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue3.setBackgroundColor(color);
                     tue4.setBackgroundColor(color);
@@ -1523,6 +2002,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue6.setBackgroundColor(color);
                     tue7.setBackgroundColor(color);
                     tue3.setText(timetableData.getClassname());
+                    tue3.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     tue2.setBackgroundColor(color);
                     tue3.setBackgroundColor(color);
@@ -1531,6 +2011,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue6.setBackgroundColor(color);
                     tue7.setBackgroundColor(color);
                     tue2.setText(timetableData.getClassname());
+                    tue2.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     tue1.setBackgroundColor(color);
                     tue2.setBackgroundColor(color);
@@ -1540,26 +2021,31 @@ public class TimetableActivity extends AppCompatActivity {
                     tue6.setBackgroundColor(color);
                     tue7.setBackgroundColor(color);
                     tue1.setText(timetableData.getClassname());
+                    tue1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 13.0) {
                 if (cellCount == 0.5) {
                     tue8.setBackgroundColor(color);
                     tue8.setText(timetableData.getClassname());
+                    tue8.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
                     tue7.setText(timetableData.getClassname());
+                    tue7.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue6.setBackgroundColor(color);
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
                     tue6.setText(timetableData.getClassname());
+                    tue6.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue5.setBackgroundColor(color);
                     tue6.setBackgroundColor(color);
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
                     tue5.setText(timetableData.getClassname());
+                    tue5.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue4.setBackgroundColor(color);
                     tue5.setBackgroundColor(color);
@@ -1567,6 +2053,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
                     tue4.setText(timetableData.getClassname());
+                    tue4.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     tue3.setBackgroundColor(color);
                     tue4.setBackgroundColor(color);
@@ -1575,6 +2062,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
                     tue3.setText(timetableData.getClassname());
+                    tue3.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     tue2.setBackgroundColor(color);
                     tue3.setBackgroundColor(color);
@@ -1584,6 +2072,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
                     tue2.setText(timetableData.getClassname());
+                    tue2.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     tue1.setBackgroundColor(color);
                     tue2.setBackgroundColor(color);
@@ -1594,26 +2083,31 @@ public class TimetableActivity extends AppCompatActivity {
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
                     tue1.setText(timetableData.getClassname());
+                    tue1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 13.5) {
                 if (cellCount == 0.5) {
                     tue9.setBackgroundColor(color);
                     tue9.setText(timetableData.getClassname());
+                    tue9.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
                     tue8.setText(timetableData.getClassname());
+                    tue8.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
                     tue7.setText(timetableData.getClassname());
+                    tue7.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue6.setBackgroundColor(color);
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
                     tue6.setText(timetableData.getClassname());
+                    tue6.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue5.setBackgroundColor(color);
                     tue6.setBackgroundColor(color);
@@ -1621,6 +2115,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
                     tue5.setText(timetableData.getClassname());
+                    tue5.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     tue4.setBackgroundColor(color);
                     tue5.setBackgroundColor(color);
@@ -1629,6 +2124,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
                     tue4.setText(timetableData.getClassname());
+                    tue4.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     tue3.setBackgroundColor(color);
                     tue4.setBackgroundColor(color);
@@ -1638,6 +2134,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
                     tue3.setText(timetableData.getClassname());
+                    tue3.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     tue2.setBackgroundColor(color);
                     tue3.setBackgroundColor(color);
@@ -1648,26 +2145,31 @@ public class TimetableActivity extends AppCompatActivity {
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
                     tue2.setText(timetableData.getClassname());
+                    tue2.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 14.0) {
                 if (cellCount == 0.5) {
                     tue10.setBackgroundColor(color);
                     tue10.setText(timetableData.getClassname());
+                    tue10.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
                     tue9.setText(timetableData.getClassname());
+                    tue9.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
                     tue8.setText(timetableData.getClassname());
+                    tue8.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
                     tue7.setText(timetableData.getClassname());
+                    tue7.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue6.setBackgroundColor(color);
                     tue7.setBackgroundColor(color);
@@ -1675,6 +2177,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
                     tue6.setText(timetableData.getClassname());
+                    tue6.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     tue5.setBackgroundColor(color);
                     tue6.setBackgroundColor(color);
@@ -1683,6 +2186,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
                     tue5.setText(timetableData.getClassname());
+                    tue5.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     tue4.setBackgroundColor(color);
                     tue5.setBackgroundColor(color);
@@ -1692,6 +2196,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
                     tue4.setText(timetableData.getClassname());
+                    tue4.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     tue3.setBackgroundColor(color);
                     tue4.setBackgroundColor(color);
@@ -1702,26 +2207,31 @@ public class TimetableActivity extends AppCompatActivity {
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
                     tue3.setText(timetableData.getClassname());
+                    tue3.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 14.5) {
                 if (cellCount == 0.5) {
                     tue11.setBackgroundColor(color);
                     tue11.setText(timetableData.getClassname());
+                    tue11.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
                     tue10.setText(timetableData.getClassname());
+                    tue10.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
                     tue9.setText(timetableData.getClassname());
+                    tue9.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
                     tue8.setText(timetableData.getClassname());
+                    tue8.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
@@ -1729,6 +2239,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
                     tue7.setText(timetableData.getClassname());
+                    tue7.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     tue6.setBackgroundColor(color);
                     tue7.setBackgroundColor(color);
@@ -1737,6 +2248,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
                     tue6.setText(timetableData.getClassname());
+                    tue6.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     tue5.setBackgroundColor(color);
                     tue6.setBackgroundColor(color);
@@ -1746,6 +2258,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
                     tue5.setText(timetableData.getClassname());
+                    tue5.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     tue4.setBackgroundColor(color);
                     tue5.setBackgroundColor(color);
@@ -1756,26 +2269,31 @@ public class TimetableActivity extends AppCompatActivity {
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
                     tue4.setText(timetableData.getClassname());
+                    tue4.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 15.0) {
                 if (cellCount == 0.5) {
                     tue12.setBackgroundColor(color);
                     tue12.setText(timetableData.getClassname());
+                    tue12.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
                     tue11.setText(timetableData.getClassname());
+                    tue11.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
                     tue10.setText(timetableData.getClassname());
+                    tue10.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
                     tue9.setText(timetableData.getClassname());
+                    tue9.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
@@ -1783,6 +2301,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
                     tue8.setText(timetableData.getClassname());
+                    tue8.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
@@ -1791,6 +2310,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
                     tue7.setText(timetableData.getClassname());
+                    tue7.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     tue6.setBackgroundColor(color);
                     tue7.setBackgroundColor(color);
@@ -1800,6 +2320,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
                     tue6.setText(timetableData.getClassname());
+                    tue6.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     tue5.setBackgroundColor(color);
                     tue6.setBackgroundColor(color);
@@ -1810,26 +2331,31 @@ public class TimetableActivity extends AppCompatActivity {
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
                     tue5.setText(timetableData.getClassname());
+                    tue5.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 15.5) {
                 if (cellCount == 0.5) {
                     tue13.setBackgroundColor(color);
                     tue13.setText(timetableData.getClassname());
+                    tue13.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue12.setBackgroundColor(color);
                     tue13.setBackgroundColor(color);
                     tue12.setText(timetableData.getClassname());
+                    tue12.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
                     tue13.setBackgroundColor(color);
                     tue11.setText(timetableData.getClassname());
+                    tue11.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
                     tue13.setBackgroundColor(color);
                     tue10.setText(timetableData.getClassname());
+                    tue10.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
@@ -1837,6 +2363,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue12.setBackgroundColor(color);
                     tue13.setBackgroundColor(color);
                     tue9.setText(timetableData.getClassname());
+                    tue9.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
@@ -1845,6 +2372,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue12.setBackgroundColor(color);
                     tue13.setBackgroundColor(color);
                     tue8.setText(timetableData.getClassname());
+                    tue8.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
@@ -1854,6 +2382,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue12.setBackgroundColor(color);
                     tue13.setBackgroundColor(color);
                     tue7.setText(timetableData.getClassname());
+                    tue7.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     tue6.setBackgroundColor(color);
                     tue7.setBackgroundColor(color);
@@ -1864,26 +2393,31 @@ public class TimetableActivity extends AppCompatActivity {
                     tue12.setBackgroundColor(color);
                     tue13.setBackgroundColor(color);
                     tue6.setText(timetableData.getClassname());
+                    tue6.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 16.0) {
                 if (cellCount == 0.5) {
                     tue14.setBackgroundColor(color);
                     tue14.setText(timetableData.getClassname());
+                    tue14.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue13.setBackgroundColor(color);
                     tue14.setBackgroundColor(color);
                     tue13.setText(timetableData.getClassname());
+                    tue13.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue12.setBackgroundColor(color);
                     tue13.setBackgroundColor(color);
                     tue14.setBackgroundColor(color);
                     tue12.setText(timetableData.getClassname());
+                    tue12.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
                     tue13.setBackgroundColor(color);
                     tue14.setBackgroundColor(color);
                     tue11.setText(timetableData.getClassname());
+                    tue11.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
@@ -1891,6 +2425,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue13.setBackgroundColor(color);
                     tue14.setBackgroundColor(color);
                     tue10.setText(timetableData.getClassname());
+                    tue10.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
@@ -1899,6 +2434,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue13.setBackgroundColor(color);
                     tue14.setBackgroundColor(color);
                     tue9.setText(timetableData.getClassname());
+                    tue9.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
@@ -1908,6 +2444,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue13.setBackgroundColor(color);
                     tue14.setBackgroundColor(color);
                     tue8.setText(timetableData.getClassname());
+                    tue8.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     tue7.setBackgroundColor(color);
                     tue8.setBackgroundColor(color);
@@ -1918,26 +2455,31 @@ public class TimetableActivity extends AppCompatActivity {
                     tue13.setBackgroundColor(color);
                     tue14.setBackgroundColor(color);
                     tue7.setText(timetableData.getClassname());
+                    tue7.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 16.5) {
                 if (cellCount == 0.5) {
                     tue15.setBackgroundColor(color);
                     tue15.setText(timetableData.getClassname());
+                    tue15.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue14.setBackgroundColor(color);
                     tue15.setBackgroundColor(color);
                     tue14.setText(timetableData.getClassname());
+                    tue14.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue13.setBackgroundColor(color);
                     tue14.setBackgroundColor(color);
                     tue15.setBackgroundColor(color);
                     tue13.setText(timetableData.getClassname());
+                    tue13.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue12.setBackgroundColor(color);
                     tue13.setBackgroundColor(color);
                     tue14.setBackgroundColor(color);
                     tue15.setBackgroundColor(color);
                     tue12.setText(timetableData.getClassname());
+                    tue12.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
@@ -1945,6 +2487,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue14.setBackgroundColor(color);
                     tue15.setBackgroundColor(color);
                     tue11.setText(timetableData.getClassname());
+                    tue11.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
@@ -1953,6 +2496,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue14.setBackgroundColor(color);
                     tue15.setBackgroundColor(color);
                     tue10.setText(timetableData.getClassname());
+                    tue10.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
@@ -1962,6 +2506,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue14.setBackgroundColor(color);
                     tue15.setBackgroundColor(color);
                     tue9.setText(timetableData.getClassname());
+                    tue9.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     tue8.setBackgroundColor(color);
                     tue9.setBackgroundColor(color);
@@ -1972,26 +2517,31 @@ public class TimetableActivity extends AppCompatActivity {
                     tue14.setBackgroundColor(color);
                     tue15.setBackgroundColor(color);
                     tue8.setText(timetableData.getClassname());
+                    tue8.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 17.0) {
                 if (cellCount == 0.5) {
                     tue16.setBackgroundColor(color);
                     tue16.setText(timetableData.getClassname());
+                    tue16.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue15.setBackgroundColor(color);
                     tue16.setBackgroundColor(color);
                     tue15.setText(timetableData.getClassname());
+                    tue15.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue14.setBackgroundColor(color);
                     tue15.setBackgroundColor(color);
                     tue16.setBackgroundColor(color);
                     tue14.setText(timetableData.getClassname());
+                    tue14.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue13.setBackgroundColor(color);
                     tue14.setBackgroundColor(color);
                     tue15.setBackgroundColor(color);
                     tue16.setBackgroundColor(color);
                     tue13.setText(timetableData.getClassname());
+                    tue13.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue12.setBackgroundColor(color);
                     tue13.setBackgroundColor(color);
@@ -1999,6 +2549,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue15.setBackgroundColor(color);
                     tue16.setBackgroundColor(color);
                     tue12.setText(timetableData.getClassname());
+                    tue12.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
@@ -2007,6 +2558,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue15.setBackgroundColor(color);
                     tue16.setBackgroundColor(color);
                     tue11.setText(timetableData.getClassname());
+                    tue11.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
@@ -2016,6 +2568,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue15.setBackgroundColor(color);
                     tue16.setBackgroundColor(color);
                     tue10.setText(timetableData.getClassname());
+                    tue10.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     tue9.setBackgroundColor(color);
                     tue10.setBackgroundColor(color);
@@ -2026,26 +2579,31 @@ public class TimetableActivity extends AppCompatActivity {
                     tue15.setBackgroundColor(color);
                     tue16.setBackgroundColor(color);
                     tue9.setText(timetableData.getClassname());
+                    tue9.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 17.5) {
                 if (cellCount == 0.5) {
                     tue17.setBackgroundColor(color);
                     tue17.setText(timetableData.getClassname());
+                    tue17.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue16.setBackgroundColor(color);
                     tue17.setBackgroundColor(color);
                     tue16.setText(timetableData.getClassname());
+                    tue16.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue15.setBackgroundColor(color);
                     tue16.setBackgroundColor(color);
                     tue17.setBackgroundColor(color);
                     tue15.setText(timetableData.getClassname());
+                    tue15.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue14.setBackgroundColor(color);
                     tue15.setBackgroundColor(color);
                     tue16.setBackgroundColor(color);
                     tue17.setBackgroundColor(color);
                     tue14.setText(timetableData.getClassname());
+                    tue14.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue13.setBackgroundColor(color);
                     tue14.setBackgroundColor(color);
@@ -2053,6 +2611,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue16.setBackgroundColor(color);
                     tue17.setBackgroundColor(color);
                     tue13.setText(timetableData.getClassname());
+                    tue13.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     tue12.setBackgroundColor(color);
                     tue13.setBackgroundColor(color);
@@ -2061,6 +2620,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue16.setBackgroundColor(color);
                     tue17.setBackgroundColor(color);
                     tue12.setText(timetableData.getClassname());
+                    tue12.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
@@ -2070,6 +2630,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue16.setBackgroundColor(color);
                     tue17.setBackgroundColor(color);
                     tue11.setText(timetableData.getClassname());
+                    tue11.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     tue10.setBackgroundColor(color);
                     tue11.setBackgroundColor(color);
@@ -2080,26 +2641,31 @@ public class TimetableActivity extends AppCompatActivity {
                     tue16.setBackgroundColor(color);
                     tue17.setBackgroundColor(color);
                     tue10.setText(timetableData.getClassname());
+                    tue10.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 18.0) {
                 if (cellCount == 0.5) {
                     tue18.setBackgroundColor(color);
                     tue18.setText(timetableData.getClassname());
+                    tue18.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     tue17.setBackgroundColor(color);
                     tue18.setBackgroundColor(color);
                     tue17.setText(timetableData.getClassname());
+                    tue17.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     tue16.setBackgroundColor(color);
                     tue17.setBackgroundColor(color);
                     tue18.setBackgroundColor(color);
                     tue16.setText(timetableData.getClassname());
+                    tue16.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     tue15.setBackgroundColor(color);
                     tue16.setBackgroundColor(color);
                     tue17.setBackgroundColor(color);
                     tue18.setBackgroundColor(color);
                     tue15.setText(timetableData.getClassname());
+                    tue15.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     tue14.setBackgroundColor(color);
                     tue15.setBackgroundColor(color);
@@ -2107,6 +2673,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue17.setBackgroundColor(color);
                     tue18.setBackgroundColor(color);
                     tue14.setText(timetableData.getClassname());
+                    tue14.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     tue13.setBackgroundColor(color);
                     tue14.setBackgroundColor(color);
@@ -2115,6 +2682,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue17.setBackgroundColor(color);
                     tue18.setBackgroundColor(color);
                     tue13.setText(timetableData.getClassname());
+                    tue13.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     tue12.setBackgroundColor(color);
                     tue13.setBackgroundColor(color);
@@ -2124,6 +2692,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue17.setBackgroundColor(color);
                     tue18.setBackgroundColor(color);
                     tue12.setText(timetableData.getClassname());
+                    tue12.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     tue11.setBackgroundColor(color);
                     tue12.setBackgroundColor(color);
@@ -2134,6 +2703,7 @@ public class TimetableActivity extends AppCompatActivity {
                     tue17.setBackgroundColor(color);
                     tue18.setBackgroundColor(color);
                     tue11.setText(timetableData.getClassname());
+                    tue11.setTag(timetableData.getClassid());
                 }
             }
             if (((ColorDrawable) tue1.getBackground()).getColor() != -1) {
@@ -2142,8 +2712,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2156,8 +2726,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2170,8 +2740,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2184,8 +2754,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2198,8 +2768,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2212,8 +2782,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2226,8 +2796,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2240,8 +2810,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2254,8 +2824,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2268,8 +2838,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2282,8 +2852,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2296,8 +2866,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2310,8 +2880,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2324,8 +2894,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2338,8 +2908,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2352,8 +2922,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2366,8 +2936,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2380,8 +2950,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -2395,68 +2965,82 @@ public class TimetableActivity extends AppCompatActivity {
                     wed1.setBackgroundColor(color);
                 }
                 wed1.setText(timetableData.getClassname());
+                wed1.setTag(timetableData.getClassid());
             } else if (lastTime == 10.0) {
                 if (cellCount == 0.5) {
                     wed2.setBackgroundColor(color);
                     wed2.setText(timetableData.getClassname());
+                    wed2.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed1.setBackgroundColor(color);
                     wed2.setBackgroundColor(color);
                     wed1.setText(timetableData.getClassname());
+                    wed1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 10.5) {
                 if (cellCount == 0.5) {
                     wed3.setBackgroundColor(color);
                     wed3.setText(timetableData.getClassname());
+                    wed3.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed2.setBackgroundColor(color);
                     wed3.setBackgroundColor(color);
                     wed2.setText(timetableData.getClassname());
+                    wed2.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed1.setBackgroundColor(color);
                     wed2.setBackgroundColor(color);
                     wed3.setBackgroundColor(color);
                     wed1.setText(timetableData.getClassname());
+                    wed1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 11.0) {
                 if (cellCount == 0.5) {
                     wed4.setBackgroundColor(color);
                     wed4.setText(timetableData.getClassname());
+                    wed4.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed3.setBackgroundColor(color);
                     wed4.setBackgroundColor(color);
                     wed3.setText(timetableData.getClassname());
+                    wed3.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed2.setBackgroundColor(color);
                     wed3.setBackgroundColor(color);
                     wed4.setBackgroundColor(color);
                     wed2.setText(timetableData.getClassname());
+                    wed2.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed1.setBackgroundColor(color);
                     wed2.setBackgroundColor(color);
                     wed3.setBackgroundColor(color);
                     wed4.setBackgroundColor(color);
                     wed1.setText(timetableData.getClassname());
+                    wed1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 11.5) {
                 if (cellCount == 0.5) {
                     wed5.setBackgroundColor(color);
                     wed5.setText(timetableData.getClassname());
+                    wed5.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed4.setBackgroundColor(color);
                     wed5.setBackgroundColor(color);
                     wed4.setText(timetableData.getClassname());
+                    wed4.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed3.setBackgroundColor(color);
                     wed4.setBackgroundColor(color);
                     wed5.setBackgroundColor(color);
                     wed3.setText(timetableData.getClassname());
+                    wed3.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed2.setBackgroundColor(color);
                     wed3.setBackgroundColor(color);
                     wed4.setBackgroundColor(color);
                     wed5.setBackgroundColor(color);
                     wed2.setText(timetableData.getClassname());
+                    wed2.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed1.setBackgroundColor(color);
                     wed2.setBackgroundColor(color);
@@ -2464,26 +3048,31 @@ public class TimetableActivity extends AppCompatActivity {
                     wed4.setBackgroundColor(color);
                     wed5.setBackgroundColor(color);
                     wed1.setText(timetableData.getClassname());
+                    wed1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 12.0) {
                 if (cellCount == 0.5) {
                     wed6.setBackgroundColor(color);
                     wed6.setText(timetableData.getClassname());
+                    wed6.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed5.setBackgroundColor(color);
                     wed6.setBackgroundColor(color);
                     wed5.setText(timetableData.getClassname());
+                    wed5.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed4.setBackgroundColor(color);
                     wed5.setBackgroundColor(color);
                     wed6.setBackgroundColor(color);
                     wed4.setText(timetableData.getClassname());
+                    wed4.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed3.setBackgroundColor(color);
                     wed4.setBackgroundColor(color);
                     wed5.setBackgroundColor(color);
                     wed6.setBackgroundColor(color);
                     wed3.setText(timetableData.getClassname());
+                    wed3.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed2.setBackgroundColor(color);
                     wed3.setBackgroundColor(color);
@@ -2491,6 +3080,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed5.setBackgroundColor(color);
                     wed6.setBackgroundColor(color);
                     wed2.setText(timetableData.getClassname());
+                    wed2.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     wed1.setBackgroundColor(color);
                     wed2.setBackgroundColor(color);
@@ -2499,26 +3089,31 @@ public class TimetableActivity extends AppCompatActivity {
                     wed5.setBackgroundColor(color);
                     wed6.setBackgroundColor(color);
                     wed1.setText(timetableData.getClassname());
+                    wed1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 12.5) {
                 if (cellCount == 0.5) {
                     wed7.setBackgroundColor(color);
                     wed7.setText(timetableData.getClassname());
+                    wed7.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed6.setBackgroundColor(color);
                     wed7.setBackgroundColor(color);
                     wed6.setText(timetableData.getClassname());
+                    wed6.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed5.setBackgroundColor(color);
                     wed6.setBackgroundColor(color);
                     wed7.setBackgroundColor(color);
                     wed5.setText(timetableData.getClassname());
+                    wed5.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed4.setBackgroundColor(color);
                     wed5.setBackgroundColor(color);
                     wed6.setBackgroundColor(color);
                     wed7.setBackgroundColor(color);
                     wed4.setText(timetableData.getClassname());
+                    wed4.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed3.setBackgroundColor(color);
                     wed4.setBackgroundColor(color);
@@ -2526,6 +3121,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed6.setBackgroundColor(color);
                     wed7.setBackgroundColor(color);
                     wed3.setText(timetableData.getClassname());
+                    wed3.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     wed2.setBackgroundColor(color);
                     wed3.setBackgroundColor(color);
@@ -2534,6 +3130,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed6.setBackgroundColor(color);
                     wed7.setBackgroundColor(color);
                     wed2.setText(timetableData.getClassname());
+                    wed2.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     wed1.setBackgroundColor(color);
                     wed2.setBackgroundColor(color);
@@ -2543,26 +3140,31 @@ public class TimetableActivity extends AppCompatActivity {
                     wed6.setBackgroundColor(color);
                     wed7.setBackgroundColor(color);
                     wed1.setText(timetableData.getClassname());
+                    wed1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 13.0) {
                 if (cellCount == 0.5) {
                     wed8.setBackgroundColor(color);
                     wed8.setText(timetableData.getClassname());
+                    wed8.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
                     wed7.setText(timetableData.getClassname());
+                    wed7.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed6.setBackgroundColor(color);
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
                     wed6.setText(timetableData.getClassname());
+                    wed6.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed5.setBackgroundColor(color);
                     wed6.setBackgroundColor(color);
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
                     wed5.setText(timetableData.getClassname());
+                    wed5.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed4.setBackgroundColor(color);
                     wed5.setBackgroundColor(color);
@@ -2570,6 +3172,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
                     wed4.setText(timetableData.getClassname());
+                    wed4.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     wed3.setBackgroundColor(color);
                     wed4.setBackgroundColor(color);
@@ -2578,6 +3181,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
                     wed3.setText(timetableData.getClassname());
+                    wed3.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     wed2.setBackgroundColor(color);
                     wed3.setBackgroundColor(color);
@@ -2587,6 +3191,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
                     wed2.setText(timetableData.getClassname());
+                    wed2.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     wed1.setBackgroundColor(color);
                     wed2.setBackgroundColor(color);
@@ -2597,26 +3202,31 @@ public class TimetableActivity extends AppCompatActivity {
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
                     wed1.setText(timetableData.getClassname());
+                    wed1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 13.5) {
                 if (cellCount == 0.5) {
                     wed9.setBackgroundColor(color);
                     wed9.setText(timetableData.getClassname());
+                    wed9.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
                     wed8.setText(timetableData.getClassname());
+                    wed8.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
                     wed7.setText(timetableData.getClassname());
+                    wed7.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed6.setBackgroundColor(color);
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
                     wed6.setText(timetableData.getClassname());
+                    wed6.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed5.setBackgroundColor(color);
                     wed6.setBackgroundColor(color);
@@ -2624,6 +3234,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
                     wed5.setText(timetableData.getClassname());
+                    wed5.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     wed4.setBackgroundColor(color);
                     wed5.setBackgroundColor(color);
@@ -2632,6 +3243,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
                     wed4.setText(timetableData.getClassname());
+                    wed4.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     wed3.setBackgroundColor(color);
                     wed4.setBackgroundColor(color);
@@ -2641,6 +3253,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
                     wed3.setText(timetableData.getClassname());
+                    wed3.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     wed2.setBackgroundColor(color);
                     wed3.setBackgroundColor(color);
@@ -2651,26 +3264,31 @@ public class TimetableActivity extends AppCompatActivity {
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
                     wed2.setText(timetableData.getClassname());
+                    wed2.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 14.0) {
                 if (cellCount == 0.5) {
                     wed10.setBackgroundColor(color);
                     wed10.setText(timetableData.getClassname());
+                    wed10.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
                     wed9.setText(timetableData.getClassname());
+                    wed9.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
                     wed8.setText(timetableData.getClassname());
+                    wed8.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
                     wed7.setText(timetableData.getClassname());
+                    wed7.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed6.setBackgroundColor(color);
                     wed7.setBackgroundColor(color);
@@ -2678,6 +3296,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
                     wed6.setText(timetableData.getClassname());
+                    wed6.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     wed5.setBackgroundColor(color);
                     wed6.setBackgroundColor(color);
@@ -2686,6 +3305,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
                     wed5.setText(timetableData.getClassname());
+                    wed5.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     wed4.setBackgroundColor(color);
                     wed5.setBackgroundColor(color);
@@ -2695,6 +3315,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
                     wed4.setText(timetableData.getClassname());
+                    wed4.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     wed3.setBackgroundColor(color);
                     wed4.setBackgroundColor(color);
@@ -2705,26 +3326,31 @@ public class TimetableActivity extends AppCompatActivity {
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
                     wed3.setText(timetableData.getClassname());
+                    wed3.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 14.5) {
                 if (cellCount == 0.5) {
                     wed11.setBackgroundColor(color);
                     wed11.setText(timetableData.getClassname());
+                    wed11.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
                     wed10.setText(timetableData.getClassname());
+                    wed10.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
                     wed9.setText(timetableData.getClassname());
+                    wed9.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
                     wed8.setText(timetableData.getClassname());
+                    wed8.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
@@ -2732,6 +3358,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
                     wed7.setText(timetableData.getClassname());
+                    wed7.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     wed6.setBackgroundColor(color);
                     wed7.setBackgroundColor(color);
@@ -2740,6 +3367,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
                     wed6.setText(timetableData.getClassname());
+                    wed6.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     wed5.setBackgroundColor(color);
                     wed6.setBackgroundColor(color);
@@ -2749,6 +3377,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
                     wed5.setText(timetableData.getClassname());
+                    wed5.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     wed4.setBackgroundColor(color);
                     wed5.setBackgroundColor(color);
@@ -2759,26 +3388,31 @@ public class TimetableActivity extends AppCompatActivity {
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
                     wed4.setText(timetableData.getClassname());
+                    wed4.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 15.0) {
                 if (cellCount == 0.5) {
                     wed12.setBackgroundColor(color);
                     wed12.setText(timetableData.getClassname());
+                    wed12.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
                     wed11.setText(timetableData.getClassname());
+                    wed11.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
                     wed10.setText(timetableData.getClassname());
+                    wed10.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
                     wed9.setText(timetableData.getClassname());
+                    wed9.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
@@ -2786,6 +3420,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
                     wed8.setText(timetableData.getClassname());
+                    wed8.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
@@ -2794,6 +3429,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
                     wed7.setText(timetableData.getClassname());
+                    wed7.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     wed6.setBackgroundColor(color);
                     wed7.setBackgroundColor(color);
@@ -2803,6 +3439,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
                     wed6.setText(timetableData.getClassname());
+                    wed6.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     wed5.setBackgroundColor(color);
                     wed6.setBackgroundColor(color);
@@ -2813,26 +3450,31 @@ public class TimetableActivity extends AppCompatActivity {
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
                     wed5.setText(timetableData.getClassname());
+                    wed5.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 15.5) {
                 if (cellCount == 0.5) {
                     wed13.setBackgroundColor(color);
                     wed13.setText(timetableData.getClassname());
+                    wed13.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed12.setBackgroundColor(color);
                     wed13.setBackgroundColor(color);
                     wed12.setText(timetableData.getClassname());
+                    wed12.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
                     wed13.setBackgroundColor(color);
                     wed11.setText(timetableData.getClassname());
+                    wed11.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
                     wed13.setBackgroundColor(color);
                     wed10.setText(timetableData.getClassname());
+                    wed10.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
@@ -2840,6 +3482,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed12.setBackgroundColor(color);
                     wed13.setBackgroundColor(color);
                     wed9.setText(timetableData.getClassname());
+                    wed9.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
@@ -2848,6 +3491,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed12.setBackgroundColor(color);
                     wed13.setBackgroundColor(color);
                     wed8.setText(timetableData.getClassname());
+                    wed8.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
@@ -2857,6 +3501,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed12.setBackgroundColor(color);
                     wed13.setBackgroundColor(color);
                     wed7.setText(timetableData.getClassname());
+                    wed7.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     wed6.setBackgroundColor(color);
                     wed7.setBackgroundColor(color);
@@ -2867,26 +3512,31 @@ public class TimetableActivity extends AppCompatActivity {
                     wed12.setBackgroundColor(color);
                     wed13.setBackgroundColor(color);
                     wed6.setText(timetableData.getClassname());
+                    wed6.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 16.0) {
                 if (cellCount == 0.5) {
                     wed14.setBackgroundColor(color);
                     wed14.setText(timetableData.getClassname());
+                    wed14.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed13.setBackgroundColor(color);
                     wed14.setBackgroundColor(color);
                     wed13.setText(timetableData.getClassname());
+                    wed13.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed12.setBackgroundColor(color);
                     wed13.setBackgroundColor(color);
                     wed14.setBackgroundColor(color);
                     wed12.setText(timetableData.getClassname());
+                    wed12.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
                     wed13.setBackgroundColor(color);
                     wed14.setBackgroundColor(color);
                     wed11.setText(timetableData.getClassname());
+                    wed11.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
@@ -2894,6 +3544,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed13.setBackgroundColor(color);
                     wed14.setBackgroundColor(color);
                     wed10.setText(timetableData.getClassname());
+                    wed10.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
@@ -2902,6 +3553,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed13.setBackgroundColor(color);
                     wed14.setBackgroundColor(color);
                     wed9.setText(timetableData.getClassname());
+                    wed9.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
@@ -2911,6 +3563,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed13.setBackgroundColor(color);
                     wed14.setBackgroundColor(color);
                     wed8.setText(timetableData.getClassname());
+                    wed8.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     wed7.setBackgroundColor(color);
                     wed8.setBackgroundColor(color);
@@ -2921,26 +3574,31 @@ public class TimetableActivity extends AppCompatActivity {
                     wed13.setBackgroundColor(color);
                     wed14.setBackgroundColor(color);
                     wed7.setText(timetableData.getClassname());
+                    wed7.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 16.5) {
                 if (cellCount == 0.5) {
                     wed15.setBackgroundColor(color);
                     wed15.setText(timetableData.getClassname());
+                    wed15.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed14.setBackgroundColor(color);
                     wed15.setBackgroundColor(color);
                     wed14.setText(timetableData.getClassname());
+                    wed14.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed13.setBackgroundColor(color);
                     wed14.setBackgroundColor(color);
                     wed15.setBackgroundColor(color);
                     wed13.setText(timetableData.getClassname());
+                    wed13.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed12.setBackgroundColor(color);
                     wed13.setBackgroundColor(color);
                     wed14.setBackgroundColor(color);
                     wed15.setBackgroundColor(color);
                     wed12.setText(timetableData.getClassname());
+                    wed12.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
@@ -2948,6 +3606,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed14.setBackgroundColor(color);
                     wed15.setBackgroundColor(color);
                     wed11.setText(timetableData.getClassname());
+                    wed11.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
@@ -2956,6 +3615,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed14.setBackgroundColor(color);
                     wed15.setBackgroundColor(color);
                     wed10.setText(timetableData.getClassname());
+                    wed10.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
@@ -2965,6 +3625,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed14.setBackgroundColor(color);
                     wed15.setBackgroundColor(color);
                     wed9.setText(timetableData.getClassname());
+                    wed9.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     wed8.setBackgroundColor(color);
                     wed9.setBackgroundColor(color);
@@ -2975,26 +3636,31 @@ public class TimetableActivity extends AppCompatActivity {
                     wed14.setBackgroundColor(color);
                     wed15.setBackgroundColor(color);
                     wed8.setText(timetableData.getClassname());
+                    wed8.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 17.0) {
                 if (cellCount == 0.5) {
                     wed16.setBackgroundColor(color);
                     wed16.setText(timetableData.getClassname());
+                    wed16.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed15.setBackgroundColor(color);
                     wed16.setBackgroundColor(color);
                     wed15.setText(timetableData.getClassname());
+                    wed15.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed14.setBackgroundColor(color);
                     wed15.setBackgroundColor(color);
                     wed16.setBackgroundColor(color);
                     wed14.setText(timetableData.getClassname());
+                    wed14.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed13.setBackgroundColor(color);
                     wed14.setBackgroundColor(color);
                     wed15.setBackgroundColor(color);
                     wed16.setBackgroundColor(color);
                     wed13.setText(timetableData.getClassname());
+                    wed13.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed12.setBackgroundColor(color);
                     wed13.setBackgroundColor(color);
@@ -3002,6 +3668,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed15.setBackgroundColor(color);
                     wed16.setBackgroundColor(color);
                     wed12.setText(timetableData.getClassname());
+                    wed12.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
@@ -3010,6 +3677,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed15.setBackgroundColor(color);
                     wed16.setBackgroundColor(color);
                     wed11.setText(timetableData.getClassname());
+                    wed11.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
@@ -3019,6 +3687,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed15.setBackgroundColor(color);
                     wed16.setBackgroundColor(color);
                     wed10.setText(timetableData.getClassname());
+                    wed10.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     wed9.setBackgroundColor(color);
                     wed10.setBackgroundColor(color);
@@ -3029,26 +3698,31 @@ public class TimetableActivity extends AppCompatActivity {
                     wed15.setBackgroundColor(color);
                     wed16.setBackgroundColor(color);
                     wed9.setText(timetableData.getClassname());
+                    wed9.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 17.5) {
                 if (cellCount == 0.5) {
                     wed17.setBackgroundColor(color);
                     wed17.setText(timetableData.getClassname());
+                    wed17.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed16.setBackgroundColor(color);
                     wed17.setBackgroundColor(color);
                     wed16.setText(timetableData.getClassname());
+                    wed16.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed15.setBackgroundColor(color);
                     wed16.setBackgroundColor(color);
                     wed17.setBackgroundColor(color);
                     wed15.setText(timetableData.getClassname());
+                    wed15.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed14.setBackgroundColor(color);
                     wed15.setBackgroundColor(color);
                     wed16.setBackgroundColor(color);
                     wed17.setBackgroundColor(color);
                     wed14.setText(timetableData.getClassname());
+                    wed14.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed13.setBackgroundColor(color);
                     wed14.setBackgroundColor(color);
@@ -3056,6 +3730,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed16.setBackgroundColor(color);
                     wed17.setBackgroundColor(color);
                     wed13.setText(timetableData.getClassname());
+                    wed13.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     wed12.setBackgroundColor(color);
                     wed13.setBackgroundColor(color);
@@ -3064,6 +3739,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed16.setBackgroundColor(color);
                     wed17.setBackgroundColor(color);
                     wed12.setText(timetableData.getClassname());
+                    wed12.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
@@ -3073,6 +3749,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed16.setBackgroundColor(color);
                     wed17.setBackgroundColor(color);
                     wed11.setText(timetableData.getClassname());
+                    wed11.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     wed10.setBackgroundColor(color);
                     wed11.setBackgroundColor(color);
@@ -3083,26 +3760,31 @@ public class TimetableActivity extends AppCompatActivity {
                     wed16.setBackgroundColor(color);
                     wed17.setBackgroundColor(color);
                     wed10.setText(timetableData.getClassname());
+                    wed10.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 18.0) {
                 if (cellCount == 0.5) {
                     wed18.setBackgroundColor(color);
                     wed18.setText(timetableData.getClassname());
+                    wed18.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     wed17.setBackgroundColor(color);
                     wed18.setBackgroundColor(color);
                     wed17.setText(timetableData.getClassname());
+                    wed17.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     wed16.setBackgroundColor(color);
                     wed17.setBackgroundColor(color);
                     wed18.setBackgroundColor(color);
                     wed16.setText(timetableData.getClassname());
+                    wed16.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     wed15.setBackgroundColor(color);
                     wed16.setBackgroundColor(color);
                     wed17.setBackgroundColor(color);
                     wed18.setBackgroundColor(color);
                     wed15.setText(timetableData.getClassname());
+                    wed15.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     wed14.setBackgroundColor(color);
                     wed15.setBackgroundColor(color);
@@ -3110,6 +3792,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed17.setBackgroundColor(color);
                     wed18.setBackgroundColor(color);
                     wed14.setText(timetableData.getClassname());
+                    wed14.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     wed13.setBackgroundColor(color);
                     wed14.setBackgroundColor(color);
@@ -3118,6 +3801,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed17.setBackgroundColor(color);
                     wed18.setBackgroundColor(color);
                     wed13.setText(timetableData.getClassname());
+                    wed13.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     wed12.setBackgroundColor(color);
                     wed13.setBackgroundColor(color);
@@ -3127,6 +3811,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed17.setBackgroundColor(color);
                     wed18.setBackgroundColor(color);
                     wed12.setText(timetableData.getClassname());
+                    wed12.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     wed11.setBackgroundColor(color);
                     wed12.setBackgroundColor(color);
@@ -3137,6 +3822,7 @@ public class TimetableActivity extends AppCompatActivity {
                     wed17.setBackgroundColor(color);
                     wed18.setBackgroundColor(color);
                     wed11.setText(timetableData.getClassname());
+                    wed11.setTag(timetableData.getClassid());
                 }
             }
             if (((ColorDrawable) wed1.getBackground()).getColor() != -1) {
@@ -3145,8 +3831,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3159,8 +3845,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3173,8 +3859,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3187,8 +3873,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3201,8 +3887,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3215,8 +3901,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3229,8 +3915,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3243,8 +3929,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3257,8 +3943,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3271,8 +3957,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3285,8 +3971,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3299,8 +3985,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3313,8 +3999,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3327,8 +4013,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3341,8 +4027,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3355,8 +4041,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3369,8 +4055,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3383,8 +4069,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -3398,68 +4084,82 @@ public class TimetableActivity extends AppCompatActivity {
                     thu1.setBackgroundColor(color);
                 }
                 thu1.setText(timetableData.getClassname());
+                thu1.setTag(timetableData.getClassid());
             } else if (lastTime == 10.0) {
                 if (cellCount == 0.5) {
                     thu2.setBackgroundColor(color);
                     thu2.setText(timetableData.getClassname());
+                    thu2.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu1.setBackgroundColor(color);
                     thu2.setBackgroundColor(color);
                     thu1.setText(timetableData.getClassname());
+                    thu1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 10.5) {
                 if (cellCount == 0.5) {
                     thu3.setBackgroundColor(color);
                     thu3.setText(timetableData.getClassname());
+                    thu3.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu2.setBackgroundColor(color);
                     thu3.setBackgroundColor(color);
                     thu2.setText(timetableData.getClassname());
+                    thu2.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu1.setBackgroundColor(color);
                     thu2.setBackgroundColor(color);
                     thu3.setBackgroundColor(color);
                     thu1.setText(timetableData.getClassname());
+                    thu1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 11.0) {
                 if (cellCount == 0.5) {
                     thu4.setBackgroundColor(color);
                     thu4.setText(timetableData.getClassname());
+                    thu4.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu3.setBackgroundColor(color);
                     thu4.setBackgroundColor(color);
                     thu3.setText(timetableData.getClassname());
+                    thu3.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu2.setBackgroundColor(color);
                     thu3.setBackgroundColor(color);
                     thu4.setBackgroundColor(color);
                     thu2.setText(timetableData.getClassname());
+                    thu2.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu1.setBackgroundColor(color);
                     thu2.setBackgroundColor(color);
                     thu3.setBackgroundColor(color);
                     thu4.setBackgroundColor(color);
                     thu1.setText(timetableData.getClassname());
+                    thu1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 11.5) {
                 if (cellCount == 0.5) {
                     thu5.setBackgroundColor(color);
                     thu5.setText(timetableData.getClassname());
+                    thu5.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu4.setBackgroundColor(color);
                     thu5.setBackgroundColor(color);
                     thu4.setText(timetableData.getClassname());
+                    thu4.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu3.setBackgroundColor(color);
                     thu4.setBackgroundColor(color);
                     thu5.setBackgroundColor(color);
                     thu3.setText(timetableData.getClassname());
+                    thu3.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu2.setBackgroundColor(color);
                     thu3.setBackgroundColor(color);
                     thu4.setBackgroundColor(color);
                     thu5.setBackgroundColor(color);
                     thu2.setText(timetableData.getClassname());
+                    thu2.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu1.setBackgroundColor(color);
                     thu2.setBackgroundColor(color);
@@ -3467,26 +4167,31 @@ public class TimetableActivity extends AppCompatActivity {
                     thu4.setBackgroundColor(color);
                     thu5.setBackgroundColor(color);
                     thu1.setText(timetableData.getClassname());
+                    thu1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 12.0) {
                 if (cellCount == 0.5) {
                     thu6.setBackgroundColor(color);
                     thu6.setText(timetableData.getClassname());
+                    thu6.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu5.setBackgroundColor(color);
                     thu6.setBackgroundColor(color);
                     thu5.setText(timetableData.getClassname());
+                    thu5.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu4.setBackgroundColor(color);
                     thu5.setBackgroundColor(color);
                     thu6.setBackgroundColor(color);
                     thu4.setText(timetableData.getClassname());
+                    thu4.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu3.setBackgroundColor(color);
                     thu4.setBackgroundColor(color);
                     thu5.setBackgroundColor(color);
                     thu6.setBackgroundColor(color);
                     thu3.setText(timetableData.getClassname());
+                    thu3.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu2.setBackgroundColor(color);
                     thu3.setBackgroundColor(color);
@@ -3494,6 +4199,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu5.setBackgroundColor(color);
                     thu6.setBackgroundColor(color);
                     thu2.setText(timetableData.getClassname());
+                    thu2.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     thu1.setBackgroundColor(color);
                     thu2.setBackgroundColor(color);
@@ -3502,26 +4208,31 @@ public class TimetableActivity extends AppCompatActivity {
                     thu5.setBackgroundColor(color);
                     thu6.setBackgroundColor(color);
                     thu1.setText(timetableData.getClassname());
+                    thu1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 12.5) {
                 if (cellCount == 0.5) {
                     thu7.setBackgroundColor(color);
                     thu7.setText(timetableData.getClassname());
+                    thu7.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu6.setBackgroundColor(color);
                     thu7.setBackgroundColor(color);
                     thu6.setText(timetableData.getClassname());
+                    thu6.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu5.setBackgroundColor(color);
                     thu6.setBackgroundColor(color);
                     thu7.setBackgroundColor(color);
                     thu5.setText(timetableData.getClassname());
+                    thu5.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu4.setBackgroundColor(color);
                     thu5.setBackgroundColor(color);
                     thu6.setBackgroundColor(color);
                     thu7.setBackgroundColor(color);
                     thu4.setText(timetableData.getClassname());
+                    thu4.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu3.setBackgroundColor(color);
                     thu4.setBackgroundColor(color);
@@ -3529,6 +4240,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu6.setBackgroundColor(color);
                     thu7.setBackgroundColor(color);
                     thu3.setText(timetableData.getClassname());
+                    thu3.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     thu2.setBackgroundColor(color);
                     thu3.setBackgroundColor(color);
@@ -3537,6 +4249,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu6.setBackgroundColor(color);
                     thu7.setBackgroundColor(color);
                     thu2.setText(timetableData.getClassname());
+                    thu2.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     thu1.setBackgroundColor(color);
                     thu2.setBackgroundColor(color);
@@ -3546,26 +4259,31 @@ public class TimetableActivity extends AppCompatActivity {
                     thu6.setBackgroundColor(color);
                     thu7.setBackgroundColor(color);
                     thu1.setText(timetableData.getClassname());
+                    thu1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 13.0) {
                 if (cellCount == 0.5) {
                     thu8.setBackgroundColor(color);
                     thu8.setText(timetableData.getClassname());
+                    thu8.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
                     thu7.setText(timetableData.getClassname());
+                    thu7.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu6.setBackgroundColor(color);
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
                     thu6.setText(timetableData.getClassname());
+                    thu6.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu5.setBackgroundColor(color);
                     thu6.setBackgroundColor(color);
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
                     thu5.setText(timetableData.getClassname());
+                    thu5.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu4.setBackgroundColor(color);
                     thu5.setBackgroundColor(color);
@@ -3573,6 +4291,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
                     thu4.setText(timetableData.getClassname());
+                    thu4.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     thu3.setBackgroundColor(color);
                     thu4.setBackgroundColor(color);
@@ -3581,6 +4300,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
                     thu3.setText(timetableData.getClassname());
+                    thu3.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     thu2.setBackgroundColor(color);
                     thu3.setBackgroundColor(color);
@@ -3590,6 +4310,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
                     thu2.setText(timetableData.getClassname());
+                    thu2.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     thu1.setBackgroundColor(color);
                     thu2.setBackgroundColor(color);
@@ -3600,26 +4321,31 @@ public class TimetableActivity extends AppCompatActivity {
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
                     thu1.setText(timetableData.getClassname());
+                    thu1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 13.5) {
                 if (cellCount == 0.5) {
                     thu9.setBackgroundColor(color);
                     thu9.setText(timetableData.getClassname());
+                    thu9.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
                     thu8.setText(timetableData.getClassname());
+                    thu8.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
                     thu7.setText(timetableData.getClassname());
+                    thu7.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu6.setBackgroundColor(color);
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
                     thu6.setText(timetableData.getClassname());
+                    thu6.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu5.setBackgroundColor(color);
                     thu6.setBackgroundColor(color);
@@ -3627,6 +4353,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
                     thu5.setText(timetableData.getClassname());
+                    thu5.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     thu4.setBackgroundColor(color);
                     thu5.setBackgroundColor(color);
@@ -3635,6 +4362,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
                     thu4.setText(timetableData.getClassname());
+                    thu4.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     thu3.setBackgroundColor(color);
                     thu4.setBackgroundColor(color);
@@ -3644,6 +4372,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
                     thu3.setText(timetableData.getClassname());
+                    thu3.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     thu2.setBackgroundColor(color);
                     thu3.setBackgroundColor(color);
@@ -3654,26 +4383,31 @@ public class TimetableActivity extends AppCompatActivity {
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
                     thu2.setText(timetableData.getClassname());
+                    thu2.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 14.0) {
                 if (cellCount == 0.5) {
                     thu10.setBackgroundColor(color);
                     thu10.setText(timetableData.getClassname());
+                    thu10.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
                     thu9.setText(timetableData.getClassname());
+                    thu9.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
                     thu8.setText(timetableData.getClassname());
+                    thu8.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
                     thu7.setText(timetableData.getClassname());
+                    thu7.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu6.setBackgroundColor(color);
                     thu7.setBackgroundColor(color);
@@ -3681,6 +4415,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
                     thu6.setText(timetableData.getClassname());
+                    thu6.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     thu5.setBackgroundColor(color);
                     thu6.setBackgroundColor(color);
@@ -3689,6 +4424,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
                     thu5.setText(timetableData.getClassname());
+                    thu5.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     thu4.setBackgroundColor(color);
                     thu5.setBackgroundColor(color);
@@ -3698,6 +4434,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
                     thu4.setText(timetableData.getClassname());
+                    thu4.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     thu3.setBackgroundColor(color);
                     thu4.setBackgroundColor(color);
@@ -3708,26 +4445,31 @@ public class TimetableActivity extends AppCompatActivity {
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
                     thu3.setText(timetableData.getClassname());
+                    thu3.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 14.5) {
                 if (cellCount == 0.5) {
                     thu11.setBackgroundColor(color);
                     thu11.setText(timetableData.getClassname());
+                    thu11.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
                     thu10.setText(timetableData.getClassname());
+                    thu10.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
                     thu9.setText(timetableData.getClassname());
+                    thu9.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
                     thu8.setText(timetableData.getClassname());
+                    thu8.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
@@ -3735,6 +4477,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
                     thu7.setText(timetableData.getClassname());
+                    thu7.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     thu6.setBackgroundColor(color);
                     thu7.setBackgroundColor(color);
@@ -3743,6 +4486,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
                     thu6.setText(timetableData.getClassname());
+                    thu6.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     thu5.setBackgroundColor(color);
                     thu6.setBackgroundColor(color);
@@ -3752,6 +4496,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
                     thu5.setText(timetableData.getClassname());
+                    thu5.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     thu4.setBackgroundColor(color);
                     thu5.setBackgroundColor(color);
@@ -3762,26 +4507,31 @@ public class TimetableActivity extends AppCompatActivity {
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
                     thu4.setText(timetableData.getClassname());
+                    thu4.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 15.0) {
                 if (cellCount == 0.5) {
                     thu12.setBackgroundColor(color);
                     thu12.setText(timetableData.getClassname());
+                    thu12.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
                     thu11.setText(timetableData.getClassname());
+                    thu11.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
                     thu10.setText(timetableData.getClassname());
+                    thu10.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
                     thu9.setText(timetableData.getClassname());
+                    thu9.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
@@ -3789,6 +4539,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
                     thu8.setText(timetableData.getClassname());
+                    thu8.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
@@ -3797,6 +4548,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
                     thu7.setText(timetableData.getClassname());
+                    thu7.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     thu6.setBackgroundColor(color);
                     thu7.setBackgroundColor(color);
@@ -3806,6 +4558,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
                     thu6.setText(timetableData.getClassname());
+                    thu6.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     thu5.setBackgroundColor(color);
                     thu6.setBackgroundColor(color);
@@ -3816,26 +4569,31 @@ public class TimetableActivity extends AppCompatActivity {
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
                     thu5.setText(timetableData.getClassname());
+                    thu5.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 15.5) {
                 if (cellCount == 0.5) {
                     thu13.setBackgroundColor(color);
                     thu13.setText(timetableData.getClassname());
+                    thu13.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu12.setBackgroundColor(color);
                     thu13.setBackgroundColor(color);
                     thu12.setText(timetableData.getClassname());
+                    thu12.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
                     thu13.setBackgroundColor(color);
                     thu11.setText(timetableData.getClassname());
+                    thu11.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
                     thu13.setBackgroundColor(color);
                     thu10.setText(timetableData.getClassname());
+                    thu10.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
@@ -3843,6 +4601,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu12.setBackgroundColor(color);
                     thu13.setBackgroundColor(color);
                     thu9.setText(timetableData.getClassname());
+                    thu9.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
@@ -3851,6 +4610,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu12.setBackgroundColor(color);
                     thu13.setBackgroundColor(color);
                     thu8.setText(timetableData.getClassname());
+                    thu8.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
@@ -3860,6 +4620,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu12.setBackgroundColor(color);
                     thu13.setBackgroundColor(color);
                     thu7.setText(timetableData.getClassname());
+                    thu7.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     thu6.setBackgroundColor(color);
                     thu7.setBackgroundColor(color);
@@ -3870,26 +4631,31 @@ public class TimetableActivity extends AppCompatActivity {
                     thu12.setBackgroundColor(color);
                     thu13.setBackgroundColor(color);
                     thu6.setText(timetableData.getClassname());
+                    thu6.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 16.0) {
                 if (cellCount == 0.5) {
                     thu14.setBackgroundColor(color);
                     thu14.setText(timetableData.getClassname());
+                    thu14.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu13.setBackgroundColor(color);
                     thu14.setBackgroundColor(color);
                     thu13.setText(timetableData.getClassname());
+                    thu13.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu12.setBackgroundColor(color);
                     thu13.setBackgroundColor(color);
                     thu14.setBackgroundColor(color);
                     thu12.setText(timetableData.getClassname());
+                    thu12.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
                     thu13.setBackgroundColor(color);
                     thu14.setBackgroundColor(color);
                     thu11.setText(timetableData.getClassname());
+                    thu11.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
@@ -3897,6 +4663,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu13.setBackgroundColor(color);
                     thu14.setBackgroundColor(color);
                     thu10.setText(timetableData.getClassname());
+                    thu10.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
@@ -3905,6 +4672,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu13.setBackgroundColor(color);
                     thu14.setBackgroundColor(color);
                     thu9.setText(timetableData.getClassname());
+                    thu9.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
@@ -3914,6 +4682,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu13.setBackgroundColor(color);
                     thu14.setBackgroundColor(color);
                     thu8.setText(timetableData.getClassname());
+                    thu8.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     thu7.setBackgroundColor(color);
                     thu8.setBackgroundColor(color);
@@ -3924,26 +4693,31 @@ public class TimetableActivity extends AppCompatActivity {
                     thu13.setBackgroundColor(color);
                     thu14.setBackgroundColor(color);
                     thu7.setText(timetableData.getClassname());
+                    thu7.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 16.5) {
                 if (cellCount == 0.5) {
                     thu15.setBackgroundColor(color);
                     thu15.setText(timetableData.getClassname());
+                    thu15.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu14.setBackgroundColor(color);
                     thu15.setBackgroundColor(color);
                     thu14.setText(timetableData.getClassname());
+                    thu14.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu13.setBackgroundColor(color);
                     thu14.setBackgroundColor(color);
                     thu15.setBackgroundColor(color);
                     thu13.setText(timetableData.getClassname());
+                    thu13.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu12.setBackgroundColor(color);
                     thu13.setBackgroundColor(color);
                     thu14.setBackgroundColor(color);
                     thu15.setBackgroundColor(color);
                     thu12.setText(timetableData.getClassname());
+                    thu12.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
@@ -3951,6 +4725,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu14.setBackgroundColor(color);
                     thu15.setBackgroundColor(color);
                     thu11.setText(timetableData.getClassname());
+                    thu11.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
@@ -3959,6 +4734,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu14.setBackgroundColor(color);
                     thu15.setBackgroundColor(color);
                     thu10.setText(timetableData.getClassname());
+                    thu10.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
@@ -3968,6 +4744,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu14.setBackgroundColor(color);
                     thu15.setBackgroundColor(color);
                     thu9.setText(timetableData.getClassname());
+                    thu9.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     thu8.setBackgroundColor(color);
                     thu9.setBackgroundColor(color);
@@ -3978,26 +4755,31 @@ public class TimetableActivity extends AppCompatActivity {
                     thu14.setBackgroundColor(color);
                     thu15.setBackgroundColor(color);
                     thu8.setText(timetableData.getClassname());
+                    thu8.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 17.0) {
                 if (cellCount == 0.5) {
                     thu16.setBackgroundColor(color);
                     thu16.setText(timetableData.getClassname());
+                    thu16.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu15.setBackgroundColor(color);
                     thu16.setBackgroundColor(color);
                     thu15.setText(timetableData.getClassname());
+                    thu15.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu14.setBackgroundColor(color);
                     thu15.setBackgroundColor(color);
                     thu16.setBackgroundColor(color);
                     thu14.setText(timetableData.getClassname());
+                    thu14.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu13.setBackgroundColor(color);
                     thu14.setBackgroundColor(color);
                     thu15.setBackgroundColor(color);
                     thu16.setBackgroundColor(color);
                     thu13.setText(timetableData.getClassname());
+                    thu13.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu12.setBackgroundColor(color);
                     thu13.setBackgroundColor(color);
@@ -4005,6 +4787,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu15.setBackgroundColor(color);
                     thu16.setBackgroundColor(color);
                     thu12.setText(timetableData.getClassname());
+                    thu12.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
@@ -4013,6 +4796,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu15.setBackgroundColor(color);
                     thu16.setBackgroundColor(color);
                     thu11.setText(timetableData.getClassname());
+                    thu11.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
@@ -4022,6 +4806,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu15.setBackgroundColor(color);
                     thu16.setBackgroundColor(color);
                     thu10.setText(timetableData.getClassname());
+                    thu10.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     thu9.setBackgroundColor(color);
                     thu10.setBackgroundColor(color);
@@ -4032,26 +4817,31 @@ public class TimetableActivity extends AppCompatActivity {
                     thu15.setBackgroundColor(color);
                     thu16.setBackgroundColor(color);
                     thu9.setText(timetableData.getClassname());
+                    thu9.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 17.5) {
                 if (cellCount == 0.5) {
                     thu17.setBackgroundColor(color);
                     thu17.setText(timetableData.getClassname());
+                    thu17.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu16.setBackgroundColor(color);
                     thu17.setBackgroundColor(color);
                     thu16.setText(timetableData.getClassname());
+                    thu16.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu15.setBackgroundColor(color);
                     thu16.setBackgroundColor(color);
                     thu17.setBackgroundColor(color);
                     thu15.setText(timetableData.getClassname());
+                    thu15.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu14.setBackgroundColor(color);
                     thu15.setBackgroundColor(color);
                     thu16.setBackgroundColor(color);
                     thu17.setBackgroundColor(color);
                     thu14.setText(timetableData.getClassname());
+                    thu14.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu13.setBackgroundColor(color);
                     thu14.setBackgroundColor(color);
@@ -4059,6 +4849,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu16.setBackgroundColor(color);
                     thu17.setBackgroundColor(color);
                     thu13.setText(timetableData.getClassname());
+                    thu13.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     thu12.setBackgroundColor(color);
                     thu13.setBackgroundColor(color);
@@ -4067,6 +4858,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu16.setBackgroundColor(color);
                     thu17.setBackgroundColor(color);
                     thu12.setText(timetableData.getClassname());
+                    thu12.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
@@ -4076,6 +4868,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu16.setBackgroundColor(color);
                     thu17.setBackgroundColor(color);
                     thu11.setText(timetableData.getClassname());
+                    thu11.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     thu10.setBackgroundColor(color);
                     thu11.setBackgroundColor(color);
@@ -4086,26 +4879,31 @@ public class TimetableActivity extends AppCompatActivity {
                     thu16.setBackgroundColor(color);
                     thu17.setBackgroundColor(color);
                     thu10.setText(timetableData.getClassname());
+                    thu10.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 18.0) {
                 if (cellCount == 0.5) {
                     thu18.setBackgroundColor(color);
                     thu18.setText(timetableData.getClassname());
+                    thu18.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     thu17.setBackgroundColor(color);
                     thu18.setBackgroundColor(color);
                     thu17.setText(timetableData.getClassname());
+                    thu17.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     thu16.setBackgroundColor(color);
                     thu17.setBackgroundColor(color);
                     thu18.setBackgroundColor(color);
                     thu16.setText(timetableData.getClassname());
+                    thu16.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     thu15.setBackgroundColor(color);
                     thu16.setBackgroundColor(color);
                     thu17.setBackgroundColor(color);
                     thu18.setBackgroundColor(color);
                     thu15.setText(timetableData.getClassname());
+                    thu15.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     thu14.setBackgroundColor(color);
                     thu15.setBackgroundColor(color);
@@ -4113,6 +4911,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu17.setBackgroundColor(color);
                     thu18.setBackgroundColor(color);
                     thu14.setText(timetableData.getClassname());
+                    thu14.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     thu13.setBackgroundColor(color);
                     thu14.setBackgroundColor(color);
@@ -4121,6 +4920,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu17.setBackgroundColor(color);
                     thu18.setBackgroundColor(color);
                     thu13.setText(timetableData.getClassname());
+                    thu13.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     thu12.setBackgroundColor(color);
                     thu13.setBackgroundColor(color);
@@ -4130,6 +4930,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu17.setBackgroundColor(color);
                     thu18.setBackgroundColor(color);
                     thu12.setText(timetableData.getClassname());
+                    thu12.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     thu11.setBackgroundColor(color);
                     thu12.setBackgroundColor(color);
@@ -4140,6 +4941,7 @@ public class TimetableActivity extends AppCompatActivity {
                     thu17.setBackgroundColor(color);
                     thu18.setBackgroundColor(color);
                     thu11.setText(timetableData.getClassname());
+                    thu11.setTag(timetableData.getClassid());
                 }
             }
             if (((ColorDrawable) thu1.getBackground()).getColor() != -1) {
@@ -4148,8 +4950,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4162,8 +4964,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4176,8 +4978,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4190,8 +4992,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4204,8 +5006,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4218,8 +5020,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4232,8 +5034,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4246,8 +5048,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4260,8 +5062,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4274,8 +5076,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4288,8 +5090,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4302,8 +5104,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4316,8 +5118,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4330,8 +5132,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4344,8 +5146,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4358,8 +5160,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4372,8 +5174,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4386,8 +5188,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -4401,68 +5203,82 @@ public class TimetableActivity extends AppCompatActivity {
                     fri1.setBackgroundColor(color);
                 }
                 fri1.setText(timetableData.getClassname());
+                fri1.setTag(timetableData.getClassid());
             } else if (lastTime == 10.0) {
                 if (cellCount == 0.5) {
                     fri2.setBackgroundColor(color);
                     fri2.setText(timetableData.getClassname());
+                    fri2.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri1.setBackgroundColor(color);
                     fri2.setBackgroundColor(color);
                     fri1.setText(timetableData.getClassname());
+                    fri1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 10.5) {
                 if (cellCount == 0.5) {
                     fri3.setBackgroundColor(color);
                     fri3.setText(timetableData.getClassname());
+                    fri3.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri2.setBackgroundColor(color);
                     fri3.setBackgroundColor(color);
                     fri2.setText(timetableData.getClassname());
+                    fri2.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri1.setBackgroundColor(color);
                     fri2.setBackgroundColor(color);
                     fri3.setBackgroundColor(color);
                     fri1.setText(timetableData.getClassname());
+                    fri1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 11.0) {
                 if (cellCount == 0.5) {
                     fri4.setBackgroundColor(color);
                     fri4.setText(timetableData.getClassname());
+                    fri4.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri3.setBackgroundColor(color);
                     fri4.setBackgroundColor(color);
                     fri3.setText(timetableData.getClassname());
+                    fri3.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri2.setBackgroundColor(color);
                     fri3.setBackgroundColor(color);
                     fri4.setBackgroundColor(color);
                     fri2.setText(timetableData.getClassname());
+                    fri2.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri1.setBackgroundColor(color);
                     fri2.setBackgroundColor(color);
                     fri3.setBackgroundColor(color);
                     fri4.setBackgroundColor(color);
                     fri1.setText(timetableData.getClassname());
+                    fri1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 11.5) {
                 if (cellCount == 0.5) {
                     fri5.setBackgroundColor(color);
                     fri5.setText(timetableData.getClassname());
+                    fri5.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri4.setBackgroundColor(color);
                     fri5.setBackgroundColor(color);
                     fri4.setText(timetableData.getClassname());
+                    fri4.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri3.setBackgroundColor(color);
                     fri4.setBackgroundColor(color);
                     fri5.setBackgroundColor(color);
                     fri3.setText(timetableData.getClassname());
+                    fri3.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri2.setBackgroundColor(color);
                     fri3.setBackgroundColor(color);
                     fri4.setBackgroundColor(color);
                     fri5.setBackgroundColor(color);
                     fri2.setText(timetableData.getClassname());
+                    fri2.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri1.setBackgroundColor(color);
                     fri2.setBackgroundColor(color);
@@ -4470,26 +5286,31 @@ public class TimetableActivity extends AppCompatActivity {
                     fri4.setBackgroundColor(color);
                     fri5.setBackgroundColor(color);
                     fri1.setText(timetableData.getClassname());
+                    fri1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 12.0) {
                 if (cellCount == 0.5) {
                     fri6.setBackgroundColor(color);
                     fri6.setText(timetableData.getClassname());
+                    fri6.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri5.setBackgroundColor(color);
                     fri6.setBackgroundColor(color);
                     fri5.setText(timetableData.getClassname());
+                    fri5.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri4.setBackgroundColor(color);
                     fri5.setBackgroundColor(color);
                     fri6.setBackgroundColor(color);
                     fri4.setText(timetableData.getClassname());
+                    fri4.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri3.setBackgroundColor(color);
                     fri4.setBackgroundColor(color);
                     fri5.setBackgroundColor(color);
                     fri6.setBackgroundColor(color);
                     fri3.setText(timetableData.getClassname());
+                    fri3.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri2.setBackgroundColor(color);
                     fri3.setBackgroundColor(color);
@@ -4497,6 +5318,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri5.setBackgroundColor(color);
                     fri6.setBackgroundColor(color);
                     fri2.setText(timetableData.getClassname());
+                    fri2.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     fri1.setBackgroundColor(color);
                     fri2.setBackgroundColor(color);
@@ -4505,26 +5327,31 @@ public class TimetableActivity extends AppCompatActivity {
                     fri5.setBackgroundColor(color);
                     fri6.setBackgroundColor(color);
                     fri1.setText(timetableData.getClassname());
+                    fri1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 12.5) {
                 if (cellCount == 0.5) {
                     fri7.setBackgroundColor(color);
                     fri7.setText(timetableData.getClassname());
+                    fri7.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri6.setBackgroundColor(color);
                     fri7.setBackgroundColor(color);
                     fri6.setText(timetableData.getClassname());
+                    fri6.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri5.setBackgroundColor(color);
                     fri6.setBackgroundColor(color);
                     fri7.setBackgroundColor(color);
                     fri5.setText(timetableData.getClassname());
+                    fri5.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri4.setBackgroundColor(color);
                     fri5.setBackgroundColor(color);
                     fri6.setBackgroundColor(color);
                     fri7.setBackgroundColor(color);
                     fri4.setText(timetableData.getClassname());
+                    fri4.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri3.setBackgroundColor(color);
                     fri4.setBackgroundColor(color);
@@ -4532,6 +5359,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri6.setBackgroundColor(color);
                     fri7.setBackgroundColor(color);
                     fri3.setText(timetableData.getClassname());
+                    fri3.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     fri2.setBackgroundColor(color);
                     fri3.setBackgroundColor(color);
@@ -4540,6 +5368,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri6.setBackgroundColor(color);
                     fri7.setBackgroundColor(color);
                     fri2.setText(timetableData.getClassname());
+                    fri2.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     fri1.setBackgroundColor(color);
                     fri2.setBackgroundColor(color);
@@ -4549,26 +5378,31 @@ public class TimetableActivity extends AppCompatActivity {
                     fri6.setBackgroundColor(color);
                     fri7.setBackgroundColor(color);
                     fri1.setText(timetableData.getClassname());
+                    fri1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 13.0) {
                 if (cellCount == 0.5) {
                     fri8.setBackgroundColor(color);
                     fri8.setText(timetableData.getClassname());
+                    fri8.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
                     fri7.setText(timetableData.getClassname());
+                    fri7.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri6.setBackgroundColor(color);
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
                     fri6.setText(timetableData.getClassname());
+                    fri6.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri5.setBackgroundColor(color);
                     fri6.setBackgroundColor(color);
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
                     fri5.setText(timetableData.getClassname());
+                    fri5.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri4.setBackgroundColor(color);
                     fri5.setBackgroundColor(color);
@@ -4576,6 +5410,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
                     fri4.setText(timetableData.getClassname());
+                    fri4.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     fri3.setBackgroundColor(color);
                     fri4.setBackgroundColor(color);
@@ -4584,6 +5419,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
                     fri3.setText(timetableData.getClassname());
+                    fri3.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     fri2.setBackgroundColor(color);
                     fri3.setBackgroundColor(color);
@@ -4593,6 +5429,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
                     fri2.setText(timetableData.getClassname());
+                    fri2.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     fri1.setBackgroundColor(color);
                     fri2.setBackgroundColor(color);
@@ -4603,26 +5440,31 @@ public class TimetableActivity extends AppCompatActivity {
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
                     fri1.setText(timetableData.getClassname());
+                    fri1.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 13.5) {
                 if (cellCount == 0.5) {
                     fri9.setBackgroundColor(color);
                     fri9.setText(timetableData.getClassname());
+                    fri9.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
                     fri8.setText(timetableData.getClassname());
+                    fri8.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
                     fri7.setText(timetableData.getClassname());
+                    fri7.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri6.setBackgroundColor(color);
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
                     fri6.setText(timetableData.getClassname());
+                    fri6.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri5.setBackgroundColor(color);
                     fri6.setBackgroundColor(color);
@@ -4630,6 +5472,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
                     fri5.setText(timetableData.getClassname());
+                    fri5.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     fri4.setBackgroundColor(color);
                     fri5.setBackgroundColor(color);
@@ -4638,6 +5481,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
                     fri4.setText(timetableData.getClassname());
+                    fri4.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     fri3.setBackgroundColor(color);
                     fri4.setBackgroundColor(color);
@@ -4647,6 +5491,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
                     fri3.setText(timetableData.getClassname());
+                    fri3.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     fri2.setBackgroundColor(color);
                     fri3.setBackgroundColor(color);
@@ -4657,26 +5502,31 @@ public class TimetableActivity extends AppCompatActivity {
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
                     fri2.setText(timetableData.getClassname());
+                    fri2.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 14.0) {
                 if (cellCount == 0.5) {
                     fri10.setBackgroundColor(color);
                     fri10.setText(timetableData.getClassname());
+                    fri10.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
                     fri9.setText(timetableData.getClassname());
+                    fri9.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
                     fri8.setText(timetableData.getClassname());
+                    fri8.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
                     fri7.setText(timetableData.getClassname());
+                    fri7.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri6.setBackgroundColor(color);
                     fri7.setBackgroundColor(color);
@@ -4684,6 +5534,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
                     fri6.setText(timetableData.getClassname());
+                    fri6.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     fri5.setBackgroundColor(color);
                     fri6.setBackgroundColor(color);
@@ -4692,6 +5543,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
                     fri5.setText(timetableData.getClassname());
+                    fri5.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     fri4.setBackgroundColor(color);
                     fri5.setBackgroundColor(color);
@@ -4701,6 +5553,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
                     fri4.setText(timetableData.getClassname());
+                    fri4.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     fri3.setBackgroundColor(color);
                     fri4.setBackgroundColor(color);
@@ -4711,26 +5564,31 @@ public class TimetableActivity extends AppCompatActivity {
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
                     fri3.setText(timetableData.getClassname());
+                    fri3.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 14.5) {
                 if (cellCount == 0.5) {
                     fri11.setBackgroundColor(color);
                     fri11.setText(timetableData.getClassname());
+                    fri11.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
                     fri10.setText(timetableData.getClassname());
+                    fri10.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
                     fri9.setText(timetableData.getClassname());
+                    fri9.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
                     fri8.setText(timetableData.getClassname());
+                    fri8.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
@@ -4738,6 +5596,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
                     fri7.setText(timetableData.getClassname());
+                    fri7.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     fri6.setBackgroundColor(color);
                     fri7.setBackgroundColor(color);
@@ -4746,6 +5605,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
                     fri6.setText(timetableData.getClassname());
+                    fri6.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     fri5.setBackgroundColor(color);
                     fri6.setBackgroundColor(color);
@@ -4755,6 +5615,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
                     fri5.setText(timetableData.getClassname());
+                    fri5.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     fri4.setBackgroundColor(color);
                     fri5.setBackgroundColor(color);
@@ -4765,26 +5626,31 @@ public class TimetableActivity extends AppCompatActivity {
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
                     fri4.setText(timetableData.getClassname());
+                    fri4.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 15.0) {
                 if (cellCount == 0.5) {
                     fri12.setBackgroundColor(color);
                     fri12.setText(timetableData.getClassname());
+                    fri12.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
                     fri11.setText(timetableData.getClassname());
+                    fri11.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
                     fri10.setText(timetableData.getClassname());
+                    fri10.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
                     fri9.setText(timetableData.getClassname());
+                    fri9.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
@@ -4792,6 +5658,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
                     fri8.setText(timetableData.getClassname());
+                    fri8.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
@@ -4800,6 +5667,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
                     fri7.setText(timetableData.getClassname());
+                    fri7.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     fri6.setBackgroundColor(color);
                     fri7.setBackgroundColor(color);
@@ -4809,6 +5677,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
                     fri6.setText(timetableData.getClassname());
+                    fri6.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     fri5.setBackgroundColor(color);
                     fri6.setBackgroundColor(color);
@@ -4819,26 +5688,31 @@ public class TimetableActivity extends AppCompatActivity {
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
                     fri5.setText(timetableData.getClassname());
+                    fri5.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 15.5) {
                 if (cellCount == 0.5) {
                     fri13.setBackgroundColor(color);
                     fri13.setText(timetableData.getClassname());
+                    fri13.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri12.setBackgroundColor(color);
                     fri13.setBackgroundColor(color);
                     fri12.setText(timetableData.getClassname());
+                    fri12.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
                     fri13.setBackgroundColor(color);
                     fri11.setText(timetableData.getClassname());
+                    fri11.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
                     fri13.setBackgroundColor(color);
                     fri10.setText(timetableData.getClassname());
+                    fri10.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
@@ -4846,6 +5720,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri12.setBackgroundColor(color);
                     fri13.setBackgroundColor(color);
                     fri9.setText(timetableData.getClassname());
+                    fri9.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
@@ -4854,6 +5729,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri12.setBackgroundColor(color);
                     fri13.setBackgroundColor(color);
                     fri8.setText(timetableData.getClassname());
+                    fri8.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
@@ -4863,6 +5739,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri12.setBackgroundColor(color);
                     fri13.setBackgroundColor(color);
                     fri7.setText(timetableData.getClassname());
+                    fri7.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     fri6.setBackgroundColor(color);
                     fri7.setBackgroundColor(color);
@@ -4873,26 +5750,31 @@ public class TimetableActivity extends AppCompatActivity {
                     fri12.setBackgroundColor(color);
                     fri13.setBackgroundColor(color);
                     fri6.setText(timetableData.getClassname());
-                }
+                    fri6.setTag(timetableData.getClassid());
+                    }
             } else if (lastTime == 16.0) {
                 if (cellCount == 0.5) {
                     fri14.setBackgroundColor(color);
                     fri14.setText(timetableData.getClassname());
+                    fri14.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri13.setBackgroundColor(color);
                     fri14.setBackgroundColor(color);
                     fri13.setText(timetableData.getClassname());
+                    fri13.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri12.setBackgroundColor(color);
                     fri13.setBackgroundColor(color);
                     fri14.setBackgroundColor(color);
                     fri12.setText(timetableData.getClassname());
+                    fri12.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
                     fri13.setBackgroundColor(color);
                     fri14.setBackgroundColor(color);
                     fri11.setText(timetableData.getClassname());
+                    fri11.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
@@ -4900,6 +5782,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri13.setBackgroundColor(color);
                     fri14.setBackgroundColor(color);
                     fri10.setText(timetableData.getClassname());
+                    fri10.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
@@ -4908,6 +5791,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri13.setBackgroundColor(color);
                     fri14.setBackgroundColor(color);
                     fri9.setText(timetableData.getClassname());
+                    fri9.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
@@ -4917,6 +5801,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri13.setBackgroundColor(color);
                     fri14.setBackgroundColor(color);
                     fri8.setText(timetableData.getClassname());
+                    fri8.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     fri7.setBackgroundColor(color);
                     fri8.setBackgroundColor(color);
@@ -4927,26 +5812,31 @@ public class TimetableActivity extends AppCompatActivity {
                     fri13.setBackgroundColor(color);
                     fri14.setBackgroundColor(color);
                     fri7.setText(timetableData.getClassname());
+                    fri7.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 16.5) {
                 if (cellCount == 0.5) {
                     fri15.setBackgroundColor(color);
                     fri15.setText(timetableData.getClassname());
+                    fri15.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri14.setBackgroundColor(color);
                     fri15.setBackgroundColor(color);
                     fri14.setText(timetableData.getClassname());
+                    fri14.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri13.setBackgroundColor(color);
                     fri14.setBackgroundColor(color);
                     fri15.setBackgroundColor(color);
                     fri13.setText(timetableData.getClassname());
+                    fri13.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri12.setBackgroundColor(color);
                     fri13.setBackgroundColor(color);
                     fri14.setBackgroundColor(color);
                     fri15.setBackgroundColor(color);
                     fri12.setText(timetableData.getClassname());
+                    fri12.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
@@ -4954,6 +5844,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri14.setBackgroundColor(color);
                     fri15.setBackgroundColor(color);
                     fri11.setText(timetableData.getClassname());
+                    fri11.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
@@ -4962,6 +5853,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri14.setBackgroundColor(color);
                     fri15.setBackgroundColor(color);
                     fri10.setText(timetableData.getClassname());
+                    fri10.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
@@ -4971,6 +5863,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri14.setBackgroundColor(color);
                     fri15.setBackgroundColor(color);
                     fri9.setText(timetableData.getClassname());
+                    fri9.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     fri8.setBackgroundColor(color);
                     fri9.setBackgroundColor(color);
@@ -4981,26 +5874,31 @@ public class TimetableActivity extends AppCompatActivity {
                     fri14.setBackgroundColor(color);
                     fri15.setBackgroundColor(color);
                     fri8.setText(timetableData.getClassname());
+                    fri8.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 17.0) {
                 if (cellCount == 0.5) {
                     fri16.setBackgroundColor(color);
                     fri16.setText(timetableData.getClassname());
+                    fri16.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri15.setBackgroundColor(color);
                     fri16.setBackgroundColor(color);
                     fri15.setText(timetableData.getClassname());
+                    fri15.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri14.setBackgroundColor(color);
                     fri15.setBackgroundColor(color);
                     fri16.setBackgroundColor(color);
                     fri14.setText(timetableData.getClassname());
+                    fri14.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri13.setBackgroundColor(color);
                     fri14.setBackgroundColor(color);
                     fri15.setBackgroundColor(color);
                     fri16.setBackgroundColor(color);
                     fri13.setText(timetableData.getClassname());
+                    fri13.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri12.setBackgroundColor(color);
                     fri13.setBackgroundColor(color);
@@ -5008,6 +5906,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri15.setBackgroundColor(color);
                     fri16.setBackgroundColor(color);
                     fri12.setText(timetableData.getClassname());
+                    fri12.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
@@ -5016,6 +5915,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri15.setBackgroundColor(color);
                     fri16.setBackgroundColor(color);
                     fri11.setText(timetableData.getClassname());
+                    fri11.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
@@ -5025,6 +5925,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri15.setBackgroundColor(color);
                     fri16.setBackgroundColor(color);
                     fri10.setText(timetableData.getClassname());
+                    fri10.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     fri9.setBackgroundColor(color);
                     fri10.setBackgroundColor(color);
@@ -5035,26 +5936,31 @@ public class TimetableActivity extends AppCompatActivity {
                     fri15.setBackgroundColor(color);
                     fri16.setBackgroundColor(color);
                     fri9.setText(timetableData.getClassname());
+                    fri9.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 17.5) {
                 if (cellCount == 0.5) {
                     fri17.setBackgroundColor(color);
                     fri17.setText(timetableData.getClassname());
+                    fri17.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri16.setBackgroundColor(color);
                     fri17.setBackgroundColor(color);
                     fri16.setText(timetableData.getClassname());
+                    fri16.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri15.setBackgroundColor(color);
                     fri16.setBackgroundColor(color);
                     fri17.setBackgroundColor(color);
                     fri15.setText(timetableData.getClassname());
+                    fri15.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri14.setBackgroundColor(color);
                     fri15.setBackgroundColor(color);
                     fri16.setBackgroundColor(color);
                     fri17.setBackgroundColor(color);
                     fri14.setText(timetableData.getClassname());
+                    fri14.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri13.setBackgroundColor(color);
                     fri14.setBackgroundColor(color);
@@ -5062,6 +5968,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri16.setBackgroundColor(color);
                     fri17.setBackgroundColor(color);
                     fri13.setText(timetableData.getClassname());
+                    fri13.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     fri12.setBackgroundColor(color);
                     fri13.setBackgroundColor(color);
@@ -5070,6 +5977,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri16.setBackgroundColor(color);
                     fri17.setBackgroundColor(color);
                     fri12.setText(timetableData.getClassname());
+                    fri12.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
@@ -5079,6 +5987,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri16.setBackgroundColor(color);
                     fri17.setBackgroundColor(color);
                     fri11.setText(timetableData.getClassname());
+                    fri11.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     fri10.setBackgroundColor(color);
                     fri11.setBackgroundColor(color);
@@ -5089,26 +5998,31 @@ public class TimetableActivity extends AppCompatActivity {
                     fri16.setBackgroundColor(color);
                     fri17.setBackgroundColor(color);
                     fri10.setText(timetableData.getClassname());
+                    fri10.setTag(timetableData.getClassid());
                 }
             } else if (lastTime == 18.0) {
                 if (cellCount == 0.5) {
                     fri18.setBackgroundColor(color);
                     fri18.setText(timetableData.getClassname());
+                    fri18.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.0) {
                     fri17.setBackgroundColor(color);
                     fri18.setBackgroundColor(color);
                     fri17.setText(timetableData.getClassname());
+                    fri17.setTag(timetableData.getClassid());
                 } else if (cellCount == 1.5) {
                     fri16.setBackgroundColor(color);
                     fri17.setBackgroundColor(color);
                     fri18.setBackgroundColor(color);
                     fri16.setText(timetableData.getClassname());
+                    fri16.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.0) {
                     fri15.setBackgroundColor(color);
                     fri16.setBackgroundColor(color);
                     fri17.setBackgroundColor(color);
                     fri18.setBackgroundColor(color);
                     fri15.setText(timetableData.getClassname());
+                    fri15.setTag(timetableData.getClassid());
                 } else if (cellCount == 2.5) {
                     fri14.setBackgroundColor(color);
                     fri15.setBackgroundColor(color);
@@ -5116,6 +6030,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri17.setBackgroundColor(color);
                     fri18.setBackgroundColor(color);
                     fri14.setText(timetableData.getClassname());
+                    fri14.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.0) {
                     fri13.setBackgroundColor(color);
                     fri14.setBackgroundColor(color);
@@ -5124,6 +6039,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri17.setBackgroundColor(color);
                     fri18.setBackgroundColor(color);
                     fri13.setText(timetableData.getClassname());
+                    fri13.setTag(timetableData.getClassid());
                 } else if (cellCount == 3.5) {
                     fri12.setBackgroundColor(color);
                     fri13.setBackgroundColor(color);
@@ -5133,6 +6049,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri17.setBackgroundColor(color);
                     fri18.setBackgroundColor(color);
                     fri12.setText(timetableData.getClassname());
+                    fri12.setTag(timetableData.getClassid());
                 } else if (cellCount == 4.0) {
                     fri11.setBackgroundColor(color);
                     fri12.setBackgroundColor(color);
@@ -5143,6 +6060,7 @@ public class TimetableActivity extends AppCompatActivity {
                     fri17.setBackgroundColor(color);
                     fri18.setBackgroundColor(color);
                     fri11.setText(timetableData.getClassname());
+                    fri11.setTag(timetableData.getClassid());
                 }
             }
             if (((ColorDrawable) fri1.getBackground()).getColor() != -1) {
@@ -5151,8 +6069,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5165,8 +6083,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5179,8 +6097,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5193,8 +6111,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5207,8 +6125,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5221,8 +6139,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5235,8 +6153,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5249,8 +6167,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5263,8 +6181,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5277,8 +6195,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5291,8 +6209,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5305,8 +6223,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5319,8 +6237,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5333,8 +6251,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5347,8 +6265,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5361,8 +6279,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5375,8 +6293,8 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
@@ -5389,15 +6307,68 @@ public class TimetableActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         AlertDialog alertDialog;
                         AlertDialog.Builder builder = new AlertDialog.Builder(TimetableActivity.this);
-                        builder.setTitle(timetableData.getClassname()+" ("+timetableData.getProfessor()+")")
-                                .setMessage(timetableData.getClasstime() + "\n" +timetableData.getClasslocation());
+                        builder.setTitle(timetableData.getClassname() + " (" + timetableData.getProfessor() + ")")
+                                .setMessage(timetableData.getClasstime() + "\n" + timetableData.getClasslocation());
                         builder.setNegativeButton("닫기", null);
                         alertDialog = builder.create();
                         alertDialog.show();
                     }
                 });
             }
+
+
         }
+    }
+
+    private void removeClass(String classid) {
+        Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                //Starting Write and Read data with URL
+                //Creating array for parameters
+                String[] field = new String[2];
+                field[0] = "classid";
+                field[1] = "studentid";
+                String[] data = new String[2];
+                data[0] = classid;
+                data[1] = SharedPrefUtil.PreferenceManager.getString(getApplicationContext(), "userID");
+                PutData putData = new PutData(KnuInfoServer.server + "/knuinfo/deletetimetable.php", "POST", field, data);
+                if (putData.startPut()) {
+                    if (putData.onComplete()) {
+                        String result = putData.getResult();
+                        try {
+                            String res = new String(result.getBytes("ISO-8859-1"), "UTF-8");
+                            Log.i(TAG, "run: " + res);
+                            if(res.equals("timetable delete success")){
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getApplicationContext(),"삭제 완료",Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                                getTimetable();
+                            }
+                            Log.d(TAG, "run: remove complete");
+
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+
+
+                        if (result.equals("read Success")) {
+
+                            //성공
+                            //TODO 데이터 저장, 파싱
+                        } else {
+
+                        }
+
+                    }
+                }
+                //End Write and Read data with URL
+            }
+        });
     }
 
 }
