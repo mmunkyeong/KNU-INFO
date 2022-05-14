@@ -140,16 +140,17 @@ public class LectureListAdapter extends BaseAdapter {
                                     Toast.makeText(mContext, "이미 추가된 강의와 시간이 겹칩니다.", Toast.LENGTH_LONG).show();
                                 }
                             });
+
+                            } else {
+                                Log.i(TAG, "run: timetable put fail" + result);
+
+                            }
+
                         } else {
-                            Log.i(TAG, "run: timetable put fail" + result);
-
+                            Log.i(TAG, "run: Time out?");
                         }
-
-                    } else {
-                        Log.i(TAG, "run: Time out?");
                     }
                 }
-            }
         }).start();
     }
 
