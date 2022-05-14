@@ -135,7 +135,7 @@ class DataBase
                         $diffCheck2 = explode("#",$diffvalue1);
                         if($week1==$diffCheck2[0]){
                             $diffCheck3 = explode("|",$diffCheck2[1]);
-                            if($diffCheck3[0]<=$firstTime1&&$firstTime1<=$diffCheck3[1]){                            
+                            if($diffCheck3[0]<=$firstTime1&&$firstTime1<$diffCheck3[1]){                            
                                 return true;                            
                             }
                         }
@@ -146,7 +146,16 @@ class DataBase
         }   
         return false;
     }
+
+
+    function deletetimetable($table, $classid, $studentid)
+    {
+        $classid = $this->prepareData($classid);
+        $studentid = $this->prepareData($studentid);
+        $this->sql = "delete from " . $table . " where studentid = '" . $studentid . "' and classid = '" . $classid . "'";
+        if (mysqli_query($this->connect, $this->sql)) {
+            return true;
+        } else return false;
+    }
 }
-
-
 ?>
