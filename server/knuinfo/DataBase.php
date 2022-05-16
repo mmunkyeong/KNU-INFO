@@ -113,6 +113,25 @@ class DataBase
         }   
         return false;
     }
+     function gettimetable_json($table)
+    {
+	$this->sql = "select * from " . $table . "";
+	$result = mysqli_query($this->connect, $this->sql);
+	$rowCnt = mysqli_num_rows($result);
+	$arr = array();
+	for($i=0;$i<$rowCnt;$i++){
+        		$row= mysqli_fetch_array($result, MYSQLI_ASSOC);
+        		//각 각의 row를 $arr에 추가
+        		$arr[$i]= $row;
+        
+    	}
+ 
+    	//배열을 json으로 변환하는 함수가 있음.
+        	$jsonData=json_encode($arr,JSON_UNESCAPED_UNICODE); //json배열로 만들어짐.
+        	echo "$jsonData";
+    
+	    
+    }
     function gettimetable_($table, $studentid, $actTime, $diffCheck)
     {
     
