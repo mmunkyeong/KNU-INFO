@@ -7,6 +7,8 @@ import android.content.Intent;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -102,7 +104,14 @@ public class AlarmActivity extends AppCompatActivity {
                             nameList.add(nameMap);
                         }
                     } catch (JSONException e) {
-                        Toast.makeText(getApplicationContext(),"Json ParsingError", Toast.LENGTH_LONG).show();
+                        Log.e(TAG, "doInBackground: Json ParsingError" );
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(),"Json ParsingError", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
                     }
                 }
                 bufferedReader.close();
@@ -160,7 +169,9 @@ public class AlarmActivity extends AppCompatActivity {
             calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 10, 51, 0);
 
             //알람 예약
-            am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
+//            am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
+            am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+5*1000L, sender);
+
         }
 
     }

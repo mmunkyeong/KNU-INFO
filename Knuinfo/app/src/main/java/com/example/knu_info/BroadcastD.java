@@ -1,11 +1,16 @@
 package com.example.knu_info;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.util.Log;
 import android.widget.Toast;
+
+import androidx.core.app.NotificationCompat;
 
 import com.example.knu_info.AlarmActivity;
 import com.example.knu_info.server.KnuInfoServer;
@@ -28,19 +33,42 @@ import java.util.HashMap;
 
 public class BroadcastD extends BroadcastReceiver {
     String INTENT_ACTION = Intent.ACTION_BOOT_COMPLETED;
-
+    String TAG = "BroadcastD";
     @Override
     public void onReceive(Context context, Intent intent) {//알람 시간이 되었을때 onReceive를 호출함
-
+        Log.i(TAG, "onReceive: ");
         //NotificationManager 안드로이드 상태바에 메세지를 던지기위한 서비스 불러오고
         NotificationManager notificationmanager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
-        Notification.Builder builder = new Notification.Builder(context);
-        builder.setSmallIcon(R.drawable.on).setTicker("HETT").setWhen(System.currentTimeMillis())
-                .setNumber(1).setContentTitle("오늘의 수업").setContentText("독일어1 13:30 ~ 15:00 C프로그래밍기초 15:00~17:00이 있습니다.")
-                .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE).setContentIntent(pendingIntent).setAutoCancel(true);
+        Notification.Builder builder ;
+       // NotificationCompat.Builder builder;
+        if (Build.VERSION.SDK_INT >= 26) {
+            String CHANNEL_ID = "snwodeer_service_channel";
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                    "SnowDeer Service Channel",
+                    NotificationManager.IMPORTANCE_HIGH);
 
+            ((NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE))
+                    .createNotificationChannel(channel);
+
+            builder = new Notification.Builder(context, CHANNEL_ID);
+        } else {
+            builder = new Notification.Builder(context);
+        }
+
+
+        builder.setSmallIcon(R.drawable.on)
+                .setTicker("HETT")
+                .setWhen(System.currentTimeMillis())
+                .setNumber(1)
+                .setContentTitle("오늘의 수업")
+                .setContentText("독일어1 13:30 ~ 15:00 C프로그래밍기초 15:00~17:00이 있습니다.")
+                .setFullScreenIntent(pendingIntent,true)
+                .setPriority(Notification.PRIORITY_HIGH)
+                .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE)
+                .setContentIntent(pendingIntent).setAutoCancel(true);
         notificationmanager.notify(1, builder.build());
+
     }
 
 }

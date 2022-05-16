@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.knu_info.utils.SharedPrefUtil;
+
 public class MainActivity extends AppCompatActivity {
     Button btnchat;
     Button btntime;
@@ -25,11 +27,12 @@ public class MainActivity extends AppCompatActivity {
             btnalarm=(Button)findViewById(R.id.btnalarm);
             String stId=getIntent().getStringExtra("id");
             btnlogout.setOnClickListener((view)->{
+                SharedPrefUtil.PreferenceManager.setString(this,"userID","");
                 Intent in = new Intent(MainActivity.this,LoginActivity.class) ;
                 in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 Toast.makeText(getApplicationContext(),"로그아웃 되었습니다.",Toast.LENGTH_LONG).show();
                 startActivity(in);
-
+                finish();
 
             });
 
