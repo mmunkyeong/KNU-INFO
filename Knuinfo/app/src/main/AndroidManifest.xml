@@ -17,6 +17,12 @@
         android:theme="@style/Theme.Knu_info"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".UserupdateActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MymenuActivity"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity

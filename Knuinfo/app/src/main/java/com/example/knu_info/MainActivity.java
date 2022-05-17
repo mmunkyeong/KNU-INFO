@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnchat;
     Button btntime;
     Button btnlogout;
-    Button btnalarm;
+    Button btnmymenu;
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             btnchat=(Button)findViewById(R.id.btnchat);
             btntime=(Button)findViewById(R.id.btntime);
             btnlogout =(Button)findViewById(R.id.btnlogout);
-            btnalarm=(Button)findViewById(R.id.btnalarm);
+            btnmymenu=(Button)findViewById(R.id.btnmymenu);
             String stId=getIntent().getStringExtra("id");
             btnlogout.setOnClickListener((view)->{
                 SharedPrefUtil.PreferenceManager.setString(this,"userID","");
@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
                 startActivity(in);
             });
-            btnalarm.setOnClickListener((view)->{
-                Intent in = new Intent(MainActivity.this,AlarmActivity.class) ;
+            btnmymenu.setOnClickListener((view)->{
+                Intent in = new Intent(MainActivity.this,MymenuActivity.class) ;
                 in.putExtra("id",stId);
 
                 startActivity(in);

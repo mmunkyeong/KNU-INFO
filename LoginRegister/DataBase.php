@@ -113,6 +113,25 @@ class DataBase
         }   
         return false;
     }
+     function gettimetable_json($table)
+    {
+	$this->sql = "select * from " . $table . "";
+	$result = mysqli_query($this->connect, $this->sql);
+	$rowCnt = mysqli_num_rows($result);
+	$arr = array();
+	for($i=0;$i<$rowCnt;$i++){
+        		$row= mysqli_fetch_array($result, MYSQLI_ASSOC);
+        		//각 각의 row를 $arr에 추가
+        		$arr[$i]= $row;
+        
+    	}
+ 
+    	//배열을 json으로 변환하는 함수가 있음.
+        	$jsonData=json_encode($arr,JSON_UNESCAPED_UNICODE); //json배열로 만들어짐.
+        	echo "$jsonData";
+    
+	    
+    }
     function gettimetable_($table, $studentid, $actTime, $diffCheck)
     {
     
@@ -135,7 +154,7 @@ class DataBase
                         $diffCheck2 = explode("#",$diffvalue1);
                         if($week1==$diffCheck2[0]){
                             $diffCheck3 = explode("|",$diffCheck2[1]);
-                            if($diffCheck3[0]<=$firstTime1&&$firstTime1<=$diffCheck3[1]){                            
+                            if($diffCheck3[0]<=$firstTime1&&$firstTime1<$diffCheck3[1]){                            
                                 return true;                            
                             }
                         }
@@ -146,7 +165,46 @@ class DataBase
         }   
         return false;
     }
+
+
+    function deletetimetable($table, $classid, $studentid)
+    {
+        $classid = $this->prepareData($classid);
+        $studentid = $this->prepareData($studentid);
+        $this->sql = "delete from " . $table . " where studentid = '" . $studentid . "' and classid = '" . $classid . "'";
+        if (mysqli_query($this->connect, $this->sql)) {
+            return true;
+        } else return false;
+    }
+}
+function passcheck($table, $password)
+{
+    $password = $this->prepareData($password);
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    $this->sql = "select * from " . $table . " where password = '" . $password . "'";
+    $result = mysqli_query($this->connect, $this->sql);
+    $row = mysqli_fetch_assoc($result);
+    if (mysqli_num_rows($result) != 0) {
+        $dbpassword = $row['password'];
+        if (password_verify($password, $dbpassword)) {
+            $passcheck = true;
+        } else $passcheck = false;
+    } else $passcheck = false;
+
+    return $passcheck;
 }
 
-
+function infoupdate($table, $fullname, $email, $username, $password)
+    {
+        $fullname = $this->prepareData($fullname);
+        $username = $this->prepareData($username);
+        $password = $this->prepareData($password);
+        $email = $this->prepareData($email);
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $this->sql =
+            "UPDATE " . $table . " set where fullname='" . $fullname . "','" . $username . "','" . $password . "','" . $email . "')";
+        if (mysqli_query($this->connect, $this->sql)) {
+            return true;
+        } else return false;
+    }
 ?>

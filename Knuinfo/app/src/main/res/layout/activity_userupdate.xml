@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserupdateActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-72dp">
+    <!-- 이름 입력 editText -->
+        <TextView
+            android:id="@+id/updatetitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="30dp"
+            android:layout_centerHorizontal="true"
+            android:text="회원정보 수정"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="#6E6E6E"
+            android:textSize="25sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etJName"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/updatetitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edittext"
+        android:hint="이름"
+        android:paddingLeft="20dp"
+        android:singleLine="true" >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fullname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!-- 회원가입 아이디 입력 editText -->
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:id="@+id/etid"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/etJName"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edittext"
+        android:hint=" 아이디"
+        android:singleLine="true" >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- 비밀번호 입력 editText -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etpass"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/etid"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edittext"
+        android:drawableRight="@drawable/ic_lockopen"
+        android:hint=" 비밀번호"
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:singleLine="true" >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- 전화번호 입력 editText -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etPhone"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/etpass"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edittext"
+        android:hint=" 전화번호"
+        android:paddingLeft="20dp"
+        android:singleLine="true"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- 이메일 입력 editText -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etEmail"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/etPhone"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edittext"
+        android:hint=" 이메일"
+        android:paddingLeft="20dp"
+        android:singleLine="true" >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- 가입하기 버튼 -->
+    <Button
+        android:id="@+id/btnupdate"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:height="50dp"
+        android:background="@drawable/button"
+        android:text="수정"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textAlignment="center" />
+
+
+
+</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

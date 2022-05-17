@@ -19,7 +19,7 @@
             android:layout_height="200dp"
             android:layout_marginLeft="-50dp"
             android:layout_marginTop="-70dp"
-            android:src="@drawable/circle"></ImageView>
+            android:src="@drawable/circle"/>
 
         <!-- 제목 -->
         <TextView
@@ -81,7 +81,7 @@
 
         <!-- 내정보 버튼 -->
         <Button
-            android:id="@+id/btnalarm"
+            android:id="@+id/btnmymenu"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btntime"
@@ -89,7 +89,7 @@
             android:layout_marginTop="30dp"
             android:height="50dp"
             android:background="@drawable/buttonmain"
-            android:text="알림"
+            android:text="마이메뉴"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textStyle="bold" />
