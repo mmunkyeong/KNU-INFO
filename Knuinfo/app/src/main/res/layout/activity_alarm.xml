@@ -9,6 +9,7 @@
 
     <ListView android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:textColor="#000000"
         android:id="@+id/listView"></ListView>
 
 </RelativeLayout>

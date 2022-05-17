@@ -98,15 +98,13 @@
             android:id="@+id/btnlogout"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/btntime"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="10dp"
             android:height="50dp"
-
-            android:background="@drawable/buttonmain"
+            android:background="#00ff0000"
             android:text="로그아웃"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="#787878"
             android:textAlignment="center" />
 
 
