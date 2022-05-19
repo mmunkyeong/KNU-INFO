@@ -39,7 +39,7 @@
         android:paddingLeft="20dp"
         android:singleLine="true" >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fullname"
+            android:id="@+id/fulluname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -56,7 +56,7 @@
         android:hint=" 아이디"
         android:singleLine="true" >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/username"
+            android:id="@+id/useruname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -78,7 +78,7 @@
         android:paddingRight="10dp"
         android:singleLine="true" >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
+            android:id="@+id/upassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -99,7 +99,7 @@
         android:singleLine="true"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/phone"
+            android:id="@+id/uphone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -117,26 +117,26 @@
         android:paddingLeft="20dp"
         android:singleLine="true" >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email"
+            android:id="@+id/uemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <!-- 가입하기 버튼 -->
-    <Button
-        android:id="@+id/btnupdate"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etEmail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:height="50dp"
-        android:background="@drawable/button"
-        android:text="수정"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        android:textAlignment="center" />
+        <Button
+            android:id="@+id/btnupdate"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etEmail"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:height="50dp"
+            android:background="@drawable/button"
+            android:text="수정"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textStyle="bold" />
 
 
 

@@ -107,28 +107,37 @@ public class JoinActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"아이디 중복 확인 해주세요.",Toast.LENGTH_LONG).show();
                     return;
                 }
-                String fullname,username,password,email;
+                String fullname, username, password, phone, email;
                 fullname = String.valueOf(etJName.getText());
                 username = String.valueOf(etJid.getText());
                 password = String.valueOf(etJpass.getText());
+                phone = String.valueOf(etJPhone.getText());
                 email = String.valueOf(etJEmail.getText());
-                if(!fullname.equals("") && !username.equals("") && !password.equals("") && !email.equals("")) {
+                Log.i(TAG, "onClick: "+fullname);
+                Log.i(TAG, "onClick: "+username);
+                Log.i(TAG, "onClick: "+password);
+                Log.i(TAG, "onClick: "+phone);
+                Log.i(TAG, "onClick: "+email);
+                if(!fullname.equals("") && !username.equals("") && !password.equals("") && !phone.equals("") && !email.equals("")) {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             //Starting Write and Read data with URL
                             //Creating array for parameters
-                            String[] field = new String[4];
+                            String[] field = new String[5];
                             field[0] = "fullname";
                             field[1] = "username";
                             field[2] = "password";
-                            field[3] = "email";
+                            field[3] = "phone";
+                            field[4] = "email";
+
                             //Creating array for data
-                            String[] data = new String[4];
+                            String[] data = new String[5];
                             data[0] = fullname;
                             data[1] = username;
                             data[2] = password;
-                            data[3] = email;
+                            data[3] = phone;
+                            data[4] = email;
                             PutData putData = new PutData(KnuInfoServer.server+"/knuinfo/signup.php", "POST", field, data);
                             if (putData.startPut()) {
                                 Log.i(TAG, "run: put Start");
