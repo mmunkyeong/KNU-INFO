@@ -19,7 +19,7 @@
             android:layout_height="200dp"
             android:layout_marginLeft="-50dp"
             android:layout_marginTop="-70dp"
-            android:src="@drawable/circle"/>
+            android:src="@drawable/circle"></ImageView>
 
         <!-- 제목 -->
         <TextView
@@ -78,7 +78,6 @@
             android:textStyle="bold"
             android:textColor="#000000"
             android:textAlignment="center" />
-
         <!-- 내정보 버튼 -->
         <Button
             android:id="@+id/btnmymenu"
@@ -93,18 +92,32 @@
             android:textAlignment="center"
             android:textColor="#000000"
             android:textStyle="bold" />
+        <!-- 알림버튼 -->
+        <Button
+            android:id="@+id/btnalarm"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/btnlogout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"
+            android:height="50dp"
+            android:background="@drawable/bell"
+             />
         <!-- 로그아웃 버튼 -->
         <Button
             android:id="@+id/btnlogout"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="40dp"
             android:height="50dp"
-            android:background="#00ff0000"
+
+            android:background="@drawable/buttonmain"
             android:text="로그아웃"
             android:textStyle="bold"
-            android:textColor="#787878"
+            android:textColor="#000000"
             android:textAlignment="center" />
 
 

@@ -7,12 +7,12 @@ import android.content.Intent;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
+import android.widget.CompoundButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,7 +44,7 @@ public class AlarmActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     ArrayList<TimetableData> items= new ArrayList<>();
     String TAG = "AlarmActivity";
-
+    Switch sw;
 
 
 
@@ -52,16 +52,16 @@ public class AlarmActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
-        listview = findViewById(R.id.listView);
+        //listview = findViewById(R.id.listView);
         nameList=new ArrayList<>();
 
 
-        new getNames().execute();
+
         new AlarmHATT(getApplicationContext()).Alarm();
 
     }
 
-    class getNames extends AsyncTask<Void,Void,Void>{
+    /*class getNames extends AsyncTask<Void,Void,Void>{
         String json_url;
 
 
@@ -104,14 +104,7 @@ public class AlarmActivity extends AppCompatActivity {
                             nameList.add(nameMap);
                         }
                     } catch (JSONException e) {
-                        Log.e(TAG, "doInBackground: Json ParsingError" );
-                        new Handler(Looper.getMainLooper()).post(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getApplicationContext(),"Json ParsingError", Toast.LENGTH_LONG).show();
-                            }
-                        });
-
+                        Toast.makeText(getApplicationContext(),"Json ParsingError", Toast.LENGTH_LONG).show();
                     }
                 }
                 bufferedReader.close();
@@ -145,7 +138,7 @@ public class AlarmActivity extends AppCompatActivity {
             ListAdapter listAdapter = new SimpleAdapter(AlarmActivity.this,nameList,R.layout.item,new String[]{"classname"},new int[]{R.id.name});
             listview.setAdapter(listAdapter);
         }
-    }
+    }*/
 
     public class AlarmHATT {
         private Context context;
@@ -156,21 +149,32 @@ public class AlarmActivity extends AppCompatActivity {
         }
 
         public void Alarm() {
+            sw=(Switch)findViewById(R.id.switch2) ;
+            sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                        Intent intent = new Intent(AlarmActivity.this, BroadcastD.class);
 
-            AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            Intent intent = new Intent(AlarmActivity.this, BroadcastD.class);
+                        PendingIntent sender = PendingIntent.getBroadcast(AlarmActivity.this, (int)System.currentTimeMillis()/1000, intent, 0);
 
-            PendingIntent sender = PendingIntent.getBroadcast(AlarmActivity.this, 0, intent, 0);
-
-            Calendar calendar = Calendar.getInstance();
-            //알람시간 calendar에 set해주기
+                        Calendar calendar = Calendar.getInstance();
+                        //알람시간 calendar에 set해주기
 
 
-            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 10, 51, 0);
+                        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 13, 51, 0);
+                        //알람 예약
+                        am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
+                        Toast.makeText(getApplicationContext(),"알람 ON.",Toast.LENGTH_LONG).show();
 
-            //알람 예약
-//            am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
-            am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+5*1000L, sender);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"알람 OFF.",Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+
 
         }
 
