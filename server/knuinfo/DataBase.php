@@ -53,7 +53,7 @@ class DataBase
         return $login;
     }
 
-    function signUp($table, $fullname, $email, $username, $password)
+    function signUp($table, $fullname, $email, $username, $password,$phone)
     {
         $fullname = $this->prepareData($fullname);
         $username = $this->prepareData($username);
@@ -61,7 +61,7 @@ class DataBase
         $email = $this->prepareData($email);
         $password = password_hash($password, PASSWORD_DEFAULT);
         $this->sql =
-            "INSERT INTO " . $table . " (fullname, username, password, email) VALUES ('" . $fullname . "','" . $username . "','" . $password . "','" . $email . "')";
+            "INSERT INTO " . $table . " (fullname, username, password, phone, email) VALUES ('" . $fullname . "','" . $username . "','" . $password . "','" . $phone . "','" . $email . "')";
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;
@@ -175,6 +175,52 @@ class DataBase
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;
+    }
+
+    function passcheck($table, $password)
+    {
+        $password = $this->prepareData($password);
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $this->sql = "select * from " . $table . " where password = '" . $password . "'";
+        $result = mysqli_query($this->connect, $this->sql);
+        $row = mysqli_fetch_assoc($result);
+        if (mysqli_num_rows($result) != 0) {
+            $dbpassword = $row['password'];
+            if (password_verify($password, $dbpassword)) {
+                $passcheck = true;
+            } else $passcheck = false;
+        } else $passcheck = false;
+    
+        return $passcheck;
+    }
+    
+    function infoupdate($table,$username, $email, $phone)
+    {
+        $username = $this->prepareData($username);
+        $phone = $this->prepareData($phone);
+        $email = $this->prepareData($email);
+        $this->sql = "update " . $table . " set email = '" . $email . "' , phone= '" . $phone. "' where username= '" . $username . "'";
+        if (mysqli_query($this->connect, $this->sql)) {
+            return true;
+        } else return false;
+    }
+
+    function getinfo($table, $username)
+    {
+        $username = $this->prepareData($username);
+
+        $this->sql = "select * from " . $table ." where username = '" . $username . "'";
+        $result = mysqli_query($this->connect, $this->sql);
+        while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+        	foreach ($row as $r) {
+	            echo $r;
+         	    echo "|";
+	        }
+		    return true;
+        }   
+        // if (mysqli_query($this->connect, $this->sql)) {
+        //     return true;
+        // } else return false;
     }
 }
 ?>
