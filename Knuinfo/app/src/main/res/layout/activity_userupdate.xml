@@ -50,10 +50,11 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_below="@+id/etJName"
-        android:layout_marginStart="60dp"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
         android:background="@drawable/edittext"
         android:hint=" 아이디"
+        android:paddingLeft="20dp"
         android:singleLine="true" >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/useruname"
@@ -75,7 +76,6 @@
         android:hint=" 비밀번호"
         android:inputType="textPassword"
         android:paddingLeft="20dp"
-        android:paddingRight="10dp"
         android:singleLine="true" >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/upassword"

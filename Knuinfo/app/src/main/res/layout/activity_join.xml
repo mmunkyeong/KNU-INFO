@@ -61,18 +61,22 @@
         <com.google.android.material.textfield.TextInputLayout
 
             android:id="@+id/etJid"
-            android:layout_width="220dp"
+            android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_below="@+id/etJName"
-            android:layout_marginStart="60dp"
+            android:layout_centerInParent="true"
+            android:layout_alignStart="@+id/etJName"
             android:layout_marginBottom="20dp"
+
             android:background="@drawable/edittext"
             android:hint=" 아이디"
-            android:singleLine="true" >
+            android:paddingLeft="20dp"
+            android:singleLine="true">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/username"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
         <!-- 중복확인 버튼 -->
         <Button
@@ -102,7 +106,6 @@
             android:hint=" 비밀번호"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
-            android:paddingRight="10dp"
             android:singleLine="true" >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
@@ -123,7 +126,7 @@
             android:hint=" 비밀번호 확인"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
-            android:paddingRight="10dp"
+
             android:singleLine="true" >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_ck"
