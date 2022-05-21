@@ -53,6 +53,7 @@ public class MymenuActivity extends AppCompatActivity {
                                         Log.i(TAG, "run: password check");
                                         Intent i = new Intent(MymenuActivity.this,UserupdateActivity.class);
                                         i.putExtra("userID",data[0]);
+                                        i.putExtra("password",data[1]);
                                         startActivity(i);
                                         finish();
                                     } else {

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.knu_info.server.KnuInfoServer;
+import com.example.knu_info.utils.SharedPrefUtil;
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
@@ -20,12 +21,14 @@ public class UserupdateActivity extends AppCompatActivity {
     TextInputEditText etJName, etJid, etJpass, etJEmail, etJPhone;
     Button updateBtn;
     Context mContext;
+    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userupdate);
         mContext = this;
+        password= getIntent().getStringExtra("password");
         etJName = findViewById(R.id.fulluname);
         etJid = findViewById(R.id.useruname);
         etJpass = findViewById(R.id.upassword);
@@ -34,6 +37,55 @@ public class UserupdateActivity extends AppCompatActivity {
         etJEmail = findViewById(R.id.uemail);
 
         updateBtn = findViewById(R.id.btnupdate);
+        String username;
+        username = SharedPrefUtil.PreferenceManager.getString(getApplicationContext(), "userID");
+        if (!username.equals("")) {
+            Handler handler = new Handler();
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    //Starting Write and Read data with URL
+                    //Creating array for parameters
+
+                    String[] field = new String[1];
+                    field[0] = "username";
+
+                    //Creating array for data
+                    String[] data = new String[1];
+
+                    data[0] = username;
+                    PutData putData = new PutData(KnuInfoServer.server + "/knuinfo/getinfo.php", "POST", field, data);
+                    if (putData.startPut()) {
+                        if (putData.onComplete()) {
+                            String result = putData.getResult();
+                            Log.i(TAG, "run: result"+result);
+                            if (result.contains("Get infomation Success")) {
+                                String[] parseresult =result.split("\\|");
+                                etJName.setText(parseresult[1]);
+                                etJid.setText(parseresult[2]);
+                                etJpass.setText(password);
+                                etJPhone.setText(parseresult[4]);
+                                etJEmail.setText(parseresult[5]);
+                                etJName.setEnabled(false);
+                                etJid.setEnabled(false);
+                                etJpass.setEnabled(false);
+                                Log.i(TAG, "run: "+parseresult[1]);
+                                Log.i(TAG, "run: "+parseresult[2]);
+                                Log.i(TAG, "run: "+password);
+                                Log.i(TAG, "run: "+parseresult[4]);
+                                Log.i(TAG, "run: "+parseresult[5]);
+                            } else {
+                                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    }
+                    //End Write and Read data with URL
+                }
+            });
+        } else {
+            Toast.makeText(getApplicationContext(), "All fields required", Toast.LENGTH_SHORT).show();
+        }
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
