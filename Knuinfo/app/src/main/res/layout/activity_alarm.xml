@@ -12,10 +12,11 @@
         android:id="@+id/switch2"
         android:layout_width="match_parent"
         android:layout_height="133dp"
-        android:text="알림기능"
-        android:textSize="30dp"
+        android:text="알림"
+        android:textSize="25dp"
         android:paddingLeft="20dp"
         android:layout_marginTop="20dp"
+        android:textColor="#787878"
         android:background="@drawable/edittext"
         />
 </LinearLayout>
