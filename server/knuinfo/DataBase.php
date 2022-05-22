@@ -222,5 +222,20 @@ class DataBase
         //     return true;
         // } else return false;
     }
+
+    function gettimetable_alarm($table, $studentid )
+    {
+        $this->sql = "select classname, actTime from " . $table . " where studentid = '" . $studentid . "'";
+        $result = mysqli_query($this->connect, $this->sql);
+
+	    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+        	foreach ($row as $r) {
+	            echo $r;
+         	    echo "|";
+	        }
+		    echo "$";
+        }   
+        return false;
+    }
 }
 ?>
